@@ -47,8 +47,8 @@ de page). Quelques pages sont volontairement verrouillées en clair :
 - `/cv` : le CV doit rester lisible en impression et lorsqu'il est partagé sous forme
   de lien critique (entretien, envoi par email). Le mode sombre y est donc désactivé.
 
-La préférence est persistée dans `localStorage` et respectée dès le chargement de la
-page (script inline injecté avant le premier rendu). Le site respecte également la
+La préférence est persistée dans `localStorage` et respectée dès le chargement de
+la page (script inline injecté avant le premier rendu). Le site respecte également la
 préférence système (`prefers-color-scheme`) lors du premier visite.
 
 ## Accessibilité, performance, SEO
@@ -129,4 +129,11 @@ importante, ouvrir une issue pour discuter du besoin.
 
 ---
 
-Portfolio de Baurel — TEKER Codes. Contenu éditorial, zéro données externe non sourcée.
+## Réseaux sociaux
+
+- GitHub : [baurel-bits](https://github.com/baurel-bits)
+- GitLab : [baurel](https://gitlab.com/baurel)
+
+---
+
+Portfolio de Baurel — TEKER Codes. Contenu éditorial, zéro données externes.
