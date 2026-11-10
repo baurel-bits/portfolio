@@ -39,96 +39,94 @@ La clé est publique par conception (elle identifie le formulaire, elle ne perme
 lire les messages reçus). Tant qu'aucune clé n'est configurée, le formulaire n'affiche
 pas de champs inutiles : il renvoie vers l'adresse email.
 
-Protection anti-spam : champ honeypot `botcheck` (masqué, ignoré s'il est rempli),
-validation côté client, limitation de débit et filtrage côté Web3Forms.
+## Thème (clair / sombre)
 
-## CV téléchargeable
+Le thème est choisi par le visiteur (bouton `Sun / Moon` dans la navbar et dans le pied
+de page). Quelques pages sont volontairement verrouillées en clair :
 
-Les fichiers servis par le bouton « Télécharger mon CV » sont :
+- `/cv` : le CV doit rester lisible en impression et lorsqu'il est partagé sous forme
+  de lien critique (entretien, envoi par email). Le mode sombre y est donc désactivé.
 
-- `public/cv/baurel-cv-fr.pdf`
-- `public/cv/baurel-cv-en.pdf`
+La préférence est persistée dans `localStorage` et respectée dès le chargement de la
+page (script inline injecté avant le premier rendu). Le site respecte également la
+préférence système (`prefers-color-scheme`) lors du premier visite.
 
-Pour mettre le CV à jour : remplacer ces deux fichiers en conservant les noms, ou
-régénérer depuis les pages `/fr/cv` et `/en/cv` (impression navigateur → « Enregistrer
-au format PDF », format A4, marges par défaut). Les deux langues doivent être mises à jour.
+## Accessibilité, performance, SEO
 
-## Visuels de projets
+- Navigation au clavier : la quasi-totalité des interactions est reachable au clavier.
+- Images : `next/image` avec `sizes` adaptés et `loading="lazy"` sur les images hors
+  premiere viewport.
+- Moteurs de recherche : `src/app/sitemap.ts` et `src/app/robots.txt` sont générés et
+  utilisent `NEXT_PUBLIC_SITE_URL`.
+- Meta tags : titre, description, canonical, Open Graph et Twitter Card sont définis
+  par page (accueil, CV, projets).
+- Animation : une animation de zoom subtil au scroll est appliquée sur la couverture des
+  projets, via CSS pur (`animation-timeline: view()`). Elle est désactivée si le visiteur
+  a demandé `prefers-reduced-motion: reduce`.
 
-Déposer les captures réelles dans `public/projects/`, puis renseigner `cover` dans
-`src/data/projects.ts` (`src`, `width`, `height`, `alt` bilingue). Sans `cover`, la carte
-affiche un emplacement « capture à venir » : aucune image d'illustration n'est présentée
-comme une capture réelle.
+## Déploiement
 
-Chaque projet dispose automatiquement d'une page de détail `/fr/projets/<id>` et
-`/en/projets/<id>`. L'`id` sert d'URL : le modifier change l'adresse publique du projet.
+Le site est conçu pour être déployé sur Vercel. La procédure complète est dans
+[README.deploy.md](./README.deploy.md) (préparation, variables d'environnement,
+domaine, preview). **Le déploiement n'est pas encore effectué** : cette documentation
+est prête mais l'étape de release n'a pas été lancée.
 
-## Déploiement sur Vercel
+### Résumé
 
-Le dossier n'est pas encore versionné : créer un dépôt Git, le pousser sur GitHub, puis
-importer le dépôt depuis <https://vercel.com/new>. Aucun `vercel.json` n'est nécessaire,
-Vercel détecte Next.js, ses routes et son dossier de sortie.
+1. Connecter le dépôt GitHub à un projet Vercel.
+2. Définir les variables d'environnement (voir tableau plus bas).
+3. `git push` : la branche par défaut (`main`) déclenche le déploiement automatique.
+4. Ajouter le domaine personnalisé si besoin, et définir `NEXT_PUBLIC_SITE_URL` sur
+   l'URL finale.
 
-### Réglages du projet
+### Variables Vercel
 
-| Réglage           | Valeur                                                |
-| ----------------- | ----------------------------------------------------- |
-| Framework Preset  | Next.js (détecté)                                     |
-| Root Directory    | `.`                                                   |
-| Install Command   | `npm install`                                         |
-| Build Command     | `npm run build`                                       |
-| Output Directory  | laisser vide (Vercel utilise `.next`)                 |
-| Node.js Version   | 22.x (minimum 20.9, déclaré par `engines` du `package.json`) |
+| Variable d'environnement            | Valeur exemple                        | Notes                                           |
+| ----------------------------------- | ------------------------------------- | ----------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`              | `https://baurel.example`              | URL publique finale (production)                |
+| `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`  | `...`                                 | Clé du formulaire de contact (voir plus haut)   |
 
-### Variables d'environnement
+- `NEXT_PUBLIC_SITE_URL` est facultatif en local et en preview : le site utilise alors
+  une URL par défaut basée sur l'environnement Vercel.
+- En preview, les pages sont signalées aux moteurs de recherche via l'en-tête
+  `X-Robots-Tag: noindex`.
+- Les variables `NEXT_PUBLIC_*` sont injectées au build : après les avoir modifiées,
+  relancer le déploiement.
 
-À renseigner dans **Project → Settings → Environment Variables** avant le premier
-déploiement de production.
+## Projets
 
-| Variable                           | Production                                | Preview                                        | Development        |
-| ---------------------------------- | ----------------------------------------- | ---------------------------------------------- | ------------------ |
-| `NEXT_PUBLIC_SITE_URL`             | `https://votre-domaine.tld` (sans slash)  | laisser vide (URL Vercel du déploiement)       | laisser vide       |
-| `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` | clé Web3Forms de réception                | même clé, pour tester le formulaire            | même clé ou vide   |
+Les projets sont définis dans `src/data/projects.ts`. Pour en ajouter un :
 
-Sans `NEXT_PUBLIC_SITE_URL`, l'URL est résolue automatiquement :
-`VERCEL_PROJECT_PRODUCTION_URL`, puis `VERCEL_URL`, puis `http://localhost:3000`.
-Sur un domaine personnalisé, définir la variable et redéployer pour que canonical et
-Open Graph pointent le bon hôte.
+1. Ajouter un objet dans le tableau `projects` (champs : `id`, `title`, `summary`,
+   `kind`, `stack`, `details`, `links`, `featured`).
+2. Si une image de couverture existe, la déposer dans `public/projects/` et renseigner
+   le champ `cover`. Tant que `cover` est absent, la carte affiche un emplacement
+   « capture à venir » (jamais d'image inventée).
+3. Les liens externes existants uniquement : ne pas inventer de dépôt ou d'URL.
 
-Les deux variables sont `NEXT_PUBLIC_*` : elles sont **intégrées au build**. Après une
-modification, utiliser **Deployments → ⋯ → Redeploy** ; un simple redémarrage ne suffit
-pas. Les déploiements de prévisualisation reçoivent automatiquement l'en-tête
-`X-Robots-Tag: noindex` (`next.config.ts`).
+### Images des projets
 
-### Après le premier déploiement
+Quelques captures d'écran de projets externes sont disponibles dans `public/projects/` :
 
-- `/` redirige en 307 vers `/fr`.
-- `/fr`, `/en` et `/fr/projets/depensepro` répondent 200.
-- `/cv/baurel-cv-fr.pdf` répond 200 et s'ouvre sur une page A4.
-- Un envoi réel du formulaire arrive dans la boîte email associée à la clé.
-- `/fr/opengraph-image` et le favicon s'affichent, canonical et OG utilisent le bon domaine.
-- `/sitemap.xml` liste les pages FR/EN et `/robots.txt` pointe vers ce sitemap, tous deux
-  sur le domaine public.
+- `bibiotheque/` : 12 screenshots de l'application de bibliothèque (Spring Boot + Angular).
 
-### Déploiement en ligne de commande (optionnel)
+Ces images ne sont pas encore associées à un projet du portfolio. Pour les intégrer,
+ajouter un projet dans `src/data/projects.ts` avec `cover` pointant vers l'image de
+ton choix (ex : `public/projects/bibiotheque/home.png`).
 
-```bash
-npx vercel         # prévisualisation
-npx vercel --prod  # production
-```
+## Structure du site
 
-## Contenus à compléter
+- `/` → redirige vers `/fr`
+- `/fr` et `/en` : pages d'accueil bilingues
+- `/fr/cv` et `/en/cv` : CV (verrouillé en clair)
+- `/fr/projets/[slug]` et `/en/projets/[slug]` : pages de détail par projet
+- `/sitemap.xml` et `/robots.txt` : générés
 
-- **Années des projets** : champ `year` dans `src/data/projects.ts`, omis tant qu'il n'est
-  pas confirmé (le libellé « Année » disparaît alors).
-- **Formation réelle** : `src/data/education.ts` (intitulé, établissement, dates).
-- **Traductions anglaises** : `src/i18n/messages/en.ts` à relire.
-- **URL publique** : `NEXT_PUBLIC_SITE_URL` avant mise en ligne.
+## Contribuer
 
-## Vérifications
+Les corrections et améliorations sont les bienvenues. Avant de proposer une modification
+importante, ouvrir une issue pour discuter du besoin.
 
-```bash
-npx tsc --noEmit
-npm run lint
-npm run build
-```
+---
+
+Portfolio de Baurel — TEKER Codes. Contenu éditorial, zéro données externe non sourcée.
