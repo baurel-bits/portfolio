@@ -1,0 +1,467 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f6f5f0;
+  --color-paper-raised: #ffffff;
+  --color-paper-sunken: #edece5;
+  --color-ink: #101311;
+  --color-ink-soft: #3c423e;
+  --color-ink-muted: #6b726c;
+  --color-line: #dedcd3;
+  --color-line-strong: #c6c4b9;
+
+  --color-console: #0c0f0e;
+  --color-console-raised: #151a17;
+  --color-console-line: #28302b;
+  --color-console-line-strong: #3d4a43;
+  --color-console-text: #ecefe9;
+  --color-console-muted: #96a099;
+
+  --color-accent: #2d3bff;
+  --color-accent-on-dark: #8a92ff;
+  --color-signal: #d6f24a;
+  --color-danger: #c0362c;
+  --color-danger-on-dark: #ff9c8f;
+  --color-success: #1e7a4b;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --text-display-xl: clamp(2.75rem, 1.7rem + 4.8vw, 5.5rem);
+  --text-display-xl--line-height: 0.92;
+  --text-display-xl--letter-spacing: -0.035em;
+  --text-display-l: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
+  --text-display-l--line-height: 0.96;
+  --text-display-l--letter-spacing: -0.03em;
+  --text-display-m: clamp(1.75rem, 1.45rem + 1.5vw, 2.5rem);
+  --text-display-m--line-height: 1.05;
+  --text-display-m--letter-spacing: -0.02em;
+  --text-heading-l: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+  --text-heading-l--line-height: 1.2;
+  --text-heading-m: 1.125rem;
+  --text-heading-m--line-height: 1.35;
+  --text-body-l: 1.0625rem;
+  --text-body-l--line-height: 1.7;
+  --text-body-m: 0.9375rem;
+  --text-body-m--line-height: 1.65;
+  --text-body-s: 0.8125rem;
+  --text-body-s--line-height: 1.55;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.2;
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 1.3;
+
+  --container-page: 75rem;
+  --container-wide: 90rem;
+
+  --shadow-soft: 0 1px 2px rgba(16, 19, 17, 0.06);
+  --shadow-lift: 0 10px 30px -12px rgba(16, 19, 17, 0.18);
+  --shadow-float: 0 30px 70px -30px rgba(16, 19, 17, 0.35);
+}
+
+/* ---------------------------------------------------------------------------
+   Thème
+   Les utilitaires Tailwind référencent les variables `--color-*` : redéfinir
+   ces variables suffit à basculer toute l'interface, animations comprises.
+   `data-theme` est posé sur <html> avant le premier rendu par un script inline.
+--------------------------------------------------------------------------- */
+
+@layer base {
+  [data-theme="dark"] {
+    color-scheme: dark;
+
+    --color-paper: #101413;
+    --color-paper-raised: #171d1a;
+    --color-paper-sunken: #0b0e0d;
+    --color-ink: #edf0ea;
+    --color-ink-soft: #c3cac4;
+    --color-ink-muted: #96a099;
+    --color-line: #2a332e;
+    --color-line-strong: #3d4a43;
+
+    --color-accent: #8a92ff;
+    --color-danger: #ff9c8f;
+    --color-success: #4fbf85;
+
+    --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-lift: 0 12px 34px -14px rgba(0, 0, 0, 0.7);
+    --shadow-float: 0 34px 80px -34px rgba(0, 0, 0, 0.85);
+  }
+
+  /* Le CV est un document imprimable : il garde la palette claire. */
+  [data-theme="light"] {
+    color-scheme: light;
+
+    --color-paper: #f6f5f0;
+    --color-paper-raised: #ffffff;
+    --color-paper-sunken: #edece5;
+    --color-ink: #101311;
+    --color-ink-soft: #3c423e;
+    --color-ink-muted: #6b726c;
+    --color-line: #dedcd3;
+    --color-line-strong: #c6c4b9;
+
+    --color-accent: #2d3bff;
+    --color-danger: #c0362c;
+    --color-success: #1e7a4b;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-signal);
+    color: var(--color-console);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@utility cover-placeholder {
+  background-color: var(--color-console);
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-console-line) 0 1px,
+    transparent 1px 22px
+  );
+}
+
+@utility skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -6rem;
+  z-index: 100;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0.75rem 1rem;
+  font-size: var(--text-body-s);
+  transition: top 0.2s ease-out;
+
+  &:focus {
+    top: 1rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion
+   Tout est fait en transform / opacity. Aucune librairie d'animation.
+   `.js` n'est posé par le document que si IntersectionObserver existe :
+   sans JavaScript, tout le contenu reste visible.
+--------------------------------------------------------------------------- */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.reveal {
+  transition:
+    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Trait de section : se déploie quand le bloc devient visible. */
+.section-rule {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin-top: 0.85rem;
+  transform-origin: left;
+  background-color: var(--color-accent);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+
+.js .reveal .section-rule {
+  transform: scaleX(0);
+}
+
+.js .reveal.is-visible .section-rule {
+  transform: scaleX(1);
+}
+
+/* Progression de lecture sous le header : pilotée par le scroll, sans JS. */
+.scroll-progress {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background-color: var(--color-accent);
+}
+
+@supports not (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: none;
+  }
+}
+
+@keyframes scroll-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes menu-link-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cover-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-line-up {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-visual {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cover-scroll {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes parallax-grid {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(48px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-line {
+    animation: hero-line-up 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-fade {
+    animation: hero-fade 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-visual {
+    animation: hero-visual 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress {
+      animation: scroll-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+
+  /* Le panneau perd son attribut `inert` à l'ouverture : l'animation rejoue. */
+  #menu-mobile:not([inert]) .menu-link {
+    animation: menu-link-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .cover-in {
+    animation: cover-in 0.6s ease-out both;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .parallax-grid {
+      animation: parallax-grid linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 80vh;
+    }
+  }
+
+  /* Visuels de projets : le cadre se cale pendant que la carte entre dans
+     le viewport. Sans support des timelines, l'image reste simplement nette. */
+  @supports (animation-timeline: view()) {
+    .cover-scroll {
+      animation: cover-scroll linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 40%;
+    }
+  }
+
+  /* Repli sans animation pilotée par le scroll : grille statique, décalée
+     pour garder la composition. Aucun mouvement, donc rien à imiter en JS. */
+  @supports not (animation-timeline: scroll()) {
+    .parallax-grid {
+      transform: translateY(22px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-line,
+  .hero-fade,
+  .hero-visual,
+  .parallax-grid,
+  #menu-mobile .menu-link,
+  .cover-in,
+  .cover-scroll {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .scroll-progress {
+    display: none;
+  }
+
+  .section-rule,
+  .js .reveal .section-rule,
+  .js .reveal.is-visible .section-rule {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Sans JavaScript, le thème reste clair et le bouton inopérant est masqué. */
+html:not(.js) .theme-toggle {
+  display: none;
+}
+
+/* Icônes du sélecteur de thème : c'est l'attribut qui décide, pas React,
+   pour éviter un décalage d'hydratation. */
+.theme-icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+
+[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  /* Une impression reste toujours sur fond clair, même en thème sombre. */
+  html[data-theme="dark"] {
+    color-scheme: light;
+
+    --color-paper: #ffffff;
+    --color-paper-raised: #ffffff;
+    --color-paper-sunken: #f4f4f2;
+    --color-ink: #000000;
+    --color-ink-soft: #222222;
+    --color-ink-muted: #555555;
+    --color-line: #cccccc;
+    --color-line-strong: #aaaaaa;
+    --color-accent: #1b2bd6;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10pt;
+  }
+
+  .print-block {
+    break-inside: avoid;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: none;
+  }
+
+  .js .reveal,
+  .hero-line,
+  .hero-fade,
+  .hero-visual,
+  .parallax-grid,
+  .cover-in {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
