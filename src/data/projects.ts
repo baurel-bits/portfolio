@@ -72,4 +72,44 @@ export const projects: readonly Project[] = [
     ],
     featured: false,
   },
+
+  {
+    id: "bibiotheque",
+    title: {
+      fr: "Bibliothèque",
+      en: "Library",
+    },
+    summary: {
+      fr: "Application de gestion de bibliothèque (Spring Boot + Angular). Création, consultation et modification des livres et des utilisateurs, gestion des emprunts.",
+      en: "Library management application (Spring Boot + Angular). Create, view and update books and users, manage borrowings.",
+    },
+    kind: "fullstack",
+    stack: ["Spring Boot", "Angular", "MySQL", "JWT"],
+    details: [
+      {
+        fr: "Gestion des livres et des utilisateurs",
+        en: "Book and user management",
+      },
+      {
+        fr: "Suivi des emprunts et des retours",
+        en: "Tracking of borrowings and returns",
+      },
+      {
+        fr: "Authentification JWT et rôles",
+        en: "JWT authentication and roles",
+      },
+    ],
+    cover: {
+      src: "/projects/bibiotheque/home.png",
+      width: 1918,
+      height: 1035,
+      alt: {
+        fr: "Capture d'écran de l'application de bibliothèque — vue d'accueil",
+        en: "Screenshot of the library application — home view",
+      },
+    },
+    links: [],
+    featured: false,
+  },
+
 ];
