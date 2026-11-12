@@ -19,25 +19,34 @@ export const projects: readonly Project[] = [
       en: "DepensePro",
     },
     summary: {
-      fr: "Application de gestion des dépenses avec une API REST complète : entités, services, contrôleurs et validation des données.",
-      en: "Expense management application built on a complete REST API: entities, services, controllers and data validation.",
+      fr: "Application mobile de suivi des dépenses et des budgets : tableau de bord, dépenses récurrentes, notifications, statistiques et export des données.",
+      en: "Mobile app for tracking expenses and budgets: dashboard, recurring expenses, notifications, statistics and data export.",
     },
     kind: "fullstack",
-    stack: ["Java", "Spring Boot", "API REST", "PostgreSQL"],
+    stack: ["React Native", "Expo", "Spring Boot", "PostgreSQL"],
     details: [
       {
-        fr: "Modélisation des entités et des relations métier",
-        en: "Entity modelling and business relationships",
+        fr: "Tableau de bord des dépenses et suivi du budget",
+        en: "Expense dashboard and budget tracking",
       },
       {
-        fr: "Couche service et contrôleurs REST découplés",
-        en: "Decoupled service layer and REST controllers",
+        fr: "Dépenses récurrentes et notifications",
+        en: "Recurring expenses and notifications",
       },
       {
-        fr: "Validation des données entrantes et persistance PostgreSQL",
-        en: "Incoming data validation and PostgreSQL persistence",
+        fr: "Statistiques et export des données",
+        en: "Statistics and data export",
       },
     ],
+    cover: {
+      src: "/projects/depensepro/mockup.png",
+      width: 1600,
+      height: 1000,
+      alt: {
+        fr: "Maquette de l'application mobile DepensePro — tableau de bord des dépenses en vert et blanc (maquette et non capture de l'application)",
+        en: "Mockup of the DepensePro mobile app — expense dashboard in green and white (a mockup, not a screenshot of the app)",
+      },
+    },
     links: [],
     featured: true,
   },
@@ -233,6 +242,15 @@ export const projects: readonly Project[] = [
         en: "Continuous deployment on Netlify",
       },
     ],
+    cover: {
+      src: "/projects/ecole/screen.jpeg",
+      width: 1600,
+      height: 768,
+      alt: {
+        fr: "Capture d'écran du site de l'école — page d'accueil du groupe scolaire bilingue",
+        en: "School website screenshot — home page of the bilingual school group",
+      },
+    },
     links: [
       {
         label: { fr: "Voir en ligne", en: "View live" },

@@ -8,8 +8,8 @@ import {
   MailIcon,
   MapPinIcon,
   PhoneIcon,
+  WhatsAppIcon,
 } from "@/components/ui/icons";
-import { ButtonLink } from "@/components/ui/button";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { site } from "@/lib/site";
@@ -63,6 +63,21 @@ export function ContactSection({ locale, contact }: ContactSectionProps) {
             </li>
 
             <li className="flex items-center gap-3 py-4">
+              <dt className="sr-only">{contact.whatsappLabel}</dt>
+              <WhatsAppIcon className="shrink-0 text-console-muted" />
+              <dd>
+                <a
+                  href={site.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-body-m text-console-text transition-colors hover:text-signal"
+                >
+                  {site.whatsapp}
+                </a>
+              </dd>
+            </li>
+
+            <li className="flex items-center gap-3 py-4">
               <dt className="sr-only">{contact.locationLabel}</dt>
               <MapPinIcon className="shrink-0 text-console-muted" />
               <dd className="text-body-m text-console-text">{site.location[locale]}</dd>
@@ -102,15 +117,13 @@ export function ContactSection({ locale, contact }: ContactSectionProps) {
                 <ArrowUpRightIcon className="shrink-0" width={14} height={14} />
               </a>
             )}
-            <ButtonLink
+            <a
               href={`/${locale}/cv`}
-              variant="outline"
-              size="md"
-              className="text-body-m underline decoration-dot underline-offset-4"
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-body-m font-mono uppercase tracking-wider text-console-muted transition-colors hover:bg-console/40 hover:text-console-text"
             >
-              <DownloadIcon />
+              <DownloadIcon className="shrink-0" />
               {contact.cvLabel}
-            </ButtonLink>
+            </a>
           </div>
         </div>
 

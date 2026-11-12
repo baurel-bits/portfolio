@@ -39,6 +39,16 @@ La clé est publique par conception (elle identifie le formulaire, elle ne perme
 lire les messages reçus). Tant qu'aucune clé n'est configurée, le formulaire n'affiche
 pas de champs inutiles : il renvoie vers l'adresse email.
 
+## CV
+
+Le CV téléchargeable est le document lui-même, servi tel quel :
+`public/cv/CV-Baurel-Bemmo-Fullstack.docx`. Les boutons « Télécharger le CV » (navbar et
+hero) pointent directement dessus, sans copie du contenu dans le code. Mettre le CV à
+jour = remplacer ce fichier, puis redéployer.
+
+La page `/{locale}/cv` reste une version web construite à partir des données du site
+(`src/data/`), imprimable en PDF via le bouton d'impression.
+
 ## Thème (clair / sombre)
 
 Le thème est choisi par le visiteur (bouton `Sun / Moon` dans la navbar et dans le pied

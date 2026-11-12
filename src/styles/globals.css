@@ -392,6 +392,79 @@
   }
 }
 
+/* ---------------------------------------------------------------------------
+   CV
+   Micro-interactions uniquement : opacité et transform, moins de 500 ms,
+   désactivées en impression et avec `prefers-reduced-motion`.
+--------------------------------------------------------------------------- */
+
+.cv-rule {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  transform-origin: left;
+  background-color: var(--color-accent);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.js .reveal .cv-rule {
+  transform: scaleX(0);
+}
+
+.js .reveal.is-visible .cv-rule {
+  transform: scaleX(1);
+}
+
+.cv-badge svg {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js .reveal .cv-badge svg {
+  transform: scale(0.7);
+}
+
+.js .reveal.is-visible .cv-badge svg {
+  transform: scale(1);
+}
+
+.cv-timeline {
+  transform-origin: top;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+
+.js .reveal .cv-timeline {
+  transform: scaleY(0);
+}
+
+.js .reveal.is-visible .cv-timeline {
+  transform: scaleY(1);
+}
+
+.cv-meta svg {
+  transition: transform 0.2s ease-out;
+}
+
+.cv-meta:hover svg {
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-rule,
+  .js .reveal .cv-rule,
+  .js .reveal.is-visible .cv-rule,
+  .cv-badge svg,
+  .js .reveal .cv-badge svg,
+  .js .reveal.is-visible .cv-badge svg,
+  .cv-timeline,
+  .js .reveal .cv-timeline,
+  .js .reveal.is-visible .cv-timeline,
+  .cv-meta svg,
+  .cv-meta:hover svg {
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Sans JavaScript, le thème reste clair et le bouton inopérant est masqué. */
 html:not(.js) .theme-toggle {
   display: none;
@@ -462,6 +535,17 @@ html:not(.js) .theme-toggle {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
+    transition: none !important;
+  }
+
+  /* Le CV s'imprime à plat : aucun filet réduit, aucune frise effacée. */
+  .cv-rule,
+  .js .reveal .cv-rule,
+  .js .reveal.is-visible .cv-rule,
+  .cv-badge svg,
+  .cv-timeline,
+  .js .reveal .cv-timeline {
+    transform: none !important;
     transition: none !important;
   }
 }

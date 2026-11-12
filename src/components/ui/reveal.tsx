@@ -4,7 +4,7 @@ import type { CSSProperties, ElementType, ReactNode } from "react";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
 
-type RevealElement = "div" | "header" | "article" | "li" | "aside";
+type RevealElement = "div" | "header" | "section" | "article" | "li" | "aside";
 
 type RevealProps = {
   as?: RevealElement;

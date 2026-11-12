@@ -22,11 +22,11 @@ export const fr = {
     themeLight: "Activer le mode clair",
   },
   hero: {
-    eyebrow: "Développeur junior · Frontend & logiciel",
+    eyebrow: "Développeur Full stack · Frontend & logiciel",
     titleFirst: "Baurel",
     titleSecond: "TEKER Codes",
     intro:
-      "Je construis des interfaces claires et des API solides : React et Next.js côté client, Java et Spring Boot côté serveur. Basé à Douala, ouvert à un stage comme à un premier poste.",
+      "Je construis des interfaces claires et des API solides : React et Next.js côté client, Java et Spring Boot côté serveur. Basé à Yaoundé, ouvert à un stage comme à un premier poste.",
     primary: "Voir les projets",
     availability: "Ouvert aux opportunités",
     stackLabel: "Stack",
@@ -87,6 +87,7 @@ export const fr = {
     lead: "Une offre de stage, un premier poste, une mission ou simplement une question technique ? Écrivez-moi.",
     emailLabel: "Email",
     phoneLabel: "Téléphone",
+    whatsappLabel: "WhatsApp",
     githubLabel: "GitHub",
     gitlabLabel: "GitLab",
     locationLabel: "Localisation",
@@ -125,8 +126,9 @@ export const fr = {
   cv: {
     title: "Curriculum vitae",
     print: "Imprimer / Enregistrer en PDF",
+    download: "Télécharger le CV",
     back: "Retour au site",
-    note: "Version imprimable : dans la boîte d'impression, choisissez « Enregistrer au format PDF ».",
+    note: "Version imprimable : dans la boîte d'impression, choisissez « Enregistrer au format PDF\u00A0».",
     profile: "Profil",
     skills: "Compétences",
     projects: "Projets",

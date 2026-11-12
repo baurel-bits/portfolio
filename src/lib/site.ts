@@ -44,6 +44,8 @@ export const site = {
   email: "baurelbemmo@gmail.com",
   phone: "+237 656 384 260",
   phoneHref: "+237656384260",
+  whatsapp: "+237 654 593 761",
+  whatsappHref: "https://wa.me/237654593761",
   github: "https://github.com/baurel-bits",
   githubHandle: "baurel-bits",
   githubAlt: "https://github.com/Baurel237",
@@ -52,8 +54,8 @@ export const site = {
   gitlabHandle: "baurel",
   copyrightYear: 2026,
   location: {
-    fr: "Douala, Cameroun",
-    en: "Douala, Cameroon",
+    fr: "Yaoundé, Cameroun",
+    en: "Yaoundé, Cameroon",
   } satisfies LocalizedText,
   role: {
     fr: "Développeur junior frontend & logiciel",
