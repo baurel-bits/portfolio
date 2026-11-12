@@ -38,7 +38,7 @@ export const fr = {
     lead: "Développeur junior orienté frontend, avec une pratique réelle du backend Java.",
     body: [
       "Je travaille avec React et Next.js pour construire des interfaces lisibles, responsive et accessibles. Côté serveur, je développe des API REST en Java et Spring Boot : modélisation des entités, services, contrôleurs, validation des données et persistance PostgreSQL.",
-      "Ce portfolio ne liste pas des promesses : il présente deux réalisations documentées, avec la stack réellement employée. Le code est public sur GitHub et j'y publie mes projets au fur et à mesure.",
+      "Ce portfolio ne liste pas des promesses : il présente plusieurs réalisations documentées, avec la stack réellement employée. Le code est public sur GitHub et j'y publie mes projets au fur et à mesure.",
     ],
     facts: {
       location: "Basé à",
@@ -58,7 +58,7 @@ export const fr = {
     label: "03 — Projets",
     title: "Réalisations",
     description:
-      "Deux projets documentés. Aucun lien de dépôt n'est affiché lorsqu'il n'a pas été partagé.",
+      "Une sélection de projets documentés. Aucun lien de dépôt n'est affiché lorsqu'il n'a pas été partagé.",
     stackLabel: "Stack",
     detailsLabel: "Mis en œuvre",
     yearLabel: "Année",
@@ -88,9 +88,13 @@ export const fr = {
     emailLabel: "Email",
     phoneLabel: "Téléphone",
     githubLabel: "GitHub",
+    gitlabLabel: "GitLab",
     locationLabel: "Localisation",
+    cvLabel: "CV de Baurel",
     formTitle: "Message direct",
+    githubAltLabel: "GitHub (ancien)",
     form: {
+      note: "Message transmis par Web3Forms jusqu'à mon adresse email. Aucune donnée n'est stockée sur ce site.",
       name: "Nom",
       email: "Email",
       subject: "Sujet",
@@ -108,7 +112,6 @@ export const fr = {
       rateLimited: "Trop de tentatives. Patientez un instant avant de réessayer.",
       notConfigured:
         "Le formulaire en ligne n'est pas encore activé : écrivez-moi directement par email.",
-      note: "Message transmis par Web3Forms jusqu'à mon adresse email. Aucune donnée n'est stockée sur ce site.",
     },
   },
   footer: {

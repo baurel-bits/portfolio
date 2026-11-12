@@ -313,8 +313,6 @@ export function ContactForm({ labels, subjectPrefix }: ContactFormProps) {
           </p>
         ) : null}
       </div>
-
-      <p className="text-micro text-console-muted">{labels.note}</p>
     </form>
   );
 }
