@@ -264,6 +264,52 @@ export const projects: readonly Project[] = [
     featured: false,
   },
 
+  // Épreuve KFOKAM48 : capture réelle du frontend lancé en local, le dépôt
+  // n'étant pas déployé en ligne.
+  {
+    id: "kfokam48",
+    title: {
+      fr: "KFOKAM48 — présences & exercices",
+      en: "KFOKAM48 — attendance & assignments",
+    },
+    summary: {
+      fr: "Application de fin d'épreuve KFOKAM48 : ouverture de session par le formateur, marquage des présences avec le code dicté, dépôt d'exercices par les étudiants et relecture notée par les pairs.",
+      en: "KFOKAM48 end-of-course exam app: trainers open a session, students mark attendance with the dictated code, submit assignments, and peers grade them anonymously.",
+    },
+    kind: "fullstack",
+    stack: ["Java 21", "Spring Boot", "PostgreSQL", "Next.js", "TypeScript"],
+    details: [
+      {
+        fr: "Trois espaces : formateur, étudiant et relecteur",
+        en: "Three areas: trainer, student and peer reviewer",
+      },
+      {
+        fr: "API REST contractuelle (OpenAPI) et migrations Flyway",
+        en: "Contract-first REST API (OpenAPI) with Flyway migrations",
+      },
+      {
+        fr: "Relecture anonyme notée de 0 à 20",
+        en: "Anonymous peer review scored from 0 to 20",
+      },
+    ],
+    cover: {
+      src: "/projects/kfokam48/screen.png",
+      width: 1600,
+      height: 1000,
+      alt: {
+        fr: "Capture d'écran de l'application KFOKAM48 — accueil « Présences, exercices et relectures par les pairs » avec les trois espaces",
+        en: "KFOKAM48 app screenshot — “Attendance, assignments and peer reviews” home page with the three areas",
+      },
+    },
+    links: [
+      {
+        label: { fr: "Code source", en: "Source code" },
+        href: "https://github.com/baurel-bits/kfokam48-epreuve-KF48-YAO-168",
+      },
+    ],
+    featured: false,
+  },
+
   // Site vitrine de l'école (remplace l'ancien projet « portfolio »).
   {
     id: "ecole",
