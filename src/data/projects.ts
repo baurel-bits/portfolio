@@ -77,7 +77,12 @@ export const projects: readonly Project[] = [
         en: "Screenshot of the library application — home view",
       },
     },
-    links: [],
+    links: [
+      {
+        label: { fr: "Code source", en: "Source code" },
+        href: "https://github.com/baurel-bits/bibiotheque",
+      },
+    ],
     featured: false,
   },
 
@@ -107,7 +112,21 @@ export const projects: readonly Project[] = [
         en: "Modelling of items and movements",
       },
     ],
-    links: [],
+    cover: {
+      src: "/projects/gestistock/screen.jpeg",
+      width: 1337,
+      height: 645,
+      alt: {
+        fr: "Capture d'écran de GestiStock — écran de connexion au gestionnaire de stock",
+        en: "GestiStock screenshot — sign-in screen of the stock manager",
+      },
+    },
+    links: [
+      {
+        label: { fr: "Code source", en: "Source code" },
+        href: "https://github.com/baurel-bits/Gesti-Stock-App",
+      },
+    ],
     featured: false,
   },
 
@@ -133,7 +152,21 @@ export const projects: readonly Project[] = [
         en: "Tracking of teaching and grades",
       },
     ],
-    links: [],
+    cover: {
+      src: "/projects/sekouh/screen.jpeg",
+      width: 1600,
+      height: 749,
+      alt: {
+        fr: "Capture d'écran de SekouH — page d'accueil et tableau de bord de gestion scolaire",
+        en: "SekouH screenshot — landing page and school management dashboard",
+      },
+    },
+    links: [
+      {
+        label: { fr: "Code source (frontend)", en: "Source code (frontend)" },
+        href: "https://gitlab.com/kfofam48/sekouh/sekouh-frontend",
+      },
+    ],
     featured: false,
   },
 
@@ -159,7 +192,21 @@ export const projects: readonly Project[] = [
         en: "Client and provider areas",
       },
     ],
-    links: [],
+    cover: {
+      src: "/projects/superapp/screen.jpeg",
+      width: 1600,
+      height: 806,
+      alt: {
+        fr: "Capture d'écran de SuperApp — page d'accueil de mise en relation avec les prestataires",
+        en: "SuperApp screenshot — landing page for connecting with service providers",
+      },
+    },
+    links: [
+      {
+        label: { fr: "Code source (frontend)", en: "Source code (frontend)" },
+        href: "https://gitlab.com/kfofam48/super-app/front-end/frontend_superapp",
+      },
+    ],
     featured: true,
   },
 
