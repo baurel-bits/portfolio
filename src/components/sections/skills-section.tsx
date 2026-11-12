@@ -19,7 +19,7 @@ export function SkillsSection({ locale, skills }: SkillsSectionProps) {
         description={skills.description}
       />
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {skillDomains.map((domain, index) => (
           <Reveal key={domain.id} delay={index * 70} className="h-full">
             <SkillCard domain={domain} index={index + 1} locale={locale} />

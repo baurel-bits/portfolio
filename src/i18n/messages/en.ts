@@ -55,7 +55,7 @@ export const en: Dictionary = {
     label: "02 — Skills",
     title: "What I can do",
     description:
-      "Four areas, no invented percentages: only the technologies I use in my projects.",
+      "Six areas, no invented percentages: only the technologies I use in my projects.",
   },
   projects: {
     label: "03 — Projects",
@@ -76,8 +76,8 @@ export const en: Dictionary = {
   },
   education: {
     label: "04 — Education",
-    title: "Learning",
-    description: "Continuous learning, documented by published projects.",
+    title: "Education and certificates",
+    description: "The programme I am following, and the certificates earned alongside it.",
   },
   goals: {
     label: "05 — Goals",
@@ -133,6 +133,8 @@ export const en: Dictionary = {
     back: "Back to website",
     note: "Printable version: in the print dialog, choose “Save as PDF”.",
     profile: "Profile",
+    profileBody:
+      "Full-stack developer focused on frontend and mobile. I build web interfaces with React, Angular and Next.js, mobile apps with React Native and Expo, and the APIs behind them in Java / Spring Boot with PostgreSQL. I work with Docker, a Clean Architecture and microservices approach, and with testing and quality-assurance practices. In my final year at PKFokam Institute (KFOKAM48), holding two OpenClassrooms certificates (web / frontend development and JavaScript), with team experience on SuperApp (frontend) and Sekouh (QA).",
     skills: "Skills",
     projects: "Projects",
     education: "Education",

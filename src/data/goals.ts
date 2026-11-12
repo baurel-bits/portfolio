@@ -1,41 +1,42 @@
 import type { Goal } from "@/types";
 
 /**
- * Objectifs personnels : ce sont des intentions, pas des faits.
- * À ajuster librement selon le projet professionnel réel.
+ * Objectifs personnels : ce sont des intentions, pas des faits, mais elles
+ * reprennent l'objectif écrit dans le CV (stage ou alternance full-stack,
+ * accent frontend et mobile, au Cameroun ou à distance).
  */
 export const goals: readonly Goal[] = [
   {
-    id: "team",
+    id: "role",
     title: {
-      fr: "Rejoindre une équipe produit",
-      en: "Join a product team",
+      fr: "Un stage ou une alternance full-stack",
+      en: "A full-stack internship or work-study role",
     },
     description: {
-      fr: "Contribuer à une application utilisée en production, avec des revues de code et une vraie exigence de qualité.",
-      en: "Contribute to a production application, with code reviews and a real standard of quality.",
+      fr: "Construire des interfaces web et mobiles et les API qui les alimentent, avec un accent sur le frontend et le mobile, au Cameroun ou à distance.",
+      en: "Build web and mobile interfaces and the APIs behind them, with a focus on frontend and mobile, in Cameroon or remotely.",
+    },
+  },
+  {
+    id: "team",
+    title: {
+      fr: "Livrer en équipe",
+      en: "Ship as part of a team",
+    },
+    description: {
+      fr: "Continuer sur des projets menés à plusieurs, comme SuperApp côté frontend et Sekouh côté qualité, avec revues de code et exigence de qualité.",
+      en: "Keep working on shared projects, as on SuperApp for the frontend and Sekouh for quality, with code reviews and a real standard of quality.",
     },
   },
   {
     id: "backend",
     title: {
-      fr: "Consolider le backend",
-      en: "Deepen the backend",
+      fr: "Consolider backend et qualité",
+      en: "Deepen backend and quality",
     },
     description: {
-      fr: "Aller plus loin sur Java et Spring Boot : sécurité, tests automatisés et architecture applicative.",
-      en: "Go further with Java and Spring Boot: security, automated tests and application architecture.",
-    },
-  },
-  {
-    id: "open-source",
-    title: {
-      fr: "Contribuer à l'open source",
-      en: "Contribute to open source",
-    },
-    description: {
-      fr: "Participer à des projets existants et documenter mes propres réalisations pour les rendre réutilisables.",
-      en: "Take part in existing projects and document my own work so it can be reused.",
+      fr: "Progresser sur les tests automatisés et le déploiement, en gardant une architecture propre : Clean Architecture, microservices et Docker.",
+      en: "Grow on automated testing and deployment while keeping a clean architecture: Clean Architecture, microservices and Docker.",
     },
   },
 ];

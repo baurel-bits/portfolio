@@ -58,8 +58,17 @@ export const site = {
     en: "Yaoundé, Cameroon",
   } satisfies LocalizedText,
   role: {
-    fr: "Développeur junior frontend & logiciel",
-    en: "Junior frontend & software developer",
+    fr: "Développeur full-stack · frontend & mobile",
+    en: "Full-stack developer · frontend & mobile",
+  } satisfies LocalizedText,
+  /** Repris tel quel du CV : ce sont des faits, pas des intentions. */
+  availability: {
+    fr: "Disponible : Cameroun ou à distance",
+    en: "Available: Cameroon or remote",
+  } satisfies LocalizedText,
+  languages: {
+    fr: "Français (courant) · Anglais (B1)",
+    en: "French (fluent) · English (B1)",
   } satisfies LocalizedText,
   stackPreview: ["React", "Next.js", "Tailwind CSS", "Java", "Spring Boot", "PostgreSQL"],
 } as const;

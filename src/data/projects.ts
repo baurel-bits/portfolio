@@ -219,6 +219,38 @@ export const projects: readonly Project[] = [
     featured: true,
   },
 
+  // TradeFlow : annoncé « en conception » dans le CV. Pas encore de capture,
+  // donc pas de `cover` — la carte affiche l'emplacement réservé, sans image.
+  {
+    id: "tradeflow",
+    title: {
+      fr: "TradeFlow",
+      en: "TradeFlow",
+    },
+    summary: {
+      fr: "Solution B2B de mise en relation entre grossistes et revendeurs de produits frais : suivi des commandes et gestion des problèmes de qualité, en mobile et en espace web fournisseur.",
+      en: "B2B platform connecting wholesalers and retailers of fresh produce: order tracking and quality-issue handling, on mobile and in a supplier web space.",
+    },
+    kind: "fullstack",
+    stack: ["React Native", "Next.js", "Spring Boot", "PostgreSQL"],
+    details: [
+      {
+        fr: "Suivi des commandes côté grossiste et revendeur",
+        en: "Order tracking for wholesalers and retailers",
+      },
+      {
+        fr: "Déclaration et suivi des problèmes de qualité",
+        en: "Quality-issue reporting and follow-up",
+      },
+      {
+        fr: "Application mobile et espace web fournisseur",
+        en: "Mobile app and supplier web space",
+      },
+    ],
+    links: [],
+    featured: false,
+  },
+
   // Site vitrine de l'école (remplace l'ancien projet « portfolio »).
   {
     id: "ecole",
