@@ -22,20 +22,30 @@ export function ProjectsSection({ locale, projectsCopy }: ProjectsSectionProps) 
       />
 
       <div className="grid gap-6 lg:grid-cols-12">
-        {projects.map((project, index) => (
-          <Reveal
-            key={project.id}
-            delay={index * 90}
-            className={cn("h-full", project.featured ? "lg:col-span-7" : "lg:col-span-5")}
-          >
-            <ProjectCard
-              project={project}
-              index={index + 1}
-              locale={locale}
-              labels={projectsCopy}
-            />
-          </Reveal>
-        ))}
+        {projects.map((project, index) => {
+          // Nombre impair de projets : la dernière carte est centrée plutôt que
+          // laissée seule dans une colonne, ce qui laissait un grand vide.
+          const isLoneLast = index === projects.length - 1 && projects.length % 2 === 1;
+
+          return (
+            <Reveal
+              key={project.id}
+              delay={index * 90}
+              className={cn(
+                "h-full",
+                project.featured ? "lg:col-span-7" : "lg:col-span-5",
+                isLoneLast && "lg:col-span-6 lg:col-start-4",
+              )}
+            >
+              <ProjectCard
+                project={project}
+                index={index + 1}
+                locale={locale}
+                labels={projectsCopy}
+              />
+            </Reveal>
+          );
+        })}
       </div>
     </Section>
   );
