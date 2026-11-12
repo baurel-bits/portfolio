@@ -23,19 +23,18 @@ export function ProjectsSection({ locale, projectsCopy }: ProjectsSectionProps) 
 
       <div className="grid gap-6 lg:grid-cols-12">
         {projects.map((project, index) => {
-          // Nombre impair de projets : la dernière carte est centrée plutôt que
-          // laissée seule dans une colonne, ce qui laissait un grand vide.
-          const isLoneLast = index === projects.length - 1 && projects.length % 2 === 1;
+          // Les cartes se placent deux par ligne sur 12 colonnes : la grande
+          // alterne de côté à chaque paire, sinon la grille laisse des trous
+          // dès que le nombre de projets ne tombe pas juste.
+          const pair = Math.floor(index / 2);
+          const isLeft = index % 2 === 0;
+          const wide = isLeft === (pair % 2 === 0);
 
           return (
             <Reveal
               key={project.id}
               delay={index * 90}
-              className={cn(
-                "h-full",
-                project.featured ? "lg:col-span-7" : "lg:col-span-5",
-                isLoneLast && "lg:col-span-6 lg:col-start-4",
-              )}
+              className={cn("h-full", wide ? "lg:col-span-7" : "lg:col-span-5")}
             >
               <ProjectCard
                 project={project}
