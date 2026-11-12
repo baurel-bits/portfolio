@@ -219,35 +219,48 @@ export const projects: readonly Project[] = [
     featured: true,
   },
 
-  // TradeFlow : annoncé « en conception » dans le CV. Pas encore de capture,
-  // donc pas de `cover` — la carte affiche l'emplacement réservé, sans image.
+  // Site vitrine personnel : capture réelle de la version en ligne.
   {
-    id: "tradeflow",
+    id: "portfolio",
     title: {
-      fr: "TradeFlow",
-      en: "TradeFlow",
+      fr: "Portfolio — site vitrine",
+      en: "Portfolio website",
     },
     summary: {
-      fr: "Solution B2B de mise en relation entre grossistes et revendeurs de produits frais : suivi des commandes et gestion des problèmes de qualité, en mobile et en espace web fournisseur.",
-      en: "B2B platform connecting wholesalers and retailers of fresh produce: order tracking and quality-issue handling, on mobile and in a supplier web space.",
+      fr: "Site vitrine personnel présentant le profil, les compétences et les projets, avec navigation par sections, appels à l'action et accès au CV.",
+      en: "Personal showcase website presenting the profile, skills and projects, with section navigation, calls to action and CV access.",
     },
-    kind: "fullstack",
-    stack: ["React Native", "Next.js", "Spring Boot", "PostgreSQL"],
+    kind: "frontend",
+    stack: ["Next.js", "React", "TypeScript"],
     details: [
       {
-        fr: "Suivi des commandes côté grossiste et revendeur",
-        en: "Order tracking for wholesalers and retailers",
+        fr: "Page d'accueil animée et navigation par sections",
+        en: "Animated home page and section navigation",
       },
       {
-        fr: "Déclaration et suivi des problèmes de qualité",
-        en: "Quality-issue reporting and follow-up",
+        fr: "Présentation du profil, des compétences et des projets",
+        en: "Profile, skills and projects presentation",
       },
       {
-        fr: "Application mobile et espace web fournisseur",
-        en: "Mobile app and supplier web space",
+        fr: "Mise en page responsive et déploiement en ligne",
+        en: "Responsive layout and live deployment",
       },
     ],
-    links: [],
+    cover: {
+      src: "/projects/portfolio/screen.jpeg",
+      width: 1600,
+      height: 1000,
+      alt: {
+        fr: "Capture d'écran du site vitrine — page d'accueil avec le titre « Baurel, Web Developer »",
+        en: "Website screenshot — home page with the headline “Baurel, Web Developer”",
+      },
+    },
+    links: [
+      {
+        label: { fr: "Voir en ligne", en: "View live" },
+        href: "https://lucent-macaron-3be46d.netlify.app/",
+      },
+    ],
     featured: false,
   },
 
