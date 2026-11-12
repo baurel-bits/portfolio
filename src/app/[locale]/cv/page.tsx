@@ -10,15 +10,19 @@ import {
   ArrowRightIcon,
   ArrowUpRightIcon,
   BriefcaseIcon,
+  CheckIcon,
   CodeIcon,
   DatabaseIcon,
+  GlobeIcon,
   GraduationCapIcon,
+  LayersIcon,
   GitHubIcon,
   MailIcon,
   MapPinIcon,
   PhoneIcon,
   WhatsAppIcon,
   ServerIcon,
+  SmartphoneIcon,
   SparkleIcon,
   TargetIcon,
   TerminalIcon,
@@ -43,9 +47,11 @@ function resolveLocale(value: string): Locale {
 /** Icône de chaque domaine de compétence, alignée sur les données de `src/data`. */
 const domainIcons: Record<string, ReactNode> = {
   frontend: <CodeIcon width={13} height={13} />,
+  mobile: <SmartphoneIcon width={13} height={13} />,
   backend: <ServerIcon width={13} height={13} />,
   data: <DatabaseIcon width={13} height={13} />,
   tools: <TerminalIcon width={13} height={13} />,
+  architecture: <LayersIcon width={13} height={13} />,
 };
 
 export async function generateMetadata({ params }: CvPageProps): Promise<Metadata> {
@@ -120,6 +126,10 @@ export default async function CvPage({ params }: CvPageProps) {
                 {site.location[active]}
               </li>
               <li className="cv-meta flex items-center gap-2">
+                <CheckIcon width={14} height={14} className="shrink-0 text-accent" />
+                {site.availability[active]}
+              </li>
+              <li className="cv-meta flex items-center gap-2">
                 <MailIcon width={14} height={14} className="shrink-0 text-accent" />
                 <a href={mailto} className="transition-colors hover:text-accent">
                   {site.email}
@@ -153,11 +163,15 @@ export default async function CvPage({ params }: CvPageProps) {
                   {site.githubHandle}
                 </a>
               </li>
+              <li className="cv-meta flex items-center gap-2">
+                <GlobeIcon width={14} height={14} className="shrink-0 text-accent" />
+                {site.languages[active]}
+              </li>
             </ul>
           </header>
 
           <CvSection icon={<SparkleIcon width={14} height={14} />} title={dict.cv.profile} delay={60}>
-            <p className="max-w-[70ch] text-body-m text-ink-soft">{dict.about.body[0]}</p>
+            <p className="max-w-[70ch] text-body-m text-ink-soft">{dict.cv.profileBody}</p>
           </CvSection>
 
           <CvSection icon={<CodeIcon width={14} height={14} />} title={dict.cv.skills} delay={110}>

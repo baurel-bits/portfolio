@@ -1,5 +1,9 @@
 import type { SkillDomain } from "@/types";
 
+/**
+ * Domaines repris du CV (`public/cv/CV-Baurel-Bemmo-Fullstack.docx`) :
+ * aucun domaine ni technologie affiché ici qui n'y figure pas.
+ */
 export const skillDomains: readonly SkillDomain[] = [
   {
     id: "frontend",
@@ -8,10 +12,31 @@ export const skillDomains: readonly SkillDomain[] = [
       en: "Frontend",
     },
     description: {
-      fr: "Interfaces responsive, composants réutilisables et intégration soignée.",
-      en: "Responsive interfaces, reusable components and careful integration.",
+      fr: "Interfaces web responsive, composants réutilisables et intégration soignée.",
+      en: "Responsive web interfaces, reusable components and careful integration.",
     },
-    items: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS", "Bootstrap"],
+    items: [
+      "React",
+      "Angular",
+      "Next.js",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Bootstrap",
+    ],
+  },
+  {
+    id: "mobile",
+    title: {
+      fr: "Mobile",
+      en: "Mobile",
+    },
+    description: {
+      fr: "Applications mobiles multiplateformes : écrans, navigation et appels à l'API.",
+      en: "Cross-platform mobile apps: screens, navigation and API calls.",
+    },
+    items: ["React Native", "Expo"],
   },
   {
     id: "backend",
@@ -23,30 +48,42 @@ export const skillDomains: readonly SkillDomain[] = [
       fr: "API REST structurées : entités, services, contrôleurs et validation.",
       en: "Structured REST APIs: entities, services, controllers and validation.",
     },
-    items: ["Java", "Spring Boot"],
+    items: ["Java", "Spring Boot", "API REST"],
   },
   {
     id: "data",
     title: {
-      fr: "Données",
-      en: "Data",
+      fr: "Bases de données",
+      en: "Databases",
     },
     description: {
-      fr: "Modélisation relationnelle et requêtes SQL sur PostgreSQL.",
-      en: "Relational modelling and SQL queries on PostgreSQL.",
+      fr: "Modélisation relationnelle et requêtes SQL selon le besoin du projet.",
+      en: "Relational modelling and SQL queries matched to the project.",
     },
-    items: ["PostgreSQL", "SQL"],
+    items: ["PostgreSQL", "MariaDB", "MySQL", "SQL"],
   },
   {
     id: "tools",
     title: {
-      fr: "Outils",
-      en: "Tools",
+      fr: "DevOps & versioning",
+      en: "DevOps & versioning",
     },
     description: {
-      fr: "Versioning, environnement de développement et travail en ligne de commande.",
-      en: "Version control, development environment and command-line workflow.",
+      fr: "Conteneurisation, gestion de version et travail en ligne de commande.",
+      en: "Containerisation, version control and command-line workflow.",
     },
-    items: ["Git", "GitHub", "Linux"],
+    items: ["Docker", "Git", "GitHub", "GitLab", "Linux"],
+  },
+  {
+    id: "architecture",
+    title: {
+      fr: "Architecture & qualité",
+      en: "Architecture & quality",
+    },
+    description: {
+      fr: "Structurer le code et le vérifier : découpage des responsabilités et tests.",
+      en: "Structuring and checking the code: separation of concerns and testing.",
+    },
+    items: ["Clean Architecture", "Microservices", "Tests", "Assurance qualité (QA)"],
   },
 ];

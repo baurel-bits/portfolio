@@ -1,40 +1,67 @@
 import type { EducationEntry } from "@/types";
 
 /**
- * Aucun diplôme n'a été communiqué : seule la formation par la pratique est
- * affichée, et cette mention est exacte. Rien n'est inventé ici.
- *
- * Pour ajouter un cursus réel, dupliquer cette forme :
- *
- *   {
- *     id: "licence-…",
- *     title: { fr: "…", en: "…" },
- *     place: { fr: "Établissement, ville", en: "Institution, city" },
- *     period: { fr: "2023 — 2025", en: "2023 — 2025" },
- *     description: { fr: "…", en: "…" },
- *   }
+ * Formation reprise du CV (`public/cv/CV-Baurel-Bemmo-Fullstack.docx`).
  *
  * Une date inconnue s'écrit explicitement (« En cours », « Année à confirmer ») :
  * ne jamais laisser une année approximative.
  */
 export const educationEntries: readonly EducationEntry[] = [
   {
-    id: "self-taught",
+    id: "pkfokam",
     period: {
-      fr: "En continu",
-      en: "Ongoing",
+      fr: "2023 — présent",
+      en: "2023 — present",
     },
     title: {
-      fr: "Apprentissage autodidacte",
-      en: "Self-directed learning",
+      fr: "Institut PKFokam (KFOKAM48)",
+      en: "PKFokam Institute (KFOKAM48)",
     },
     place: {
-      fr: "Projets personnels et documentation",
-      en: "Personal projects and documentation",
+      fr: "Développement full-stack et mobile · fin de cycle",
+      en: "Full-stack and mobile development · final year",
     },
     description: {
-      fr: "Apprentissage par la pratique : API REST Java et Spring Boot, interfaces React et Next.js, publication régulière des projets sur GitHub.",
-      en: "Learning by building: Java and Spring Boot REST APIs, React and Next.js interfaces, with regular project releases on GitHub.",
+      fr: "Cursus orienté développement web et mobile, mené en parallèle des projets personnels et d'équipe présentés sur ce site.",
+      en: "Web and mobile development programme, run alongside the personal and team projects presented on this site.",
+    },
+  },
+  {
+    id: "openclassrooms-web",
+    period: {
+      fr: "Certificat obtenu",
+      en: "Certificate earned",
+    },
+    title: {
+      fr: "OpenClassrooms — Développement web / frontend",
+      en: "OpenClassrooms — Web / frontend development",
+    },
+    place: {
+      fr: "Formation en ligne",
+      en: "Online course",
+    },
+    description: {
+      fr: "Parcours certifiant sur les fondamentaux du web : HTML, CSS, JavaScript et intégration d'interfaces.",
+      en: "Certified path covering web fundamentals: HTML, CSS, JavaScript and interface integration.",
+    },
+  },
+  {
+    id: "openclassrooms-js",
+    period: {
+      fr: "Certificat obtenu",
+      en: "Certificate earned",
+    },
+    title: {
+      fr: "OpenClassrooms — JavaScript",
+      en: "OpenClassrooms — JavaScript",
+    },
+    place: {
+      fr: "Formation en ligne",
+      en: "Online course",
+    },
+    description: {
+      fr: "Parcours certifiant consacré au langage : logique, manipulation du DOM et interactions.",
+      en: "Certified path focused on the language: logic, DOM manipulation and interactions.",
     },
   },
 ];

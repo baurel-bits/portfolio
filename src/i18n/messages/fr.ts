@@ -52,7 +52,7 @@ export const fr = {
     label: "02 — Compétences",
     title: "Ce que je sais faire",
     description:
-      "Quatre domaines, sans pourcentage inventé : uniquement les technologies que j'utilise dans mes projets.",
+      "Six domaines, sans pourcentage inventé : uniquement les technologies que j'utilise dans mes projets.",
   },
   projects: {
     label: "03 — Projets",
@@ -73,8 +73,8 @@ export const fr = {
   },
   education: {
     label: "04 — Formation",
-    title: "Apprentissage",
-    description: "Formation continue, documentée par les projets publiés.",
+    title: "Formation et certifications",
+    description: "Le cursus suivi, et les certificats obtenus en parallèle.",
   },
   goals: {
     label: "05 — Objectifs",
@@ -130,6 +130,8 @@ export const fr = {
     back: "Retour au site",
     note: "Version imprimable : dans la boîte d'impression, choisissez « Enregistrer au format PDF\u00A0».",
     profile: "Profil",
+    profileBody:
+      "Développeur full-stack orienté frontend et mobile. Je conçois des interfaces web avec React, Angular et Next.js, des applications mobiles avec React Native et Expo, et je développe les API qui les alimentent en Java / Spring Boot avec PostgreSQL. Je travaille avec Docker, une approche Clean Architecture et microservices, ainsi qu'avec des pratiques de tests et d'assurance qualité. En fin de cycle à l'Institut PKFokam (KFOKAM48), titulaire de deux certificats OpenClassrooms (développement web / frontend et JavaScript), avec une expérience du travail en équipe sur SuperApp (frontend) et Sekouh (QA).",
     skills: "Compétences",
     projects: "Projets",
     education: "Formation",

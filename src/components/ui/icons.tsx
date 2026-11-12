@@ -162,6 +162,35 @@ export function GitLabIcon(props: IconProps) {
   );
 }
 
+export function SmartphoneIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="7" y="2.5" width="10" height="19" rx="2.5" />
+      <path d="M11 18.5h2" />
+    </Svg>
+  );
+}
+
+export function GlobeIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z" />
+    </Svg>
+  );
+}
+
+export function LayersIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="m12 3 8.5 4.5L12 12 3.5 7.5 12 3Z" />
+      <path d="m3.5 12 8.5 4.5 8.5-4.5" />
+      <path d="m3.5 16.5 8.5 4.5 8.5-4.5" />
+    </Svg>
+  );
+}
+
 export function WhatsAppIcon(props: IconProps) {
   return (
     <svg
