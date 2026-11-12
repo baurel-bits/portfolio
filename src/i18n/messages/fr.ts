@@ -1,8 +1,8 @@
 export const fr = {
   meta: {
-    title: "Baurel — Développeur junior frontend & logiciel",
+    title: "Baurel — Développeur full-stack frontend & mobile",
     description:
-      "Portfolio de Baurel (TEKER Codes), développeur junior frontend et logiciel : React, Next.js, Tailwind CSS, Java, Spring Boot et PostgreSQL.",
+      "Portfolio de Baurel (TEKER Codes), développeur full-stack orienté frontend et mobile : React, Next.js, Angular, React Native, Java, Spring Boot et PostgreSQL.",
   },
   nav: {
     label: "Navigation principale",
@@ -22,7 +22,7 @@ export const fr = {
     themeLight: "Activer le mode clair",
   },
   hero: {
-    eyebrow: "Développeur Full stack · Frontend & logiciel",
+    eyebrow: "Développeur full-stack · Frontend & mobile",
     titleFirst: "Baurel",
     titleSecond: "TEKER Codes",
     intro:
@@ -116,7 +116,7 @@ export const fr = {
     },
   },
   footer: {
-    tagline: "Portfolio de Baurel — développeur junior frontend et logiciel.",
+    tagline: "Portfolio de Baurel — développeur full-stack orienté frontend et mobile.",
     navigation: "Navigation",
     connect: "Me joindre",
     rights: "Tous droits réservés.",
