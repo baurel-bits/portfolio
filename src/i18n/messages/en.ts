@@ -3,9 +3,9 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 // Traductions anglaises : à relire avant publication (aucune validation par Baurel à ce jour).
 export const en: Dictionary = {
   meta: {
-    title: "Baurel — Junior frontend & software developer",
+    title: "Baurel — Full-stack developer, frontend & mobile",
     description:
-      "Portfolio of Baurel (TEKER Codes), junior frontend and software developer: React, Next.js, Tailwind CSS, Java, Spring Boot and PostgreSQL.",
+      "Portfolio of Baurel (TEKER Codes), a full-stack developer focused on frontend and mobile: React, Next.js, Angular, React Native, Java, Spring Boot and PostgreSQL.",
   },
   nav: {
     label: "Main navigation",
@@ -25,7 +25,7 @@ export const en: Dictionary = {
     themeLight: "Switch to light mode",
   },
   hero: {
-    eyebrow: "Junior developer · Frontend & software",
+    eyebrow: "Full-stack developer · Frontend & mobile",
     titleFirst: "Baurel",
     titleSecond: "TEKER Codes",
     intro:
@@ -119,7 +119,7 @@ export const en: Dictionary = {
     },
   },
   footer: {
-    tagline: "Portfolio of Baurel — junior frontend and software developer.",
+    tagline: "Portfolio of Baurel — full-stack developer focused on frontend and mobile.",
     navigation: "Navigation",
     connect: "Get in touch",
     rights: "All rights reserved.",
