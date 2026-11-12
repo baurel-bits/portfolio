@@ -162,6 +162,22 @@ export function GitLabIcon(props: IconProps) {
   );
 }
 
+export function WhatsAppIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width={16}
+      height={16}
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <path d="M12.04 2.02a9.9 9.9 0 0 0-8.44 15.1L2.05 22l5.02-1.5a9.9 9.9 0 1 0 4.97-18.48Zm0 1.8a8.1 8.1 0 0 1 0 16.2 8.05 8.05 0 0 1-4.12-1.13l-.29-.17-3.05.91.92-2.97-.19-.31a8.1 8.1 0 0 1 6.73-12.53Zm-3.1 3.6c-.2 0-.5.07-.75.35-.26.28-.99.97-.99 2.36 0 1.4 1.01 2.74 1.15 2.93.14.19 2 3.2 4.86 4.36 2.37.96 2.85.77 3.37.72.51-.05 1.66-.68 1.9-1.34.23-.66.23-1.22.16-1.34-.07-.12-.26-.19-.54-.33-.28-.14-1.66-.82-1.92-.92-.26-.09-.45-.14-.64.14-.19.28-.73.92-.9 1.11-.16.19-.33.21-.61.07a7.9 7.9 0 0 1-2.32-1.43 8.72 8.72 0 0 1-1.6-2c-.17-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.5-.07-.14-.63-1.53-.87-2.09-.23-.55-.46-.47-.64-.48h-.56Z" />
+    </svg>
+  );
+}
+
 export function ServerIcon(props: IconProps) {
   return (
     <Svg {...props}>
@@ -188,6 +204,44 @@ export function TerminalIcon(props: IconProps) {
       <rect x="3" y="4" width="18" height="16" rx="2" />
       <path d="m7 10 2 2-2 2" />
       <path d="M12.5 14H17" />
+    </Svg>
+  );
+}
+
+export function BriefcaseIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7" />
+      <path d="M3 12h18" />
+    </Svg>
+  );
+}
+
+export function GraduationCapIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M22 9 12 4 2 9l10 5 10-5Z" />
+      <path d="M6 11v4c0 1.7 2.7 3 6 3s6-1.3 6-3v-4" />
+      <path d="M22 9v5" />
+    </Svg>
+  );
+}
+
+export function TargetIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="12" r="8" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 12h.01" />
+    </Svg>
+  );
+}
+
+export function SparkleIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M12 3l2 7 7 2-7 2-2 7-2-7-7-2 7-2Z" />
     </Svg>
   );
 }

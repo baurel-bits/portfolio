@@ -29,7 +29,7 @@ export const en: Dictionary = {
     titleFirst: "Baurel",
     titleSecond: "TEKER Codes",
     intro:
-      "I build clear interfaces and solid APIs: React and Next.js on the client, Java and Spring Boot on the server. Based in Douala, open to an internship or a first role.",
+      "I build clear interfaces and solid APIs: React and Next.js on the client, Java and Spring Boot on the server. Based in Yaoundé, open to an internship or a first role.",
     primary: "View projects",
     availability: "Open to opportunities",
     stackLabel: "Stack",
@@ -90,6 +90,7 @@ export const en: Dictionary = {
     lead: "An internship, a first role, a freelance mission or a technical question? Write to me.",
     emailLabel: "Email",
     phoneLabel: "Phone",
+    whatsappLabel: "WhatsApp",
     githubLabel: "GitHub",
     gitlabLabel: "GitLab",
     locationLabel: "Location",
@@ -128,6 +129,7 @@ export const en: Dictionary = {
   cv: {
     title: "Curriculum vitae",
     print: "Print / Save as PDF",
+    download: "Download CV",
     back: "Back to website",
     note: "Printable version: in the print dialog, choose “Save as PDF”.",
     profile: "Profile",

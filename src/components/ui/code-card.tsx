@@ -31,7 +31,7 @@ export function CodeCard({ caption, meta }: CodeCardProps) {
             <span className="text-signal">&quot;react native&quot;</span>
             <span className="text-console-muted">,</span>
             {"\n  "}city<span className="text-console-muted">:</span>{" "}
-            <span className="text-signal">&quot;Douala&quot;</span>
+            <span className="text-signal">&quot;Yaoundé&quot;</span>
             <span className="text-console-muted">,</span>
             {"\n  "}open<span className="text-console-muted">:</span>{" "}
             <span className="text-signal">true</span>
