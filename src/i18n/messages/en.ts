@@ -41,7 +41,7 @@ export const en: Dictionary = {
     lead: "Junior frontend-focused developer with hands-on Java backend practice.",
     body: [
       "I work with React and Next.js to build readable, responsive and accessible interfaces. On the server side I develop REST APIs with Java and Spring Boot: entity modelling, services, controllers, data validation and PostgreSQL persistence.",
-      "This portfolio does not list promises: it presents two documented projects with the stack actually used. The code is public on GitHub and I publish new projects as they are built.",
+      "This portfolio does not list promises: it presents several documented projects with the stack actually used. The code is public on GitHub and I publish new projects as they are built.",
     ],
     facts: {
       location: "Based in",
@@ -61,7 +61,7 @@ export const en: Dictionary = {
     label: "03 — Projects",
     title: "Selected work",
     description:
-      "Two documented projects. No repository link is shown when it has not been shared.",
+      "A selection of documented projects. No repository link is shown when it has not been shared.",
     stackLabel: "Stack",
     detailsLabel: "Implemented",
     yearLabel: "Year",
@@ -91,9 +91,13 @@ export const en: Dictionary = {
     emailLabel: "Email",
     phoneLabel: "Phone",
     githubLabel: "GitHub",
+    gitlabLabel: "GitLab",
     locationLabel: "Location",
+    cvLabel: "CV",
     formTitle: "Direct message",
+    githubAltLabel: "GitHub (old)",
     form: {
+      note: "Message delivered by Web3Forms to my email address. Nothing is stored on this website.",
       name: "Name",
       email: "Email",
       subject: "Subject",
@@ -111,7 +115,6 @@ export const en: Dictionary = {
       rateLimited: "Too many attempts. Please wait a moment before trying again.",
       notConfigured:
         "The online form is not enabled yet: write to me directly by email.",
-      note: "Message delivered by Web3Forms to my email address. Nothing is stored on this website.",
     },
   },
   footer: {
