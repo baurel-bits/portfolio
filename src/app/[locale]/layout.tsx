@@ -1,30 +1,12 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import "@/styles/globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { defaultLocale, isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { fontVariables } from "@/lib/fonts";
 import { site, siteUrl } from "@/lib/site";
-
-const display = Bricolage_Grotesque({
-  subsets: ["latin"],
-  variable: "--font-bricolage",
-  display: "swap",
-});
-
-const sans = Instrument_Sans({
-  subsets: ["latin"],
-  variable: "--font-instrument",
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -99,14 +81,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   };
 
   return (
-    <html
-      lang={locale}
-      className={`${display.variable} ${sans.variable} ${mono.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang={locale} className={fontVariables} suppressHydrationWarning>
       <body id="top" className="min-h-dvh bg-paper text-ink antialiased">
         {/* Thème appliqué avant le premier rendu : aucun flash de palette. */}
         <script
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html:
               '(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t})();',
@@ -114,6 +93,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         />
 
         <script
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html:
               'if ("IntersectionObserver" in window) { document.documentElement.classList.add("js"); }',

@@ -41,6 +41,15 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const description = project.summary[active];
   const url = `/${active}/projets/${project.id}`;
 
+  const image = project.cover
+    ? {
+        url: project.cover.src,
+        width: project.cover.width,
+        height: project.cover.height,
+        alt: project.cover.alt[active],
+      }
+    : { url: `/${active}/opengraph-image`, width: 1200, height: 630, alt: title };
+
   return {
     title,
     description,
@@ -57,8 +66,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       type: "article",
       url,
       siteName: site.brand,
+      images: [image],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: { card: "summary_large_image", title, description, images: [image.url] },
   };
 }
 
@@ -130,21 +140,63 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </ul>
         </Reveal>
 
-        {project.links.length > 0 ? (
-          <Reveal className="lg:col-span-5" delay={90}>
+        <Reveal className="lg:col-span-5" delay={90}>
+          {project.links.length > 0 ? (
+            <>
+              <h2 className="font-mono text-micro uppercase tracking-[0.14em] text-console-muted">
+                {labels.linksLabel}
+              </h2>
+              <ul className="mt-5 space-y-3">
+                {project.links.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group/link inline-flex items-center gap-2 border-b border-console-line pb-1 font-mono text-micro uppercase tracking-[0.12em] text-console-text transition-colors hover:border-signal hover:text-signal"
+                    >
+                      {link.label[active]}
+                      <ArrowUpRightIcon
+                        width={13}
+                        height={13}
+                        className="transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 motion-reduce:transition-none"
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+
+          <div className={project.links.length > 0 ? "mt-8" : ""}>
             <h2 className="font-mono text-micro uppercase tracking-[0.14em] text-console-muted">
-              {labels.linksLabel}
+              {active === "fr" ? "Comptes GitHub" : "GitHub accounts"}
             </h2>
             <ul className="mt-5 space-y-3">
-              {project.links.map((link) => (
-                <li key={link.href}>
+              <li>
+                <a
+                  href={site.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group/link inline-flex items-center gap-2 border-b border-console-line pb-1 font-mono text-micro uppercase tracking-[0.12em] text-console-text transition-colors hover:border-signal hover:text-signal"
+                >
+                  {site.githubHandle}
+                  <ArrowUpRightIcon
+                    width={13}
+                    height={13}
+                    className="transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 motion-reduce:transition-none"
+                  />
+                </a>
+              </li>
+              {site.githubAlt ? (
+                <li>
                   <a
-                    href={link.href}
+                    href={site.githubAlt}
                     target="_blank"
                     rel="noreferrer"
                     className="group/link inline-flex items-center gap-2 border-b border-console-line pb-1 font-mono text-micro uppercase tracking-[0.12em] text-console-text transition-colors hover:border-signal hover:text-signal"
                   >
-                    {link.label[active]}
+                    {site.githubAltHandle}
                     <ArrowUpRightIcon
                       width={13}
                       height={13}
@@ -152,10 +204,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     />
                   </a>
                 </li>
-              ))}
+              ) : null}
             </ul>
-          </Reveal>
-        ) : null}
+          </div>
+        </Reveal>
       </div>
 
       {next ? (

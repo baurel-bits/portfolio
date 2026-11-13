@@ -79,6 +79,19 @@ export function Footer({ locale, nav, footer }: FooterProps) {
                   {site.githubHandle}
                 </a>
               </li>
+              {site.githubAlt ? (
+                <li>
+                  <a
+                    href={site.githubAlt}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
+                  >
+                    <GitHubIcon />
+                    {site.githubAltHandle}
+                  </a>
+                </li>
+              ) : null}
             </ul>
           </div>
         </div>

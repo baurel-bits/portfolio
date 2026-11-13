@@ -37,7 +37,7 @@ export function LanguageSwitcher({ locale, label, tone = "paper" }: LanguageSwit
           hrefLang={code}
           aria-current={code === locale ? "true" : undefined}
           className={cn(
-            "border-b py-0.5 transition-colors",
+            "inline-flex min-h-6 min-w-6 items-center justify-center border-b py-1 transition-colors",
             code === locale ? tones[tone].active : tones[tone].idle,
           )}
         >
