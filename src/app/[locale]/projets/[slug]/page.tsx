@@ -165,7 +165,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
 
         <div className="lg:col-span-5">
-          <ProjectCover project={project} locale={active} labels={labels} large />
+          {/* Couverture au-dessus de la ligne de flottaison : préchargée, c'est
+              l'image la plus lourde du premier écran. */}
+          <ProjectCover project={project} locale={active} labels={labels} large preload />
         </div>
       </Reveal>
 
