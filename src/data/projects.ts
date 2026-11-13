@@ -92,6 +92,119 @@ export const projects: readonly Project[] = [
         href: "https://github.com/baurel-bits/bibiotheque",
       },
     ],
+    // Captures réelles du frontend Angular, écran par écran.
+    screens: [
+      {
+        src: "/projects/bibiotheque/book_list.png",
+        width: 1909,
+        height: 1037,
+        alt: {
+          fr: "Capture d'écran — liste des livres",
+          en: "Screenshot — book list",
+        },
+        caption: { fr: "Liste des livres", en: "Book list" },
+      },
+      {
+        src: "/projects/bibiotheque/book_details.png",
+        width: 1921,
+        height: 1037,
+        alt: {
+          fr: "Capture d'écran — détail d'un livre",
+          en: "Screenshot — book details",
+        },
+        caption: { fr: "Détail d'un livre", en: "Book details" },
+      },
+      {
+        src: "/projects/bibiotheque/book_add.png",
+        width: 1909,
+        height: 1037,
+        alt: {
+          fr: "Capture d'écran — formulaire d'ajout d'un livre",
+          en: "Screenshot — add a book",
+        },
+        caption: { fr: "Ajout d'un livre", en: "Adding a book" },
+      },
+      {
+        src: "/projects/bibiotheque/book_update.png",
+        width: 1919,
+        height: 1037,
+        alt: {
+          fr: "Capture d'écran — formulaire de modification d'un livre",
+          en: "Screenshot — edit a book",
+        },
+        caption: { fr: "Modification d'un livre", en: "Editing a book" },
+      },
+      {
+        src: "/projects/bibiotheque/borrow_book.png",
+        width: 1909,
+        height: 1037,
+        alt: {
+          fr: "Capture d'écran — emprunt d'un livre",
+          en: "Screenshot — borrowing a book",
+        },
+        caption: { fr: "Emprunt d'un livre", en: "Borrowing a book" },
+      },
+      {
+        src: "/projects/bibiotheque/return_book.png",
+        width: 1909,
+        height: 1037,
+        alt: {
+          fr: "Capture d'écran — retour d'un livre",
+          en: "Screenshot — returning a book",
+        },
+        caption: { fr: "Retour d'un livre", en: "Returning a book" },
+      },
+      {
+        src: "/projects/bibiotheque/user_list.png",
+        width: 1919,
+        height: 1037,
+        alt: {
+          fr: "Capture d'écran — liste des utilisateurs",
+          en: "Screenshot — user list",
+        },
+        caption: { fr: "Liste des utilisateurs", en: "User list" },
+      },
+      {
+        src: "/projects/bibiotheque/user_details.png",
+        width: 1919,
+        height: 1039,
+        alt: {
+          fr: "Capture d'écran — détail d'un utilisateur",
+          en: "Screenshot — user details",
+        },
+        caption: { fr: "Détail d'un utilisateur", en: "User details" },
+      },
+      {
+        src: "/projects/bibiotheque/user_add.png",
+        width: 1909,
+        height: 1037,
+        alt: {
+          fr: "Capture d'écran — formulaire d'ajout d'un utilisateur",
+          en: "Screenshot — add a user",
+        },
+        caption: { fr: "Ajout d'un utilisateur", en: "Adding a user" },
+      },
+      {
+        src: "/projects/bibiotheque/login.png",
+        width: 1919,
+        height: 1037,
+        alt: {
+          fr: "Capture d'écran — écran de connexion",
+          en: "Screenshot — sign-in screen",
+        },
+        caption: { fr: "Connexion", en: "Sign in" },
+      },
+      {
+        src: "/projects/bibiotheque/forbidden.png",
+        width: 1921,
+        height: 1037,
+        alt: {
+          fr: "Capture d'écran — accès refusé",
+          en: "Screenshot — access denied",
+        },
+        caption: { fr: "Accès refusé", en: "Access denied" },
+      },
+    ],
     featured: false,
   },
 

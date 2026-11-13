@@ -20,15 +20,19 @@ const nextConfig: NextConfig = {
     },
   },
   async headers() {
-    // Les déploiements de prévisualisation Vercel ne doivent pas être indexés.
-    if (process.env.VERCEL_ENV !== "preview") return [];
-
-    return [
-      {
-        source: "/:path*",
-        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
-      },
+    const headers = [
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+      { key: "X-Frame-Options", value: "SAMEORIGIN" },
+      { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
     ];
+
+    // Les déploiements de prévisualisation Vercel ne doivent pas être indexés.
+    if (process.env.VERCEL_ENV === "preview") {
+      headers.push({ key: "X-Robots-Tag", value: "noindex" });
+    }
+
+    return [{ source: "/:path*", headers }];
   },
   async redirects() {
     return [

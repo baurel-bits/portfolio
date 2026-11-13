@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRightIcon, ArrowUpRightIcon, CheckIcon } from "@/components/ui/icons";
@@ -209,6 +210,33 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </Reveal>
       </div>
+
+      {project.screens && project.screens.length > 0 ? (
+        <Reveal className="mt-16 border-t border-console-line pt-10">
+          <h2 className="font-mono text-micro uppercase tracking-[0.14em] text-console-muted">
+            {active === "fr" ? "Captures" : "Screenshots"}
+          </h2>
+          <ul className="mt-6 grid gap-6 sm:grid-cols-2">
+            {project.screens.map((screen) => (
+              <li key={screen.src}>
+                <figure>
+                  <Image
+                    src={screen.src}
+                    alt={screen.alt[active]}
+                    width={screen.width}
+                    height={screen.height}
+                    sizes="(min-width: 640px) 45vw, 100vw"
+                    className="w-full rounded-sm border border-console-line bg-console-raised"
+                  />
+                  <figcaption className="mt-3 font-mono text-micro uppercase tracking-[0.12em] text-console-muted">
+                    {screen.caption[active]}
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      ) : null}
 
       {next ? (
         <Reveal className="mt-16 border-t border-console-line pt-8">
