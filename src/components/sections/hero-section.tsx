@@ -44,7 +44,7 @@ export function HeroSection({ locale, hero, nav }: HeroSectionProps) {
               <span className="block overflow-hidden">
                 <span
                   className="hero-line block text-balance"
-                  style={{ animationDelay: "120ms" }}
+                  style={{ animationDelay: "0ms" }}
                 >
                   {hero.titleFirst}
                 </span>
@@ -52,7 +52,7 @@ export function HeroSection({ locale, hero, nav }: HeroSectionProps) {
               <span className="block overflow-hidden">
                 <span
                   className="hero-line block text-balance text-accent"
-                  style={{ animationDelay: "200ms" }}
+                  style={{ animationDelay: "60ms" }}
                 >
                   {hero.titleSecond}
                 </span>
