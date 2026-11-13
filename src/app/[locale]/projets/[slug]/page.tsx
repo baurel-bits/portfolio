@@ -10,7 +10,7 @@ import { projects } from "@/data/projects";
 import { ProjectCover } from "@/features/projects/project-cover";
 import { defaultLocale, isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { site } from "@/lib/site";
+import { site, siteUrl } from "@/lib/site";
 
 // Seuls les projets de `src/data/projects.ts` existent : tout autre slug est un 404.
 type ProjectPageProps = {
@@ -84,6 +84,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const index = projects.findIndex((entry) => entry.id === project.id);
   const next = projects.length > 1 ? projects[(index + 1) % projects.length] : null;
   const kind = project.kind === "fullstack" ? labels.kindFullstack : labels.kindFrontend;
+
+  // Données structurées de la page projet, toutes issues de `src/data/projects.ts`.
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title[active],
+    description: project.summary[active],
+    url: `${siteUrl}/${active}/projets/${project.id}`,
+    inLanguage: active,
+    keywords: project.stack.join(", "),
+    author: { "@type": "Person", name: site.owner, url: site.github },
+    ...(project.cover ? { image: `${siteUrl}${project.cover.src}` } : {}),
+  };
 
   return (
     <Section tone="console" size="wide">
@@ -260,6 +273,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </Link>
         </Reveal>
       ) : null}
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+      />
     </Section>
   );
 }
