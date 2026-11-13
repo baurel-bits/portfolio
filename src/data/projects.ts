@@ -39,7 +39,8 @@ export const projects: readonly Project[] = [
       },
     ],
     cover: {
-      src: "/projects/depensepro/mockup.png",
+      src: "/projects/depensepro/mockup.webp",
+      ogSrc: "/projects/depensepro/og.jpg",
       width: 1600,
       height: 1000,
       alt: {
@@ -78,7 +79,8 @@ export const projects: readonly Project[] = [
       },
     ],
     cover: {
-      src: "/projects/bibiotheque/home.png",
+      src: "/projects/bibiotheque/home.webp",
+      ogSrc: "/projects/bibiotheque/og.jpg",
       width: 1918,
       height: 1035,
       alt: {
@@ -95,7 +97,7 @@ export const projects: readonly Project[] = [
     // Captures réelles du frontend Angular, écran par écran.
     screens: [
       {
-        src: "/projects/bibiotheque/book_list.png",
+        src: "/projects/bibiotheque/book_list.webp",
         width: 1909,
         height: 1037,
         alt: {
@@ -105,7 +107,7 @@ export const projects: readonly Project[] = [
         caption: { fr: "Liste des livres", en: "Book list" },
       },
       {
-        src: "/projects/bibiotheque/book_details.png",
+        src: "/projects/bibiotheque/book_details.webp",
         width: 1921,
         height: 1037,
         alt: {
@@ -115,7 +117,7 @@ export const projects: readonly Project[] = [
         caption: { fr: "Détail d'un livre", en: "Book details" },
       },
       {
-        src: "/projects/bibiotheque/book_add.png",
+        src: "/projects/bibiotheque/book_add.webp",
         width: 1909,
         height: 1037,
         alt: {
@@ -125,7 +127,7 @@ export const projects: readonly Project[] = [
         caption: { fr: "Ajout d'un livre", en: "Adding a book" },
       },
       {
-        src: "/projects/bibiotheque/book_update.png",
+        src: "/projects/bibiotheque/book_update.webp",
         width: 1919,
         height: 1037,
         alt: {
@@ -135,7 +137,7 @@ export const projects: readonly Project[] = [
         caption: { fr: "Modification d'un livre", en: "Editing a book" },
       },
       {
-        src: "/projects/bibiotheque/borrow_book.png",
+        src: "/projects/bibiotheque/borrow_book.webp",
         width: 1909,
         height: 1037,
         alt: {
@@ -145,7 +147,7 @@ export const projects: readonly Project[] = [
         caption: { fr: "Emprunt d'un livre", en: "Borrowing a book" },
       },
       {
-        src: "/projects/bibiotheque/return_book.png",
+        src: "/projects/bibiotheque/return_book.webp",
         width: 1909,
         height: 1037,
         alt: {
@@ -155,7 +157,7 @@ export const projects: readonly Project[] = [
         caption: { fr: "Retour d'un livre", en: "Returning a book" },
       },
       {
-        src: "/projects/bibiotheque/user_list.png",
+        src: "/projects/bibiotheque/user_list.webp",
         width: 1919,
         height: 1037,
         alt: {
@@ -165,7 +167,7 @@ export const projects: readonly Project[] = [
         caption: { fr: "Liste des utilisateurs", en: "User list" },
       },
       {
-        src: "/projects/bibiotheque/user_details.png",
+        src: "/projects/bibiotheque/user_details.webp",
         width: 1919,
         height: 1039,
         alt: {
@@ -175,7 +177,7 @@ export const projects: readonly Project[] = [
         caption: { fr: "Détail d'un utilisateur", en: "User details" },
       },
       {
-        src: "/projects/bibiotheque/user_add.png",
+        src: "/projects/bibiotheque/user_add.webp",
         width: 1909,
         height: 1037,
         alt: {
@@ -185,7 +187,7 @@ export const projects: readonly Project[] = [
         caption: { fr: "Ajout d'un utilisateur", en: "Adding a user" },
       },
       {
-        src: "/projects/bibiotheque/login.png",
+        src: "/projects/bibiotheque/login.webp",
         width: 1919,
         height: 1037,
         alt: {
@@ -195,7 +197,7 @@ export const projects: readonly Project[] = [
         caption: { fr: "Connexion", en: "Sign in" },
       },
       {
-        src: "/projects/bibiotheque/forbidden.png",
+        src: "/projects/bibiotheque/forbidden.webp",
         width: 1921,
         height: 1037,
         alt: {
@@ -235,7 +237,8 @@ export const projects: readonly Project[] = [
       },
     ],
     cover: {
-      src: "/projects/gestistock/screen.jpeg",
+      src: "/projects/gestistock/screen.webp",
+      ogSrc: "/projects/gestistock/og.jpg",
       width: 1337,
       height: 645,
       alt: {
@@ -275,7 +278,8 @@ export const projects: readonly Project[] = [
       },
     ],
     cover: {
-      src: "/projects/sekouh/screen.jpeg",
+      src: "/projects/sekouh/screen.webp",
+      ogSrc: "/projects/sekouh/og.jpg",
       width: 1600,
       height: 749,
       alt: {
@@ -315,7 +319,8 @@ export const projects: readonly Project[] = [
       },
     ],
     cover: {
-      src: "/projects/superapp/screen.jpeg",
+      src: "/projects/superapp/screen.webp",
+      ogSrc: "/projects/superapp/og.jpg",
       width: 1600,
       height: 806,
       alt: {
@@ -361,7 +366,8 @@ export const projects: readonly Project[] = [
       },
     ],
     cover: {
-      src: "/projects/kfokam48/screen.png",
+      src: "/projects/kfokam48/screen.webp",
+      ogSrc: "/projects/kfokam48/og.jpg",
       width: 1600,
       height: 1000,
       alt: {
@@ -402,7 +408,8 @@ export const projects: readonly Project[] = [
       },
     ],
     cover: {
-      src: "/projects/ecole/screen.jpeg",
+      src: "/projects/ecole/screen.webp",
+      ogSrc: "/projects/ecole/og.jpg",
       width: 1600,
       height: 768,
       alt: {

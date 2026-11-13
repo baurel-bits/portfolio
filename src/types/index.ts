@@ -17,6 +17,8 @@ export type ProjectLink = {
  */
 export type ProjectCover = {
   src: string;
+  /** Variante JPEG de `src`, pour les aperçus sociaux qui refusent le WebP. */
+  ogSrc?: string;
   width: number;
   height: number;
   alt: LocalizedText;

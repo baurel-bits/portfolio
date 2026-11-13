@@ -42,9 +42,11 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const description = project.summary[active];
   const url = `/${active}/projets/${project.id}`;
 
+  // LinkedIn et Bluesky n'affichent pas les aperçus WebP : la couverture existe
+  // aussi en JPEG pour eux, la page continue de servir le WebP.
   const image = project.cover
     ? {
-        url: project.cover.src,
+        url: project.cover.ogSrc ?? project.cover.src,
         width: project.cover.width,
         height: project.cover.height,
         alt: project.cover.alt[active],
