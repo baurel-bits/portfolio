@@ -78,7 +78,8 @@ préférence système (`prefers-color-scheme`) lors du premier visite.
 
 - Navigation au clavier : la quasi-totalité des interactions est reachable au clavier.
 - Images : `next/image` avec `sizes` adaptés et `loading="lazy"` sur les images hors
-  premiere viewport.
+  premiere viewport. Les fichiers de `public/projects` sont en WebP ; chaque couverture
+  garde un `og.jpg` pour les aperçus sociaux qui ignorent le WebP (LinkedIn, Bluesky).
 - Moteurs de recherche : `src/app/sitemap.ts` et `src/app/robots.txt` sont générés et
   utilisent `NEXT_PUBLIC_SITE_URL`. Le sitemap indique `lastmod` à la date du build.
 - Langue : `/` redirige vers `/fr` ou `/en` selon l'en-tête `Accept-Language` du
