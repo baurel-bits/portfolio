@@ -80,7 +80,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (!project) notFound();
 
-  const labels = getDictionary(active).projects;
+  const dict = getDictionary(active);
+  const labels = dict.projects;
   const index = projects.findIndex((entry) => entry.id === project.id);
   const next = projects.length > 1 ? projects[(index + 1) % projects.length] : null;
   const kind = project.kind === "fullstack" ? labels.kindFullstack : labels.kindFrontend;
@@ -96,6 +97,33 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     keywords: project.stack.join(", "),
     author: { "@type": "Person", name: site.owner, url: site.github },
     ...(project.cover ? { image: `${siteUrl}${project.cover.src}` } : {}),
+  };
+
+  // Fil d'Ariane : l'accueil, la section « Projets » de l'accueil, le projet.
+  // Les deux premiers niveaux sont les liens réellement utilisés dans l'interface.
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: active === "fr" ? "Accueil" : "Home",
+        item: `${siteUrl}/${active}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: dict.nav.projects,
+        item: `${siteUrl}/${active}#projets`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title[active],
+        item: `${siteUrl}/${active}/projets/${project.id}`,
+      },
+    ],
   };
 
   return (
@@ -277,6 +305,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </Section>
   );

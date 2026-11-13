@@ -95,8 +95,9 @@ préférence système (`prefers-color-scheme`) lors du premier visite.
 
 Le site est conçu pour être déployé sur Vercel. La procédure complète est dans
 [README.deploy.md](./README.deploy.md) (préparation, variables d'environnement,
-domaine, preview). **Le déploiement n'est pas encore effectué** : cette documentation
-est prête mais l'étape de release n'a pas été lancée.
+domaine, preview). **Aucun déploiement n'est actif** : le domaine
+`teker-codes.vercel.app` répond `DEPLOYMENT_NOT_FOUND`. La procédure de remise en
+ligne et les vérifications à faire ensuite sont décrites dans ce document.
 
 ### Résumé
 
