@@ -41,7 +41,6 @@ export function ProjectsSection({ locale, projectsCopy }: ProjectsSectionProps) 
                 index={index + 1}
                 locale={locale}
                 labels={projectsCopy}
-                preload={index === 0}
               />
             </Reveal>
           );
