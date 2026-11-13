@@ -13,18 +13,9 @@ type ProjectCardProps = {
   locale: Locale;
   labels: Dictionary["projects"];
   className?: string;
-  /** Réservé à la première carte visible : évite de précharger toute la liste. */
-  preload?: boolean;
 };
 
-export function ProjectCard({
-  project,
-  index,
-  locale,
-  labels,
-  className,
-  preload = false,
-}: ProjectCardProps) {
+export function ProjectCard({ project, index, locale, labels, className }: ProjectCardProps) {
   return (
     <article
       className={cn(
@@ -37,7 +28,7 @@ export function ProjectCard({
         className="absolute inset-x-0 top-0 z-10 h-px origin-left scale-x-0 bg-signal transition-transform duration-300 group-hover:scale-x-100"
       />
 
-      <ProjectCover project={project} locale={locale} labels={labels} preload={preload} />
+      <ProjectCover project={project} locale={locale} labels={labels} />
 
       <div className="flex flex-1 flex-col p-6 lg:p-8">
         <div className="flex items-center justify-between gap-4 font-mono text-micro uppercase tracking-[0.14em] text-console-muted transition-colors duration-300 group-hover:text-console-text">
