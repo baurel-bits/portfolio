@@ -262,13 +262,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <ul className="mt-6 grid gap-6 sm:grid-cols-2">
             {project.screens.map((screen) => (
               <li key={screen.src}>
-                <figure>
+                {/* Plafond de 640 px : au-delà, une capture pleine largeur n'apporte
+                    rien et agrandit inutilement le visuel sur grand écran. */}
+                <figure className="mx-auto max-w-[640px]">
                   <Image
                     src={screen.src}
                     alt={screen.alt[active]}
                     width={screen.width}
                     height={screen.height}
-                    sizes="(min-width: 640px) 45vw, 100vw"
+                    sizes="(min-width: 1440px) 640px, (min-width: 640px) 45vw, 100vw"
                     className="w-full rounded-sm border border-console-line bg-console-raised"
                   />
                   <figcaption className="mt-3 font-mono text-micro uppercase tracking-[0.12em] text-console-muted">
