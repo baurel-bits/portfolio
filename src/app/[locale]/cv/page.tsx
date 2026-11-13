@@ -126,7 +126,7 @@ export default async function CvPage({ params }: CvPageProps) {
                   alt={dict.cv.photoAlt}
                   width={96}
                   height={96}
-                  className="size-24 shrink-0 rounded-full mt-1 object-cover object-[center_18%] ring-2 ring-line-strong"
+                  className="size-24 shrink-0 rounded-full mt-1 object-cover object-[center_20%] ring-2 ring-line-strong"
                   priority
                 />
                 <div>
