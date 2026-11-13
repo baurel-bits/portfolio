@@ -17,6 +17,7 @@ npm run dev                  # http://localhost:3000 → redirige vers /fr
 | Variable                           | Rôle                                  | Sans valeur                                       |
 | ---------------------------------- | ------------------------------------- | ------------------------------------------------- |
 | `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` | Clé du formulaire de contact          | Le formulaire affiche l'email direct              |
+| `NEXT_PUBLIC_UMAMI_WEBSITE_ID`     | Identifiant du site pour l'analytics Umami | Aucune balise d'analytics n'est chargée      |
 | `NEXT_PUBLIC_SITE_URL`             | URL publique (canonical, Open Graph, sitemap) | Domaine Vercel détecté, sinon `http://localhost:3000` |
 
 Les variables `NEXT_PUBLIC_*` sont intégrées au build : après les avoir modifiées,
@@ -38,6 +39,18 @@ Obtenir une clé :
 La clé est publique par conception (elle identifie le formulaire, elle ne permet pas de
 lire les messages reçus). Tant qu'aucune clé n'est configurée, le formulaire n'affiche
 pas de champs inutiles : il renvoie vers l'adresse email.
+
+## Analytics (Umami Cloud)
+
+L'analytics est optionnel et ne s'active qu'avec `NEXT_PUBLIC_UMAMI_WEBSITE_ID`.
+Umami ne dépose pas de cookie : aucune bannière de consentement n'est nécessaire.
+
+1. Créer un site sur <https://cloud.umami.is> avec le domaine du portfolio.
+2. Copier l'attribut `data-website-id` de la balise fournie.
+3. Le renseigner dans `.env.local`, puis relancer le build ou le serveur.
+
+Sans identifiant, aucune requête vers `cloud.umami.is` n'est faite : le site
+reste sans mesure d'audience.
 
 ## CV
 
@@ -95,6 +108,7 @@ est prête mais l'étape de release n'a pas été lancée.
 | ----------------------------------- | ------------------------------------- | ----------------------------------------------- |
 | `NEXT_PUBLIC_SITE_URL`              | `https://baurel.example`              | URL publique finale (production)                |
 | `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`  | `...`                                 | Clé du formulaire de contact (voir plus haut)   |
+| `NEXT_PUBLIC_UMAMI_WEBSITE_ID`      | `...`                                 | Analytics Umami (facultatif)                    |
 
 - `NEXT_PUBLIC_SITE_URL` est facultatif en local et en preview : le site utilise alors
   une URL par défaut basée sur l'environnement Vercel.
@@ -108,7 +122,7 @@ est prête mais l'étape de release n'a pas été lancée.
 Les projets sont définis dans `src/data/projects.ts`. Pour en ajouter un :
 
 1. Ajouter un objet dans le tableau `projects` (champs : `id`, `title`, `summary`,
-   `kind`, `stack`, `details`, `links`, `featured`).
+   `kind`, `stack`, `details`, `links`, `screens`, `featured`).
 2. Si une image de couverture existe, la déposer dans `public/projects/` et renseigner
    le champ `cover`. Tant que `cover` est absent, la carte affiche un emplacement
    « capture à venir » (jamais d'image inventée).
@@ -120,9 +134,10 @@ Quelques captures d'écran de projets externes sont disponibles dans `public/pro
 
 - `bibiotheque/` : 12 screenshots de l'application de bibliothèque (Spring Boot + Angular).
 
-Ces images ne sont pas encore associées à un projet du portfolio. Pour les intégrer,
-ajouter un projet dans `src/data/projects.ts` avec `cover` pointant vers l'image de
-ton choix (ex : `public/projects/bibiotheque/home.png`).
+`home.png` sert de couverture au projet Bibliothèque. Les autres captures sont
+listées dans le champ `screens` de ce projet et affichées en galerie sur sa page
+(`/fr/projets/bibiotheque`). Pour un nouveau projet, ajouter un tableau `screens`
+avec, pour chaque capture, `src`, `width`, `height`, `alt` et `caption` (FR et EN).
 
 ## Structure du site
 

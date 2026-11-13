@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import "@/styles/globals.css";
 import { Footer } from "@/components/layout/footer";
@@ -7,6 +8,10 @@ import { defaultLocale, isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { fontVariables } from "@/lib/fonts";
 import { site, siteUrl } from "@/lib/site";
+
+// Analytics Umami Cloud : aucune requête n'est faite tant que l'identifiant
+// du site n'est pas fourni, la balise n'étant alors pas rendue.
+const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -99,6 +104,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               'if ("IntersectionObserver" in window) { document.documentElement.classList.add("js"); }',
           }}
         />
+
+        {umamiWebsiteId ? (
+          <Script
+            src="https://cloud.umami.is/script.js"
+            data-website-id={umamiWebsiteId}
+            strategy="afterInteractive"
+          />
+        ) : null}
 
         <a href="#contenu" className="skip-link">
           {dict.nav.skip}

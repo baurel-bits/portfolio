@@ -22,6 +22,18 @@ export type ProjectCover = {
   alt: LocalizedText;
 };
 
+/**
+ * Capture d'écran d'un écran de l'application, affichée dans la galerie du projet.
+ * Les dimensions sont celles du fichier, pour éviter tout décalage de mise en page.
+ */
+export type ProjectScreen = {
+  src: string;
+  width: number;
+  height: number;
+  alt: LocalizedText;
+  caption: LocalizedText;
+};
+
 export type Project = {
   id: string;
   title: LocalizedText;
@@ -33,6 +45,7 @@ export type Project = {
   details: readonly LocalizedText[];
   links: readonly ProjectLink[];
   cover?: ProjectCover;
+  screens?: readonly ProjectScreen[];
   featured: boolean;
 };
 

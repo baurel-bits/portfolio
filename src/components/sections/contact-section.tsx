@@ -38,51 +38,70 @@ export function ContactSection({ locale, contact }: ContactSectionProps) {
           — contact visible sans formulaire, puis formulaire secondaire. */}
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-5">
-          <ul className="divide-y divide-console-line border-b border-console-line">
-            <li className="flex items-center gap-3 py-4">
-              <a
-                href={`mailto:${site.email}`}
-                className="inline-flex max-w-full items-center gap-3 font-display text-heading text-console-text underline decoration-signal decoration-2 underline-offset-4 transition-colors hover:text-signal"
-              >
-                <MailIcon className="shrink-0 text-signal" />
-                <span className="break-all">{site.email}</span>
-              </a>
-            </li>
+          <dl className="divide-y divide-console-line border-y border-console-line">
+            <div className="flex items-start gap-4 py-4">
+              <MailIcon className="mt-1 shrink-0 text-signal" />
+              <div className="min-w-0">
+                <dt className="font-mono text-micro uppercase tracking-[0.12em] text-console-muted">
+                  {contact.emailLabel}
+                </dt>
+                <dd className="mt-1">
+                  <a
+                    href={`mailto:${site.email}`}
+                    className="font-display text-heading-l font-semibold break-all text-console-text underline decoration-signal decoration-2 underline-offset-4 transition-colors hover:text-signal"
+                  >
+                    {site.email}
+                  </a>
+                </dd>
+              </div>
+            </div>
 
-            <li className="flex items-center gap-3 py-4">
-              <dt className="sr-only">{contact.phoneLabel}</dt>
-              <PhoneIcon className="shrink-0 text-console-muted" />
-              <dd>
-                <a
-                  href={`tel:${site.phoneHref}`}
-                  className="text-body-m text-console-text transition-colors hover:text-signal"
-                >
-                  {site.phone}
-                </a>
-              </dd>
-            </li>
+            <div className="flex items-start gap-4 py-4">
+              <PhoneIcon className="mt-1 shrink-0 text-console-muted" />
+              <div className="min-w-0">
+                <dt className="font-mono text-micro uppercase tracking-[0.12em] text-console-muted">
+                  {contact.phoneLabel}
+                </dt>
+                <dd className="mt-1">
+                  <a
+                    href={`tel:${site.phoneHref}`}
+                    className="text-body-m text-console-text transition-colors hover:text-signal"
+                  >
+                    {site.phone}
+                  </a>
+                </dd>
+              </div>
+            </div>
 
-            <li className="flex items-center gap-3 py-4">
-              <dt className="sr-only">{contact.whatsappLabel}</dt>
-              <WhatsAppIcon className="shrink-0 text-console-muted" />
-              <dd>
-                <a
-                  href={site.whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-body-m text-console-text transition-colors hover:text-signal"
-                >
-                  {site.whatsapp}
-                </a>
-              </dd>
-            </li>
+            <div className="flex items-start gap-4 py-4">
+              <WhatsAppIcon className="mt-1 shrink-0 text-console-muted" />
+              <div className="min-w-0">
+                <dt className="font-mono text-micro uppercase tracking-[0.12em] text-console-muted">
+                  {contact.whatsappLabel}
+                </dt>
+                <dd className="mt-1">
+                  <a
+                    href={site.whatsappHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-body-m text-console-text transition-colors hover:text-signal"
+                  >
+                    {site.whatsapp}
+                  </a>
+                </dd>
+              </div>
+            </div>
 
-            <li className="flex items-center gap-3 py-4">
-              <dt className="sr-only">{contact.locationLabel}</dt>
-              <MapPinIcon className="shrink-0 text-console-muted" />
-              <dd className="text-body-m text-console-text">{site.location[locale]}</dd>
-            </li>
-          </ul>
+            <div className="flex items-start gap-4 py-4">
+              <MapPinIcon className="mt-1 shrink-0 text-console-muted" />
+              <div className="min-w-0">
+                <dt className="font-mono text-micro uppercase tracking-[0.12em] text-console-muted">
+                  {contact.locationLabel}
+                </dt>
+                <dd className="mt-1 text-body-m text-console-text">{site.location[locale]}</dd>
+              </div>
+            </div>
+          </dl>
 
           <div className="mt-10 flex flex-wrap gap-3">
             <a
