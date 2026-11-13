@@ -306,8 +306,10 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* Le titre du hero est l'élément LCP : une animation courte évite de retarder
+     le moment où le texte est réellement peint. */
   .hero-line {
-    animation: hero-line-up 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: hero-line-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   .hero-fade {
