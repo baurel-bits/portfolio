@@ -11,6 +11,8 @@ type ProjectCoverProps = {
   labels: Dictionary["projects"];
   /** Format large de la page de détail. */
   large?: boolean;
+  /** Précharge la couverture : réservé à la première carte de la liste. */
+  preload?: boolean;
 };
 
 /**
@@ -18,7 +20,13 @@ type ProjectCoverProps = {
  * Sans capture fournie, l'emplacement reste visible et clairement annoncé :
  * il n'est jamais remplacé par une image d'illustration présentée comme réelle.
  */
-export function ProjectCover({ project, locale, labels, large = false }: ProjectCoverProps) {
+export function ProjectCover({
+  project,
+  locale,
+  labels,
+  large = false,
+  preload = false,
+}: ProjectCoverProps) {
   const hasLink = project.links.length > 0;
 
   return (
@@ -37,6 +45,7 @@ export function ProjectCover({ project, locale, labels, large = false }: Project
             alt={project.cover.alt[locale]}
             width={project.cover.width}
             height={project.cover.height}
+            preload={preload}
             sizes={large ? "(min-width: 1024px) 34vw, 100vw" : "(min-width: 1024px) 58vw, 100vw"}
             className="cover-in h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
