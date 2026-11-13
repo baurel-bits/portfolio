@@ -27,14 +27,14 @@ export const educationEntries: readonly EducationEntry[] = [
     },
   },
   {
-    id: "openclassrooms-web",
+    id: "sololearn-web",
     period: {
       fr: "Certificat obtenu",
       en: "Certificate earned",
     },
     title: {
-      fr: "OpenClassrooms — Développement web / frontend",
-      en: "OpenClassrooms — Web / frontend development",
+      fr: "Sololearn — Développement web",
+      en: "Sololearn — Web development",
     },
     place: {
       fr: "Formation en ligne",

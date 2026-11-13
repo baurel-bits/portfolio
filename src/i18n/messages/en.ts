@@ -132,9 +132,10 @@ export const en: Dictionary = {
     download: "Download CV",
     back: "Back to website",
     note: "Printable version: in the print dialog, choose “Save as PDF”.",
+    photoAlt: "Photo of Baurel",
     profile: "Profile",
     profileBody:
-      "Full-stack developer focused on frontend and mobile. I build web interfaces with React, Angular and Next.js, mobile apps with React Native and Expo, and the APIs behind them in Java / Spring Boot with PostgreSQL. I work with Docker, a Clean Architecture and microservices approach, and with testing and quality-assurance practices. In my final year at PKFokam Institute (KFOKAM48), holding two OpenClassrooms certificates (web / frontend development and JavaScript), with team experience on SuperApp (frontend) and Sekouh (QA).",
+      "Full-stack developer focused on frontend and mobile. I build web interfaces with React, Angular and Next.js, mobile apps with React Native and Expo, and the APIs behind them in Java / Spring Boot with PostgreSQL. I work with Docker, a Clean Architecture and microservices approach, and with testing and quality-assurance practices. In my final year at PKFokam Institute (KFOKAM48), holding a Sololearn web development certificate and an OpenClassrooms JavaScript certificate, with team experience on SuperApp (frontend) and Sekouh (QA).",
     skills: "Skills",
     projects: "Projects",
     education: "Education",

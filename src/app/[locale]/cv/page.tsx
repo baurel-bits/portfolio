@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { DownloadCVButton } from "@/components/ui/download-cv-button";
@@ -59,16 +60,27 @@ export async function generateMetadata({ params }: CvPageProps): Promise<Metadat
   const dict = getDictionary(resolveLocale(locale));
 
   const active = resolveLocale(locale);
+  const title = `${dict.cv.title} — ${site.owner}`;
 
   return {
-    title: `${dict.cv.title} — ${site.owner}`,
+    title,
     description: dict.meta.description,
-    alternates: { canonical: `/${active}/cv` },
+    alternates: {
+      canonical: `/${active}/cv`,
+      languages: { fr: "/fr/cv", en: "/en/cv" },
+    },
     openGraph: {
-      title: `${dict.cv.title} — ${site.owner}`,
+      title,
       description: dict.meta.description,
       url: `/${active}/cv`,
       type: "profile",
+      images: [{ url: `/${active}/opengraph-image`, width: 1200, height: 630, alt: dict.meta.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: dict.meta.description,
+      images: [`/${active}/opengraph-image`],
     },
     robots: { index: false, follow: true },
   };
@@ -105,15 +117,25 @@ export default async function CvPage({ params }: CvPageProps) {
 
         <p className="no-print mb-10 max-w-[60ch] text-body-s text-ink-muted">{dict.cv.note}</p>
 
-        <article className="mx-auto max-w-[52rem] text-ink">
+        <article className="mx-auto max-w-208 text-ink">
           <header className="print-block cv-header relative overflow-hidden border-b border-line pb-7">
             <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
-              <div>
-                <p className="font-mono text-micro uppercase tracking-[0.16em] text-ink-muted">
-                  {site.wordmark}
-                </p>
-                <h1 className="mt-3 font-display text-display-l font-bold">{site.owner}</h1>
-                <p className="mt-2 text-body-l text-ink-soft">{site.role[active]}</p>
+              <div className="flex items-start gap-4">
+                <Image
+                  src="/cv/teker.jpeg"
+                  alt={dict.cv.photoAlt}
+                  width={96}
+                  height={96}
+                  className="size-24 shrink-0 rounded-full mt-1 object-cover object-[center_18%] ring-2 ring-line-strong"
+                  priority
+                />
+                <div>
+                  <p className="font-mono text-micro uppercase tracking-[0.16em] text-ink-muted">
+                    {site.wordmark}
+                  </p>
+                  <h1 className="mt-3 font-display text-display-l font-bold">{site.owner}</h1>
+                  <p className="mt-2 text-body-l text-ink-soft">{site.role[active]}</p>
+                </div>
               </div>
               <p className="cv-stamp font-mono text-micro uppercase tracking-[0.14em] text-ink-muted">
                 {dict.cv.title}
@@ -162,6 +184,19 @@ export default async function CvPage({ params }: CvPageProps) {
                 >
                   {site.githubHandle}
                 </a>
+                {site.githubAlt ? (
+                  <>
+                    <span className="text-ink-muted">·</span>
+                    <a
+                      href={site.githubAlt}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="transition-colors hover:text-accent"
+                    >
+                      {site.githubAltHandle}
+                    </a>
+                  </>
+                ) : null}
               </li>
               <li className="cv-meta flex items-center gap-2">
                 <GlobeIcon width={14} height={14} className="shrink-0 text-accent" />

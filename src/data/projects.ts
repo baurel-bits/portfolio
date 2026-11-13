@@ -219,51 +219,6 @@ export const projects: readonly Project[] = [
     featured: true,
   },
 
-  // Site vitrine personnel : capture réelle de la version en ligne.
-  {
-    id: "portfolio",
-    title: {
-      fr: "Portfolio — site vitrine",
-      en: "Portfolio website",
-    },
-    summary: {
-      fr: "Site vitrine personnel présentant le profil, les compétences et les projets, avec navigation par sections, appels à l'action et accès au CV.",
-      en: "Personal showcase website presenting the profile, skills and projects, with section navigation, calls to action and CV access.",
-    },
-    kind: "frontend",
-    stack: ["Next.js", "React", "TypeScript"],
-    details: [
-      {
-        fr: "Page d'accueil animée et navigation par sections",
-        en: "Animated home page and section navigation",
-      },
-      {
-        fr: "Présentation du profil, des compétences et des projets",
-        en: "Profile, skills and projects presentation",
-      },
-      {
-        fr: "Mise en page responsive et déploiement en ligne",
-        en: "Responsive layout and live deployment",
-      },
-    ],
-    cover: {
-      src: "/projects/portfolio/screen.jpeg",
-      width: 1600,
-      height: 1000,
-      alt: {
-        fr: "Capture d'écran du site vitrine — page d'accueil avec le titre « Baurel, Web Developer »",
-        en: "Website screenshot — home page with the headline “Baurel, Web Developer”",
-      },
-    },
-    links: [
-      {
-        label: { fr: "Voir en ligne", en: "View live" },
-        href: "https://lucent-macaron-3be46d.netlify.app/",
-      },
-    ],
-    featured: false,
-  },
-
   // Épreuve KFOKAM48 : capture réelle du frontend lancé en local, le dépôt
   // n'étant pas déployé en ligne.
   {

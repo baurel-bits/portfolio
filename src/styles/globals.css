@@ -330,6 +330,15 @@
     animation: menu-link-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
+  /* État initial fermé : masqué même si un frame client le rendrait visible. */
+  #menu-mobile {
+    display: none;
+  }
+
+  #menu-mobile:not([inert]) {
+    display: block;
+  }
+
   .cover-in {
     animation: cover-in 0.6s ease-out both;
   }
