@@ -80,7 +80,11 @@ préférence système (`prefers-color-scheme`) lors du premier visite.
 - Images : `next/image` avec `sizes` adaptés et `loading="lazy"` sur les images hors
   premiere viewport.
 - Moteurs de recherche : `src/app/sitemap.ts` et `src/app/robots.txt` sont générés et
-  utilisent `NEXT_PUBLIC_SITE_URL`.
+  utilisent `NEXT_PUBLIC_SITE_URL`. Le sitemap indique `lastmod` à la date du build.
+- Langue : `/` redirige vers `/fr` ou `/en` selon l'en-tête `Accept-Language` du
+  navigateur (voir `src/proxy.ts`), avec `Vary: Accept-Language` sur la réponse.
+- Données structurées : `Person` sur toutes les pages, `CreativeWork` sur chaque page
+  projet, générées à partir de `src/data/projects.ts`.
 - Meta tags : titre, description, canonical, Open Graph et Twitter Card sont définis
   par page (accueil, CV, projets).
 - Animation : une animation de zoom subtil au scroll est appliquée sur la couverture des

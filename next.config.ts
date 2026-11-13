@@ -34,15 +34,8 @@ const nextConfig: NextConfig = {
 
     return [{ source: "/:path*", headers }];
   },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/fr",
-        permanent: false,
-      },
-    ];
-  },
+  // La redirection de `/` vers la langue du navigateur est gérée dans
+  // `src/proxy.ts`, seul endroit où l'en-tête `Accept-Language` est lisible.
 };
 
 export default nextConfig;
