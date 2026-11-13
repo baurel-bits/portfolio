@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { EducationSection } from "@/components/sections/education-section";
@@ -21,11 +22,15 @@ export default async function HomePage({ params }: HomePageProps) {
     <>
       <HeroSection locale={active} hero={dict.hero} nav={dict.nav} />
       <AboutSection locale={active} about={dict.about} />
-      <SkillsSection locale={active} skills={dict.skills} />
-      <ProjectsSection locale={active} projectsCopy={dict.projects} />
-      <EducationSection locale={active} education={dict.education} />
-      <GoalsSection locale={active} goalsCopy={dict.goals} />
-      <ContactSection locale={active} contact={dict.contact} />
+      {/* Diffusé après le premier rendu : réduit le HTML initial à parser pour
+          peindre le contenu au-dessus de la ligne de flottaison. */}
+      <Suspense fallback={null}>
+        <SkillsSection locale={active} skills={dict.skills} />
+        <ProjectsSection locale={active} projectsCopy={dict.projects} />
+        <EducationSection locale={active} education={dict.education} />
+        <GoalsSection locale={active} goalsCopy={dict.goals} />
+        <ContactSection locale={active} contact={dict.contact} />
+      </Suspense>
     </>
   );
 }
