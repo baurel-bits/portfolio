@@ -16,7 +16,8 @@ const variants: Record<ButtonVariant, string> = {
 };
 
 const sizes: Record<ButtonSize, string> = {
-  sm: "h-9 px-4 text-body-s",
+  // 44 px au doigt sur mobile, 36 px à partir de `sm` où la souris prend le relais.
+  sm: "h-11 px-4 text-body-s sm:h-9",
   md: "h-11 px-5 text-body-m",
   lg: "h-12 px-6 text-body-m",
 };
