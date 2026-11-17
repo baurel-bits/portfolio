@@ -204,7 +204,7 @@ Bascule clair → sombre fonctionnelle, `aria-pressed` cohérent, choix persist�
 | `/fr/projets` en 404 | nouvelle page index bilingue (H1, 7 cartes, canonical + hreflang, sitemap) | 200 ; « Retour aux projets » et fil d'Ariane pointent dessus |
 | Page d'accueil trop longue | 3 projets en trois colonnes + bouton « Voir tous les projets » | 9 184 → **6 847 px** (1440, −25 %), 14 107 → **11 270 px** (390, −20 %), 15 579 → **12 336 px** (320, −21 %) |
 | Icônes de compétences dupliquées | Mobile → smartphone, Architecture → calques | un glyphe par domaine |
-| Visuel DepensePro rogné | nouveau champ `fit: "contain"` sur `ProjectCover`, appliqué à DepensePro | visuel affiché entier, sans zoom au survol |
+| Visuel DepensePro rogné | champ `fit: "contain"` sur `ProjectCover` : visuel affiché entier sur un fond ambiant flouté du même visuel | visuel complet, sans rognage ni bandes noires, sans zoom au survol |
 | Accroche hero coupée | espaces insécables autour du `·` et du `&` | « DÉVELOPPEUR FULL-STACK · » / « FRONTEND & MOBILE », plus de `&` orphelin |
 | Anneau de focus sur fond sombre | variable `--focus-ring` : `signal` sur les sections `console`, le footer et les cartes projet, `accent` ailleurs | **15:1** sur `console` (l'accent n'y donnait que 2,9:1) |
 
