@@ -13,6 +13,11 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { site, siteUrl } from "@/lib/site";
 
 // Seuls les projets de `src/data/projects.ts` existent : tout autre slug est un 404.
+// Refusé dès le routage (`dynamicParams = false`) : sans cela, la première
+// requête sur un slug inconnu streamait la coquille prérendue en 200 avant de
+// répondre 404, un soft 404 pour les robots.
+export const dynamicParams = false;
+
 type ProjectPageProps = {
   params: Promise<{ locale: string; slug: string }>;
 };
@@ -28,6 +33,7 @@ function findProject(slug: string) {
 export function generateStaticParams() {
   return locales.flatMap((locale) => projects.map((project) => ({ locale, slug: project.id })));
 }
+
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
@@ -61,6 +67,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       languages: {
         fr: `/fr/projets/${project.id}`,
         en: `/en/projets/${project.id}`,
+        "x-default": `/fr/projets/${project.id}`,
       },
     },
     openGraph: {

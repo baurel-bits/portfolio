@@ -1,8 +1,8 @@
 export const fr = {
   meta: {
-    title: "Baurel — Développeur full-stack frontend & mobile",
+    title: "Baurel Bemmo — Développeur full-stack frontend & mobile",
     description:
-      "Portfolio de Baurel (TEKER Codes), développeur full-stack orienté frontend et mobile : React, Next.js, Angular, React Native, Java, Spring Boot et PostgreSQL.",
+      "Portfolio de Baurel Bemmo (TEKER Codes), développeur full-stack orienté frontend et mobile : React, Next.js, Angular, React Native, Java, Spring Boot et PostgreSQL.",
   },
   nav: {
     label: "Navigation principale",
@@ -14,7 +14,7 @@ export const fr = {
     goals: "Objectifs",
     contact: "Contact",
     cv: "CV",
-    cvLong: "Télécharger le CV",
+    cvLong: "Consulter le CV",
     menu: "Ouvrir le menu",
     close: "Fermer le menu",
     language: "Changer de langue",
@@ -25,10 +25,10 @@ export const fr = {
     // Espaces insécables : le « · » et le « & » ne doivent jamais se retrouver
     // seuls en début ou en fin de ligne sur petit écran.
     eyebrow: "Développeur full-stack\u00a0· Frontend\u00a0&\u00a0mobile",
-    titleFirst: "Baurel",
+    titleFirst: "Baurel Bemmo",
     titleSecond: "TEKER Codes",
     intro:
-      "Je construis des interfaces claires et des API solides : React et Next.js côté client, Java et Spring Boot côté serveur. Basé à Yaoundé, ouvert à un stage comme à un premier poste.",
+      "Je construis des interfaces claires et des API solides : React et Next.js côté client, Java et Spring Boot côté serveur. Basé à Yaoundé, disponible pour un stage de fin d'études ou un premier poste (sur site ou à distance).",
     primary: "Voir les projets",
     availability: "Ouvert aux opportunités",
     stackLabel: "Stack",
@@ -121,7 +121,7 @@ export const fr = {
     },
   },
   footer: {
-    tagline: "Portfolio de Baurel — développeur full-stack orienté frontend et mobile.",
+    tagline: "Portfolio de Baurel Bemmo — développeur full-stack orienté frontend et mobile.",
     navigation: "Navigation",
     connect: "Me joindre",
     rights: "Tous droits réservés.",
@@ -129,19 +129,20 @@ export const fr = {
     backToTop: "Retour en haut",
   },
   cv: {
-    title: "Curriculum vitae",
+    title: "Curriculum vitae — Baurel Bemmo",
     print: "Imprimer / Enregistrer en PDF",
-    download: "Télécharger le CV",
+    download: "Télécharger le fichier CV",
     back: "Retour au site",
     note: "Version imprimable : dans la boîte d'impression, choisissez « Enregistrer au format PDF\u00A0».",
-    photoAlt: "Photo de Baurel",
+    photoAlt: "Photo de Baurel Bemmo",
     profile: "Profil",
     profileBody:
       "Développeur full-stack orienté frontend et mobile. Je conçois des interfaces web avec React, Angular et Next.js, des applications mobiles avec React Native et Expo, et je développe les API qui les alimentent en Java / Spring Boot avec PostgreSQL. Je travaille avec Docker, une approche Clean Architecture et microservices, ainsi qu'avec des pratiques de tests et d'assurance qualité. En fin de cycle à l'Institut PKFokam (KFOKAM48), titulaire d'un certificat Sololearn en développement web et d'un certificat OpenClassrooms en JavaScript, avec une expérience du travail en équipe sur SuperApp (frontend) et Sekouh (QA).",
+    experience: "Expériences & Réalisations",
     skills: "Compétences",
-    projects: "Projets",
-    education: "Formation",
-    goals: "Objectifs",
+    projects: "Projets clés",
+    education: "Formation & Diplômes",
+    goals: "Objectifs professionnels",
     contact: "Contact",
   },
 };

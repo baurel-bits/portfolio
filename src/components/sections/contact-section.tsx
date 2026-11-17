@@ -5,6 +5,7 @@ import {
   DownloadIcon,
   GitHubIcon,
   GitLabIcon,
+  LinkedInIcon,
   MailIcon,
   MapPinIcon,
   PhoneIcon,
@@ -114,6 +115,18 @@ export function ContactSection({ locale, contact }: ContactSectionProps) {
               {site.githubHandle}
               <ArrowUpRightIcon className="shrink-0" width={14} height={14} />
             </a>
+            {site.linkedin && (
+              <a
+                href={site.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-body-m font-mono uppercase tracking-wider text-console-muted transition-colors hover:text-console-text hover:bg-console/40"
+              >
+                <LinkedInIcon className="shrink-0" />
+                LinkedIn
+                <ArrowUpRightIcon className="shrink-0" width={14} height={14} />
+              </a>
+            )}
             <a
               href={site.gitlab}
               target="_blank"

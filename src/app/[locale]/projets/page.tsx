@@ -37,11 +37,12 @@ export async function generateMetadata({
     description: dict.projects.description,
     alternates: {
       canonical: `/${active}/projets`,
-      languages: { fr: "/fr/projets", en: "/en/projets" },
+      languages: { fr: "/fr/projets", en: "/en/projets", "x-default": "/fr/projets" },
     },
     openGraph: {
       title,
       description: dict.projects.description,
+      type: "website",
       url: `/${active}/projets`,
       siteName: site.brand,
       images: [{ url: `/${active}/opengraph-image`, width: 1200, height: 630, alt: title }],

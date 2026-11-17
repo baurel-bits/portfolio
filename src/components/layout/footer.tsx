@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
-import { GitHubIcon, MailIcon } from "@/components/ui/icons";
+import { GitHubIcon, LinkedInIcon, MailIcon } from "@/components/ui/icons";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { site } from "@/lib/site";
@@ -79,6 +79,19 @@ export function Footer({ locale, nav, footer }: FooterProps) {
                   {site.githubHandle}
                 </a>
               </li>
+              {site.linkedin ? (
+                <li>
+                  <a
+                    href={site.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
+                  >
+                    <LinkedInIcon />
+                    LinkedIn
+                  </a>
+                </li>
+              ) : null}
               {site.githubAlt ? (
                 <li>
                   <a

@@ -77,7 +77,7 @@ export function HeroSection({ locale, hero, nav }: HeroSectionProps) {
                 {hero.primary}
                 <ArrowDownIcon className="transition-transform duration-200 group-hover:translate-y-0.5" />
               </ButtonLink>
-              <DownloadCVButton label={nav.cvLong} variant="outline" size="lg" />
+              <DownloadCVButton label={nav.cvLong} variant="outline" size="lg" href={`/${locale}/cv`} />
             </div>
 
             <div

@@ -9,34 +9,34 @@ export const goals: readonly Goal[] = [
   {
     id: "role",
     title: {
-      fr: "Un stage ou une alternance full-stack",
-      en: "A full-stack internship or work-study role",
+      fr: "Stage de fin d'études ou premier poste full-stack",
+      en: "Final-year internship or junior full-stack role",
     },
     description: {
-      fr: "Construire des interfaces web et mobiles et les API qui les alimentent, avec un accent sur le frontend et le mobile, au Cameroun ou à distance.",
-      en: "Build web and mobile interfaces and the APIs behind them, with a focus on frontend and mobile, in Cameroon or remotely.",
+      fr: "Apporter une valeur immédiate sur l'intégration React / Next.js et la conception d'API Spring Boot, avec rigueur et autonomie, au Cameroun ou à distance.",
+      en: "Deliver immediate value on React / Next.js interfaces and Spring Boot REST APIs, with rigor and autonomy, on-site or remotely.",
     },
   },
   {
     id: "team",
     title: {
-      fr: "Livrer en équipe",
-      en: "Ship as part of a team",
+      fr: "Intégrer une équipe technique exigeante",
+      en: "Join an engineering team",
     },
     description: {
-      fr: "Continuer sur des projets menés à plusieurs, comme SuperApp côté frontend et Sekouh côté qualité, avec revues de code et exigence de qualité.",
-      en: "Keep working on shared projects, as on SuperApp for the frontend and Sekouh for quality, with code reviews and a real standard of quality.",
+      fr: "Collaborer avec des développeurs expérimentés, participer activement aux revues de code et contribuer aux cycles de livraison continus.",
+      en: "Collaborate with experienced engineers, take part in code reviews, and contribute to continuous delivery cycles.",
     },
   },
   {
     id: "backend",
     title: {
-      fr: "Consolider backend et qualité",
-      en: "Deepen backend and quality",
+      fr: "Renforcer la fiabilité et la qualité logicielle",
+      en: "Drive reliability and software quality",
     },
     description: {
-      fr: "Progresser sur les tests automatisés et le déploiement, en gardant une architecture propre : Clean Architecture, microservices et Docker.",
-      en: "Grow on automated testing and deployment while keeping a clean architecture: Clean Architecture, microservices and Docker.",
+      fr: "Mettre en pratique les tests automatisés, la conteneurisation Docker et les architectures modulaires, propres et maintenables.",
+      en: "Implement automated testing, Docker containerization, and clean, maintainable modular architectures.",
     },
   },
 ];
