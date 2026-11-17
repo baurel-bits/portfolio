@@ -206,9 +206,12 @@ Bascule clair → sombre fonctionnelle, `aria-pressed` cohérent, choix persist�
 | Icônes de compétences dupliquées | Mobile → smartphone, Architecture → calques | un glyphe par domaine |
 | Visuel DepensePro rogné | nouveau champ `fit: "contain"` sur `ProjectCover`, appliqué à DepensePro | visuel affiché entier, sans zoom au survol |
 | Accroche hero coupée | espaces insécables autour du `·` et du `&` | « DÉVELOPPEUR FULL-STACK · » / « FRONTEND & MOBILE », plus de `&` orphelin |
+| Anneau de focus sur fond sombre | variable `--focus-ring` : `signal` sur les sections `console`, le footer et les cartes projet, `accent` ailleurs | **15:1** sur `console` (l'accent n'y donnait que 2,9:1) |
 
 Contrôles après modification : `tsc --noEmit` et `eslint --max-warnings=0` propres ; 0 exception JavaScript ; 0 débordement horizontal ; un seul H1 par page, aucun saut de niveau (l'index `/projets` a un H1 et des cartes en H2).
 
-**Non appliqué, à trancher** : la 404 bilingue (le code la documente comme volontaire, la page étant rendue hors du layout localisé) ; les états de focus des cartes projet (à confirmer au clavier) ; les aperçus sociaux et les mesures sur build de production.
+**États de focus vérifiés au vrai clavier** (vrais événements `Tab`, pas de `focus()` programmatique) : 47 éléments sur `/fr`, 78 sur `/fr/projets`, 31 sur une page projet, 40 sur le CV, 47 sur `/en`, 78 à 320 px, plus les 9 liens du menu mobile — **tous avec un indicateur visible**. Les seuls éléments sans anneau sont ceux du portail de développement Next (`NEXTJS-PORTAL`), absent en production. Menu mobile ouvert avec `Entrée` : focus déplacé dans le panneau, piège de focus circulaire, `Échap` referme et rend le focus au bouton.
+
+**Non appliqué, à trancher** : la 404 bilingue (le code la documente comme volontaire, la page étant rendue hors du layout localisé) ; les aperçus sociaux et les mesures sur build de production.
 
 *Captures et profils de test : `.freebuff/uiux/` (dossier ignoré par git).*

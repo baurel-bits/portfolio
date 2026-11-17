@@ -30,7 +30,7 @@ export function ProjectCard({
   return (
     <article
       className={cn(
-        "group relative flex h-full flex-col overflow-clip rounded-md border border-console-line bg-console-raised transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-signal/70 hover:shadow-[0_28px_60px_-32px_rgba(0,0,0,0.85)]",
+        "group relative flex h-full flex-col overflow-clip rounded-md border border-console-line bg-console-raised transition-[transform,border-color,box-shadow] duration-300 [--focus-ring:var(--color-signal)] hover:-translate-y-1 hover:border-signal/70 hover:shadow-[0_28px_60px_-32px_rgba(0,0,0,0.85)]",
         className,
       )}
     >

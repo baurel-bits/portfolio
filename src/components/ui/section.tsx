@@ -5,10 +5,12 @@ import type { ComponentProps, ReactNode } from "react";
 
 export type SectionTone = "paper" | "sunken" | "console";
 
+// Sur fond `console`, l'anneau de focus passe au signal (15:1) : l'accent
+// n'y atteint pas les 3:1 exigés pour un indicateur de focus.
 const tones: Record<SectionTone, string> = {
   paper: "bg-paper text-ink",
   sunken: "bg-paper-sunken text-ink",
-  console: "bg-console text-console-text",
+  console: "bg-console text-console-text [--focus-ring:var(--color-signal)]",
 };
 
 type SectionProps = ComponentProps<"section"> & {

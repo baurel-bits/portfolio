@@ -23,7 +23,7 @@ export function Footer({ locale, nav, footer }: FooterProps) {
   ];
 
   return (
-    <footer className="no-print border-t border-console-line bg-console text-console-text">
+    <footer className="no-print border-t border-console-line bg-console text-console-text [--focus-ring:var(--color-signal)]">
       <Container size="wide" className="py-16 lg:py-20">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
