@@ -115,7 +115,9 @@ export default async function CvPage({ params }: CvPageProps) {
             {dict.cv.back}
           </Link>
           <div className="flex flex-wrap items-center gap-2">
-            <DownloadCVButton label={dict.cv.download} variant="outline" size="sm" />
+            {/* Taille `sm` (36 px) trop petite au doigt : on garde la taille `md`, alignée sur
+                le bouton d'impression voisin et sur la cible tactile de 44 px. */}
+            <DownloadCVButton label={dict.cv.download} variant="outline" />
             <PrintButton label={dict.cv.print} />
           </div>
         </div>
