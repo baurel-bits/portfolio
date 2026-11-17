@@ -25,7 +25,7 @@ export const en: Dictionary = {
     themeLight: "Switch to light mode",
   },
   hero: {
-    eyebrow: "Full-stack developer · Frontend & mobile",
+    eyebrow: "Full-stack developer\u00a0· Frontend\u00a0&\u00a0mobile",
     titleFirst: "Baurel",
     titleSecond: "TEKER Codes",
     intro:
@@ -38,7 +38,7 @@ export const en: Dictionary = {
   about: {
     label: "01 — About",
     title: "Who I am",
-    lead: "Junior frontend-focused developer with hands-on Java backend practice.",
+    lead: "Full-stack frontend-focused developer with hands-on Java backend practice.",
     body: [
       "I work with React and Next.js to build readable, responsive and accessible interfaces. On the server side I develop REST APIs with Java and Spring Boot: entity modelling, services, controllers, data validation and PostgreSQL persistence.",
       "This portfolio does not list promises: it presents several documented projects with the stack actually used. The code is public on GitHub and I publish new projects as they are built.",
@@ -68,6 +68,9 @@ export const en: Dictionary = {
     coverPending: "Screenshot pending",
     coverNote: "Placeholder for the project screenshot.",
     viewProject: "View project",
+    viewAll: "View all projects",
+    indexTitle: "All projects",
+    backHome: "Back to home",
     backToProjects: "Back to projects",
     nextProject: "Next project",
     linksLabel: "Links",

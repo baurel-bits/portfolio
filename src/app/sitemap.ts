@@ -39,5 +39,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  return [...home, ...projectPages];
+  const projectIndex = locales.map((locale) => ({
+    url: `${siteUrl}/${locale}/projets`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+    alternates: alternates("/projets"),
+  }));
+
+  return [...home, ...projectIndex, ...projectPages];
 }

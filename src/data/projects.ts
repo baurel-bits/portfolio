@@ -43,6 +43,7 @@ export const projects: readonly Project[] = [
       ogSrc: "/projects/depensepro/og.jpg",
       width: 1600,
       height: 1000,
+      fit: "contain",
       alt: {
         fr: "Maquette de l'application mobile DepensePro — tableau de bord des dépenses en vert et blanc (maquette et non capture de l'application)",
         en: "Mockup of the DepensePro mobile app — expense dashboard in green and white (a mockup, not a screenshot of the app)",

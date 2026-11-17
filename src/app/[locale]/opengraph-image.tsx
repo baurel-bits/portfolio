@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { defaultLocale, isLocale } from "@/i18n/config";
 import { site } from "@/lib/site";
 
-export const alt = `${site.owner} — ${site.brand}, développeur junior frontend & logiciel`;
+export const alt = `${site.owner} — ${site.brand}, développeur full-stack frontend & logiciel`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

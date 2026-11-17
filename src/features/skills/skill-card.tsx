@@ -1,6 +1,13 @@
 import type { ComponentType, SVGProps } from "react";
 import { Tag } from "@/components/ui/tag";
-import { CodeIcon, DatabaseIcon, ServerIcon, TerminalIcon } from "@/components/ui/icons";
+import {
+  CodeIcon,
+  DatabaseIcon,
+  LayersIcon,
+  ServerIcon,
+  SmartphoneIcon,
+  TerminalIcon,
+} from "@/components/ui/icons";
 import type { Locale } from "@/i18n/config";
 import type { SkillDomain } from "@/types";
 
@@ -10,11 +17,15 @@ type SkillCardProps = {
   locale: Locale;
 };
 
+// Une icône par domaine : sans entrée dédiée, deux cartes partagent le même
+// glyphe et deviennent indiscernables au premier coup d'œil.
 const domainIcons: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
   frontend: CodeIcon,
+  mobile: SmartphoneIcon,
   backend: ServerIcon,
   data: DatabaseIcon,
   tools: TerminalIcon,
+  architecture: LayersIcon,
 };
 
 export function SkillCard({ domain, index, locale }: SkillCardProps) {

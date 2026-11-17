@@ -22,7 +22,9 @@ export const fr = {
     themeLight: "Activer le mode clair",
   },
   hero: {
-    eyebrow: "Développeur full-stack · Frontend & mobile",
+    // Espaces insécables : le « · » et le « & » ne doivent jamais se retrouver
+    // seuls en début ou en fin de ligne sur petit écran.
+    eyebrow: "Développeur full-stack\u00a0· Frontend\u00a0&\u00a0mobile",
     titleFirst: "Baurel",
     titleSecond: "TEKER Codes",
     intro:
@@ -35,7 +37,7 @@ export const fr = {
   about: {
     label: "01 — À propos",
     title: "Qui je suis",
-    lead: "Développeur junior orienté frontend, avec une pratique réelle du backend Java.",
+    lead: "Développeur full-stack orienté frontend, avec une pratique réelle du backend Java.",
     body: [
       "Je travaille avec React et Next.js pour construire des interfaces lisibles, responsive et accessibles. Côté serveur, je développe des API REST en Java et Spring Boot : modélisation des entités, services, contrôleurs, validation des données et persistance PostgreSQL.",
       "Ce portfolio ne liste pas des promesses : il présente plusieurs réalisations documentées, avec la stack réellement employée. Le code est public sur GitHub et j'y publie mes projets au fur et à mesure.",
@@ -65,6 +67,9 @@ export const fr = {
     coverPending: "Capture à venir",
     coverNote: "Emplacement réservé au visuel du projet.",
     viewProject: "Voir le projet",
+    viewAll: "Voir tous les projets",
+    indexTitle: "Tous les projets",
+    backHome: "Retour à l'accueil",
     backToProjects: "Retour aux projets",
     nextProject: "Projet suivant",
     linksLabel: "Liens",

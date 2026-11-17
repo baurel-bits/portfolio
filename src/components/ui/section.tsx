@@ -41,6 +41,8 @@ type SectionHeaderProps = {
   title: string;
   description?: string;
   tone?: SectionTone;
+  /** `h1` quand cet en-tête est le titre principal de la page (index). */
+  titleLevel?: "h1" | "h2";
 };
 
 export function SectionHeader({
@@ -48,8 +50,10 @@ export function SectionHeader({
   title,
   description,
   tone = "paper",
+  titleLevel = "h2",
 }: SectionHeaderProps) {
   const isConsole = tone === "console";
+  const Title = titleLevel;
 
   return (
     <Reveal as="header" className="mb-12 grid gap-6 lg:grid-cols-12 lg:items-end">
@@ -63,14 +67,14 @@ export function SectionHeader({
           {label}
         </p>
         <span aria-hidden="true" className="section-rule" />
-        <h2
+        <Title
           className={cn(
             "mt-4 font-display text-display-l font-bold",
             isConsole ? "text-console-text" : "text-ink",
           )}
         >
           {title}
-        </h2>
+        </Title>
       </div>
       {description ? (
         <p

@@ -45,7 +45,7 @@ export function Footer({ locale, nav, footer }: FooterProps) {
                 <li key={link.hash}>
                   <Link
                     href={`/${locale}${link.hash}`}
-                    className="text-body-s text-console-text transition-colors hover:text-signal"
+                    className="inline-flex min-h-11 items-center text-body-s text-console-text transition-colors hover:text-signal"
                   >
                     {link.label}
                   </Link>
@@ -62,7 +62,7 @@ export function Footer({ locale, nav, footer }: FooterProps) {
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="inline-flex items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
+                  className="inline-flex min-h-11 items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
                 >
                   <MailIcon />
                   {site.email}
@@ -72,8 +72,8 @@ export function Footer({ locale, nav, footer }: FooterProps) {
                 <a
                   href={site.github}
                   target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
                 >
                   <GitHubIcon />
                   {site.githubHandle}
@@ -84,8 +84,8 @@ export function Footer({ locale, nav, footer }: FooterProps) {
                   <a
                     href={site.githubAlt}
                     target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
                   >
                     <GitHubIcon />
                     {site.githubAltHandle}
@@ -102,7 +102,7 @@ export function Footer({ locale, nav, footer }: FooterProps) {
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <span>{footer.built}</span>
-            <a href="#top" className="transition-colors hover:text-signal">
+            <a href="#top" className="inline-flex min-h-6 items-center transition-colors hover:text-signal">
               {footer.backToTop}
             </a>
           </div>

@@ -49,6 +49,9 @@ export function HeroSection({ locale, hero, nav }: HeroSectionProps) {
                   {hero.titleFirst}
                 </span>
               </span>
+              {/* Espace réel entre les deux lignes : sans lui, le nom accessible
+                  du titre est « BaurelTEKER Codes ». */}
+              {" "}
               <span className="block overflow-hidden">
                 <span
                   className="hero-line block text-balance text-accent"

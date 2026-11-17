@@ -65,7 +65,7 @@ export function ContactSection({ locale, contact }: ContactSectionProps) {
                 <dd className="mt-1">
                   <a
                     href={`tel:${site.phoneHref}`}
-                    className="text-body-m text-console-text transition-colors hover:text-signal"
+                    className="inline-block py-1 text-body-m text-console-text transition-colors hover:text-signal"
                   >
                     {site.phone}
                   </a>
@@ -83,8 +83,8 @@ export function ContactSection({ locale, contact }: ContactSectionProps) {
                   <a
                     href={site.whatsappHref}
                     target="_blank"
-                    rel="noreferrer"
-                    className="text-body-m text-console-text transition-colors hover:text-signal"
+                    rel="noopener noreferrer"
+                    className="inline-block py-1 text-body-m text-console-text transition-colors hover:text-signal"
                   >
                     {site.whatsapp}
                   </a>
@@ -107,7 +107,7 @@ export function ContactSection({ locale, contact }: ContactSectionProps) {
             <a
               href={site.github}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-body-m font-mono uppercase tracking-wider text-console-muted transition-colors hover:text-console-text hover:bg-console/40"
             >
               <GitHubIcon className="shrink-0" />
@@ -117,7 +117,7 @@ export function ContactSection({ locale, contact }: ContactSectionProps) {
             <a
               href={site.gitlab}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-body-m font-mono uppercase tracking-wider text-console-muted transition-colors hover:text-console-text hover:bg-console/40"
             >
               <GitLabIcon className="shrink-0" />
@@ -128,7 +128,7 @@ export function ContactSection({ locale, contact }: ContactSectionProps) {
               <a
                 href={site.githubAlt}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-body-m font-mono uppercase tracking-wider text-console-muted transition-colors hover:text-console-text hover:bg-console/40"
               >
                 <GitHubIcon className="shrink-0" />

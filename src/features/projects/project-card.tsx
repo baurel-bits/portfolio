@@ -13,9 +13,20 @@ type ProjectCardProps = {
   locale: Locale;
   labels: Dictionary["projects"];
   className?: string;
+  /** `h2` quand les cartes suivent directement le titre de la page (index). */
+  headingLevel?: "h2" | "h3";
 };
 
-export function ProjectCard({ project, index, locale, labels, className }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  index,
+  locale,
+  labels,
+  className,
+  headingLevel = "h3",
+}: ProjectCardProps) {
+  const Heading = headingLevel;
+
   return (
     <article
       className={cn(
@@ -40,7 +51,7 @@ export function ProjectCard({ project, index, locale, labels, className }: Proje
           ) : null}
         </div>
 
-        <h3
+        <Heading
           className={cn(
             "mt-5 font-display font-bold text-console-text",
             project.featured ? "text-display-m" : "text-heading-l",
@@ -54,7 +65,7 @@ export function ProjectCard({ project, index, locale, labels, className }: Proje
           >
             {project.title[locale]}
           </Link>
-        </h3>
+        </Heading>
 
         <p className="mt-3 max-w-[54ch] text-body-m text-console-muted">{project.summary[locale]}</p>
 
@@ -95,8 +106,8 @@ export function ProjectCard({ project, index, locale, labels, className }: Proje
                 <a
                   href={link.href}
                   target="_blank"
-                  rel="noreferrer"
-                  className="group/link inline-flex items-center gap-1.5 border-b border-console-line pb-1 font-mono text-micro uppercase tracking-[0.12em] text-console-text transition-colors duration-200 hover:border-signal hover:text-signal"
+                  rel="noopener noreferrer"
+                  className="group/link inline-flex min-h-6 items-center gap-1.5 border-b border-console-line pb-1 font-mono text-micro uppercase tracking-[0.12em] text-console-text transition-colors duration-200 hover:border-signal hover:text-signal"
                 >
                   {link.label[locale]}
                   <ArrowUpRightIcon

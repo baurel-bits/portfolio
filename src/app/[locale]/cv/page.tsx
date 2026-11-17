@@ -100,7 +100,7 @@ export default async function CvPage({ params }: CvPageProps) {
         <div className="no-print mb-8 flex flex-wrap items-center justify-between gap-4">
           <Link
             href={`/${active}`}
-            className="group inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.12em] text-ink-muted transition-colors hover:text-ink"
+            className="group inline-flex min-h-11 items-center gap-2 font-mono text-micro uppercase tracking-[0.12em] text-ink-muted transition-colors hover:text-ink print:min-h-0"
           >
             <ArrowRightIcon
               width={13}
@@ -153,13 +153,13 @@ export default async function CvPage({ params }: CvPageProps) {
               </li>
               <li className="cv-meta flex items-center gap-2">
                 <MailIcon width={14} height={14} className="shrink-0 text-accent" />
-                <a href={mailto} className="transition-colors hover:text-accent">
+                <a href={mailto}                      className="inline-block py-1 transition-colors hover:text-accent print:py-0">
                   {site.email}
                 </a>
               </li>
               <li className="cv-meta flex items-center gap-2">
                 <PhoneIcon width={14} height={14} className="shrink-0 text-accent" />
-                <a href={tel} className="transition-colors hover:text-accent">
+                <a href={tel}                      className="inline-block py-1 transition-colors hover:text-accent print:py-0">
                   {site.phone}
                 </a>
               </li>
@@ -168,8 +168,8 @@ export default async function CvPage({ params }: CvPageProps) {
                 <a
                   href={site.whatsappHref}
                   target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-accent"
+                  rel="noopener noreferrer"
+                  className="inline-block py-1 transition-colors hover:text-accent print:py-0"
                 >
                   {site.whatsapp}
                 </a>
@@ -179,8 +179,8 @@ export default async function CvPage({ params }: CvPageProps) {
                 <a
                   href={site.github}
                   target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-accent"
+                  rel="noopener noreferrer"
+                  className="inline-block py-1 transition-colors hover:text-accent print:py-0"
                 >
                   {site.githubHandle}
                 </a>
@@ -190,8 +190,8 @@ export default async function CvPage({ params }: CvPageProps) {
                     <a
                       href={site.githubAlt}
                       target="_blank"
-                      rel="noreferrer"
-                      className="transition-colors hover:text-accent"
+                      rel="noopener noreferrer"
+                      className="inline-block py-1 transition-colors hover:text-accent print:py-0"
                     >
                       {site.githubAltHandle}
                     </a>
@@ -243,7 +243,7 @@ export default async function CvPage({ params }: CvPageProps) {
                     <p className="text-body-m font-semibold text-ink">{project.title[active]}</p>
                     <Link
                       href={`/${active}/projets/${project.id}`}
-                      className="no-print inline-flex items-center gap-1 font-mono text-micro uppercase tracking-[0.1em] text-ink-muted transition-colors hover:text-accent"
+                      className="no-print inline-flex min-h-6 items-center gap-1 font-mono text-micro uppercase tracking-[0.1em] text-ink-muted transition-colors hover:text-accent"
                     >
                       {project.year ?? dict.projects.viewProject}
                       <ArrowUpRightIcon

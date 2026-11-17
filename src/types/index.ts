@@ -22,6 +22,11 @@ export type ProjectCover = {
   width: number;
   height: number;
   alt: LocalizedText;
+  /**
+   * `contain` pour les visuels composés (collages, maquettes multi-écrans) qui
+   * ne doivent pas être rognés par le cadre de la carte. Défaut : `cover`.
+   */
+  fit?: "cover" | "contain";
 };
 
 /**

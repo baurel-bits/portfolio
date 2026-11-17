@@ -101,7 +101,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     ...(project.cover ? { image: `${siteUrl}${project.cover.src}` } : {}),
   };
 
-  // Fil d'Ariane : l'accueil, la section « Projets » de l'accueil, le projet.
+  // Fil d'Ariane : l'accueil, l'index des projets, le projet.
   // Les deux premiers niveaux sont les liens réellement utilisés dans l'interface.
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -117,7 +117,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         "@type": "ListItem",
         position: 2,
         name: dict.nav.projects,
-        item: `${siteUrl}/${active}#projets`,
+        item: `${siteUrl}/${active}/projets`,
       },
       {
         "@type": "ListItem",
@@ -131,8 +131,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <Section tone="console" size="wide">
       <Link
-        href={`/${active}#projets`}
-        className="inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.12em] text-console-muted transition-colors hover:text-signal"
+        href={`/${active}/projets`}
+        className="inline-flex min-h-11 items-center gap-2 font-mono text-micro uppercase tracking-[0.12em] text-console-muted transition-colors hover:text-signal"
       >
         <ArrowRightIcon width={13} height={13} className="rotate-180" />
         {labels.backToProjects}
@@ -198,8 +198,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     <a
                       href={link.href}
                       target="_blank"
-                      rel="noreferrer"
-                      className="group/link inline-flex items-center gap-2 border-b border-console-line pb-1 font-mono text-micro uppercase tracking-[0.12em] text-console-text transition-colors hover:border-signal hover:text-signal"
+                      rel="noopener noreferrer"
+                      className="group/link inline-flex min-h-6 items-center gap-2 border-b border-console-line pb-1 font-mono text-micro uppercase tracking-[0.12em] text-console-text transition-colors hover:border-signal hover:text-signal"
                     >
                       {link.label[active]}
                       <ArrowUpRightIcon
@@ -223,8 +223,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <a
                   href={site.github}
                   target="_blank"
-                  rel="noreferrer"
-                  className="group/link inline-flex items-center gap-2 border-b border-console-line pb-1 font-mono text-micro uppercase tracking-[0.12em] text-console-text transition-colors hover:border-signal hover:text-signal"
+                  rel="noopener noreferrer"
+                  className="group/link inline-flex min-h-6 items-center gap-2 border-b border-console-line pb-1 font-mono text-micro uppercase tracking-[0.12em] text-console-text transition-colors hover:border-signal hover:text-signal"
                 >
                   {site.githubHandle}
                   <ArrowUpRightIcon
@@ -239,8 +239,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <a
                     href={site.githubAlt}
                     target="_blank"
-                    rel="noreferrer"
-                    className="group/link inline-flex items-center gap-2 border-b border-console-line pb-1 font-mono text-micro uppercase tracking-[0.12em] text-console-text transition-colors hover:border-signal hover:text-signal"
+                    rel="noopener noreferrer"
+                    className="group/link inline-flex min-h-6 items-center gap-2 border-b border-console-line pb-1 font-mono text-micro uppercase tracking-[0.12em] text-console-text transition-colors hover:border-signal hover:text-signal"
                   >
                     {site.githubAltHandle}
                     <ArrowUpRightIcon
