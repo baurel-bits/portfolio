@@ -214,4 +214,30 @@ Contrôles après modification : `tsc --noEmit` et `eslint --max-warnings=0` pro
 
 **Non appliqué, à trancher** : la 404 bilingue (le code la documente comme volontaire, la page étant rendue hors du layout localisé) ; les aperçus sociaux et les mesures sur build de production.
 
+---
+
+## 8. Core Web Vitals sur build de production
+
+**Méthode** : `next build` + `next start`, Chrome headless, mobile 390×844 DPR 2, **CPU ×4**, réseau **1,6 Mb/s / 150 ms RTT**, cache vidé à chaque page, interactions réelles (clics) pour l'INP. LCP et CLS via `PerformanceObserver`, INP approché par la durée maximale des événements, TBT = somme des dépassements au-delà de 50 ms.
+
+| Page | LCP avant | LCP après | CLS | TBT | INP (à ×4) |
+|---|---|---|---|---|---|
+| `/fr` | 1 936 ms | **2 276 ms** | 0 | 2 211 ms | 424 ms |
+| `/en` | 1 696 ms | **2 096 ms** | 0 | 1 993 ms | 416 ms |
+| `/fr/cv` | 1 180 ms | **1 428 ms** | 0 | 588 ms | 208 ms |
+| `/fr/projets` | 3 676 ms ❌ | **1 820 ms** | 0 | 916 ms | 360 ms |
+| `/fr/projets/depensepro` | 3 296 ms ❌ | **1 256 ms** | 0 | 658 ms | 152 ms |
+| `/fr/projets/bibiotheque` | 3 500 ms ❌ | **1 420 ms** | 0 | 561 ms | 208 ms |
+| `/fr` desktop non bridé | 292 ms | 248 ms | 0 | 81 ms | 136 ms |
+
+**Régression trouvée et corrigée** : sur les pages projet et l'index, le bloc au-dessus de la ligne de flottaison était enveloppé dans `Reveal`, donc en `opacity: 0` jusqu'à l'hydratation. Le LCP attendait React (3,3 à 3,7 s) au lieu du premier paint. Un réglage `immediate` sur `Reveal` et `SectionHeader` rend ces blocs visibles dès le HTML, sans animation : LCP ramené entre 1,2 et 1,8 s. Les sections sous la ligne de flottaison continuent de s'animer.
+
+CLS à 0 sur toutes les pages : chaque image porte ses dimensions, les polices sont chargées par `next/font` et le thème est posé avant le premier rendu.
+
+**Reste au-dessus des seuils, non corrigé** :
+
+- **TBT 2,2 s et INP 424 ms sur l'accueil** à CPU ×4. Le clic mesuré est la bascule de thème : le traitement JavaScript ne prend que 5 à 12 ms, le reste est l'attente de la frame — le changement de `data-theme` recalcule les variables CSS sur ~745 nœuds. Sur desktop non bridé, le même clic donne 136 ms. Non corrigé car cela demanderait de réduire la surface de repeinture du thème ou de supprimer l'hydratation des `Reveal` (passage en animations CSS `view()`), un changement plus large que la correction demandée.
+
+**Limites** : pas de données terrain (CrUX), une seule passe par page (±20 % de variance), INP mesuré sur une seule interaction, pas de test sur un appareil mobile réel. À noter aussi : `next build` échoue avec un panic Turbopack si le dossier `.next` provient d'une session `next dev` ; `rm -rf .next` avant le build règle le problème (sans rapport avec le code).
+
 *Captures et profils de test : `.freebuff/uiux/` (dossier ignoré par git).*

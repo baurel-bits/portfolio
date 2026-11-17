@@ -138,7 +138,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {labels.backToProjects}
       </Link>
 
-      <Reveal className="mt-10 grid gap-12 lg:grid-cols-12 lg:items-start">
+      {/* Visible dès le premier paint : c'est le LCP de la page. */}
+      <Reveal immediate className="mt-10 grid gap-12 lg:grid-cols-12 lg:items-start">
         <div className="lg:col-span-7">
           <p className="font-mono text-micro uppercase tracking-[0.14em] text-console-muted">
             {kind} · P.{String(index + 1).padStart(2, "0")}

@@ -78,6 +78,7 @@ export default async function ProjectsIndexPage({ params }: ProjectsIndexPagePro
           description={labels.description}
           tone="console"
           titleLevel="h1"
+          immediate
         />
       </div>
 
@@ -94,6 +95,10 @@ export default async function ProjectsIndexPage({ params }: ProjectsIndexPagePro
             <Reveal
               key={project.id}
               delay={index * 90}
+              // Les deux premières cartes sont au-dessus de la ligne de
+              // flottaison : animées, elles repousseraient le LCP après
+              // l'hydratation.
+              immediate={index < 2}
               className={cn(
                 "h-full",
                 isAlone ? "lg:col-span-8 lg:col-start-3" : wide ? "lg:col-span-7" : "lg:col-span-5",

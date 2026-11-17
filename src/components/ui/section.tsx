@@ -45,6 +45,8 @@ type SectionHeaderProps = {
   tone?: SectionTone;
   /** `h1` quand cet en-tête est le titre principal de la page (index). */
   titleLevel?: "h1" | "h2";
+  /** Ne pas animer l'en-tête : contenu au-dessus de la ligne de flottaison. */
+  immediate?: boolean;
 };
 
 export function SectionHeader({
@@ -53,12 +55,17 @@ export function SectionHeader({
   description,
   tone = "paper",
   titleLevel = "h2",
+  immediate = false,
 }: SectionHeaderProps) {
   const isConsole = tone === "console";
   const Title = titleLevel;
 
   return (
-    <Reveal as="header" className="mb-12 grid gap-6 lg:grid-cols-12 lg:items-end">
+    <Reveal
+      as="header"
+      immediate={immediate}
+      className="mb-12 grid gap-6 lg:grid-cols-12 lg:items-end"
+    >
       <div className="lg:col-span-7">
         <p
           className={cn(
