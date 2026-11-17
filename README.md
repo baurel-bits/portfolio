@@ -62,6 +62,17 @@ jour = régénérer le PDF, remplacer ce fichier, puis redéployer.
 Le `.docx` du même nom reste dans `public/cv/` comme source éditable : il n'est plus
 servi au téléchargement.
 
+Pour régénérer le PDF depuis le `.docx` (rendu via `docx-preview` dans Chrome
+headless, A4, marges nulles) :
+
+```bash
+npm run cv:pdf
+```
+
+La commande lance un serveur local, ouvre le DOCX dans un Chrome headless découvert
+automatiquement (`CHROME_PATH` pour surcharger le chemin), et écrit le PDF à côté
+du `.docx`. Chrome est requis sur la machine ; aucune dépendance Word/LibreOffice.
+
 La page `/{locale}/cv` reste une version web construite à partir des données du site
 (`src/data/`), imprimable en PDF via le bouton d'impression.
 
