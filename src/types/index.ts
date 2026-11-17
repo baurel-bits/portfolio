@@ -22,6 +22,11 @@ export type ProjectCover = {
   width: number;
   height: number;
   alt: LocalizedText;
+  /**
+   * Ratio du cadre large de la page projet, pour les bannières composées
+   * (ex. « 26 / 10 »). Par défaut le cadre reste en 16/10 et le visuel est rogné.
+   */
+  aspect?: string;
 };
 
 /**

@@ -55,9 +55,28 @@ reste sans mesure d'audience.
 ## CV
 
 Le CV téléchargeable est le document lui-même, servi tel quel :
-`public/cv/CV-Baurel-Bemmo-Fullstack.docx`. Les boutons « Télécharger le CV » (navbar et
+`public/cv/CV-Baurel-Bemmo-Fullstack.pdf`. Les boutons « Télécharger le CV » (navbar et
 hero) pointent directement dessus, sans copie du contenu dans le code. Mettre le CV à
-jour = remplacer ce fichier, puis redéployer.
+jour = régénérer le PDF, remplacer ce fichier, puis redéployer.
+
+Le `.docx` du même nom reste dans `public/cv/` comme source éditable : il n'est plus
+servi au téléchargement.
+
+Pour régénérer le PDF depuis le `.docx` (rendu via `docx-preview` dans Chrome
+headless, A4, marges nulles) :
+
+```bash
+npm run cv:pdf
+```
+
+La commande lance un serveur local, ouvre le DOCX dans un Chrome headless découvert
+automatiquement (`CHROME_PATH` pour surcharger le chemin), et écrit le PDF à côté
+du `.docx`. Chrome est requis sur la machine ; aucune dépendance Word/LibreOffice.
+
+Le script refuse de valider le PDF si le document ne tient plus sur une page A4, si
+un bloc « Technologies » ou un texte repère (URL du portfolio, OpenClassrooms,
+JavaScript) a disparu, si un mot à retirer réapparaît, ou si l'hyphenation coupe des
+noms propres. Les repères sont regroupés dans la constante `EXPECTED` du script.
 
 La page `/{locale}/cv` reste une version web construite à partir des données du site
 (`src/data/`), imprimable en PDF via le bouton d'impression.

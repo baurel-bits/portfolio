@@ -37,8 +37,11 @@ export function ProjectCover({
         "relative w-full overflow-clip border-console-line bg-console",
         large ? "aspect-[16/10]" : "h-56 border-b sm:h-64 lg:h-72",
       )}
+      // Une bannière large s'affiche dans un cadre à son ratio : sans cela le
+      // haut et le bas du visuel seraient rognés.
+      style={large && project.cover?.aspect ? { aspectRatio: project.cover.aspect } : undefined}
     >
-      <div className="cover-scroll h-full w-full">
+      <div className="cover-scroll relative h-full w-full">
         {project.cover ? (
           <Image
             src={project.cover.src}

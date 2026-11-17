@@ -51,7 +51,7 @@ export function AboutSection({ locale, about }: AboutSectionProps) {
               <dd className="text-right text-body-s">
                 <a
                   href={`mailto:${site.email}`}
-                  className="break-all text-ink underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-accent"
+                  className="inline-block break-all py-1 text-ink underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-accent"
                 >
                   {site.email}
                 </a>
@@ -66,8 +66,8 @@ export function AboutSection({ locale, about }: AboutSectionProps) {
                 <a
                   href={site.github}
                   target="_blank"
-                  rel="noreferrer"
-                  className="text-ink underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-accent"
+                  rel="noopener noreferrer"
+                  className="inline-block py-1 text-ink underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-accent"
                 >
                   {site.githubHandle}
                 </a>

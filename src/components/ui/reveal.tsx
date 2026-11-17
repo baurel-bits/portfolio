@@ -10,12 +10,26 @@ type RevealProps = {
   as?: RevealElement;
   delay?: number;
   className?: string;
+  /**
+   * Rendu visible dès le premier paint, sans animation.
+   * À utiliser pour le contenu déjà au-dessus de la ligne de flottaison : masqué,
+   * il ne devient le LCP qu'après l'hydratation (3 s sur mobile bridé).
+   */
+  immediate?: boolean;
   children: ReactNode;
 };
 
-export function Reveal({ as = "div", delay = 0, className, children }: RevealProps) {
+export function Reveal({ as = "div", delay = 0, className, immediate = false, children }: RevealProps) {
   const { ref, inView } = useInView<HTMLElement>();
   const Tag = as as ElementType;
+
+  if (immediate) {
+    return (
+      <Tag ref={ref} className={className}>
+        {children}
+      </Tag>
+    );
+  }
 
   return (
     <Tag

@@ -22,16 +22,19 @@ function normalizeOrigin(value: string | undefined): string | null {
  * URL publique du site (canonical, Open Graph, métadonnées).
  *
  * 1. `NEXT_PUBLIC_SITE_URL` : à définir en production (domaine final).
- * 2. `VERCEL_PROJECT_PRODUCTION_URL` : domaine de production fourni par Vercel.
- * 3. `VERCEL_URL` : URL du déploiement courant (previews).
- * 4. `http://localhost:3000` en développement.
+ * 2. `URL` / `DEPLOY_PRIME_URL` : domaine de production fourni par Netlify.
+ * 3. `VERCEL_PROJECT_PRODUCTION_URL` : domaine de production fourni par Vercel.
+ * 4. `VERCEL_URL` : URL du déploiement courant (previews).
+ * 5. `https://porfoliodeteker.netlify.app` en fallback de production.
  */
 export function resolveSiteUrl(): string {
   return (
     normalizeOrigin(process.env.NEXT_PUBLIC_SITE_URL) ??
+    normalizeOrigin(process.env.URL) ??
+    normalizeOrigin(process.env.DEPLOY_PRIME_URL) ??
     normalizeOrigin(process.env.VERCEL_PROJECT_PRODUCTION_URL) ??
     normalizeOrigin(process.env.VERCEL_URL) ??
-    "http://localhost:3000"
+    "https://porfoliodeteker.netlify.app"
   );
 }
 
@@ -40,7 +43,7 @@ export const siteUrl = resolveSiteUrl();
 export const site = {
   brand: "TEKER Codes",
   wordmark: "TEKER/Codes",
-  owner: "Baurel",
+  owner: "Baurel Bemmo",
   email: "baurelbemmo@gmail.com",
   phone: "+237 656 384 260",
   phoneHref: "+237656384260",
@@ -52,6 +55,8 @@ export const site = {
   githubAltHandle: "Baurel237",
   gitlab: "https://gitlab.com/baurel",
   gitlabHandle: "baurel",
+  linkedin: "https://www.linkedin.com/in/baurel-bemmo",
+  linkedinHandle: "baurel-bemmo",
   copyrightYear: 2026,
   location: {
     fr: "Yaoundé, Cameroun",
@@ -71,4 +76,8 @@ export const site = {
     en: "French (fluent) · English (B1)",
   } satisfies LocalizedText,
   stackPreview: ["React", "Next.js", "Tailwind CSS", "Java", "Spring Boot", "PostgreSQL"],
+  cvUrl: {
+    fr: "https://porfoliodeteker.netlify.app/fr/cv",
+    en: "https://porfoliodeteker.netlify.app/en/cv",
+  } satisfies LocalizedText,
 } as const;

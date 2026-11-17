@@ -18,6 +18,7 @@ import {
   GraduationCapIcon,
   LayersIcon,
   GitHubIcon,
+  LinkedInIcon,
   MailIcon,
   MapPinIcon,
   PhoneIcon,
@@ -29,6 +30,7 @@ import {
   TerminalIcon,
 } from "@/components/ui/icons";
 import { educationEntries } from "@/data/education";
+import { experiences } from "@/data/experience";
 import { goals } from "@/data/goals";
 import { projects } from "@/data/projects";
 import { skillDomains } from "@/data/skills";
@@ -60,20 +62,23 @@ export async function generateMetadata({ params }: CvPageProps): Promise<Metadat
   const dict = getDictionary(resolveLocale(locale));
 
   const active = resolveLocale(locale);
-  const title = `${dict.cv.title} — ${site.owner}`;
+  // `dict.cv.title` contient déjà le nom du propriétaire : le suffixer une
+  // seconde fois produisait « Curriculum vitae — Baurel Bemmo — Baurel Bemmo ».
+  const title = dict.cv.title;
 
   return {
     title,
     description: dict.meta.description,
     alternates: {
       canonical: `/${active}/cv`,
-      languages: { fr: "/fr/cv", en: "/en/cv" },
+      languages: { fr: "/fr/cv", en: "/en/cv", "x-default": "/fr/cv" },
     },
     openGraph: {
       title,
       description: dict.meta.description,
       url: `/${active}/cv`,
       type: "profile",
+      siteName: site.brand,
       images: [{ url: `/${active}/opengraph-image`, width: 1200, height: 630, alt: dict.meta.title }],
     },
     twitter: {
@@ -100,7 +105,7 @@ export default async function CvPage({ params }: CvPageProps) {
         <div className="no-print mb-8 flex flex-wrap items-center justify-between gap-4">
           <Link
             href={`/${active}`}
-            className="group inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.12em] text-ink-muted transition-colors hover:text-ink"
+            className="group inline-flex min-h-11 items-center gap-2 font-mono text-micro uppercase tracking-[0.12em] text-ink-muted transition-colors hover:text-ink print:min-h-0"
           >
             <ArrowRightIcon
               width={13}
@@ -110,7 +115,9 @@ export default async function CvPage({ params }: CvPageProps) {
             {dict.cv.back}
           </Link>
           <div className="flex flex-wrap items-center gap-2">
-            <DownloadCVButton label={dict.cv.download} variant="outline" size="sm" />
+            {/* Taille `sm` (36 px) trop petite au doigt : on garde la taille `md`, alignée sur
+                le bouton d'impression voisin et sur la cible tactile de 44 px. */}
+            <DownloadCVButton label={dict.cv.download} variant="outline" />
             <PrintButton label={dict.cv.print} />
           </div>
         </div>
@@ -153,13 +160,13 @@ export default async function CvPage({ params }: CvPageProps) {
               </li>
               <li className="cv-meta flex items-center gap-2">
                 <MailIcon width={14} height={14} className="shrink-0 text-accent" />
-                <a href={mailto} className="transition-colors hover:text-accent">
+                <a href={mailto}                      className="inline-block py-1 transition-colors hover:text-accent print:py-0">
                   {site.email}
                 </a>
               </li>
               <li className="cv-meta flex items-center gap-2">
                 <PhoneIcon width={14} height={14} className="shrink-0 text-accent" />
-                <a href={tel} className="transition-colors hover:text-accent">
+                <a href={tel}                      className="inline-block py-1 transition-colors hover:text-accent print:py-0">
                   {site.phone}
                 </a>
               </li>
@@ -168,8 +175,8 @@ export default async function CvPage({ params }: CvPageProps) {
                 <a
                   href={site.whatsappHref}
                   target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-accent"
+                  rel="noopener noreferrer"
+                  className="inline-block py-1 transition-colors hover:text-accent print:py-0"
                 >
                   {site.whatsapp}
                 </a>
@@ -179,8 +186,8 @@ export default async function CvPage({ params }: CvPageProps) {
                 <a
                   href={site.github}
                   target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-accent"
+                  rel="noopener noreferrer"
+                  className="inline-block py-1 transition-colors hover:text-accent print:py-0"
                 >
                   {site.githubHandle}
                 </a>
@@ -190,8 +197,8 @@ export default async function CvPage({ params }: CvPageProps) {
                     <a
                       href={site.githubAlt}
                       target="_blank"
-                      rel="noreferrer"
-                      className="transition-colors hover:text-accent"
+                      rel="noopener noreferrer"
+                      className="inline-block py-1 transition-colors hover:text-accent print:py-0"
                     >
                       {site.githubAltHandle}
                     </a>
@@ -202,11 +209,69 @@ export default async function CvPage({ params }: CvPageProps) {
                 <GlobeIcon width={14} height={14} className="shrink-0 text-accent" />
                 {site.languages[active]}
               </li>
+              {site.linkedin ? (
+                <li className="cv-meta flex items-center gap-2">
+                  <LinkedInIcon width={14} height={14} className="shrink-0 text-accent" />
+                  <a
+                    href={site.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block py-1 transition-colors hover:text-accent print:py-0"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+              ) : null}
             </ul>
           </header>
 
           <CvSection icon={<SparkleIcon width={14} height={14} />} title={dict.cv.profile} delay={60}>
             <p className="max-w-[70ch] text-body-m text-ink-soft">{dict.cv.profileBody}</p>
+          </CvSection>
+
+          <CvSection icon={<BriefcaseIcon width={14} height={14} />} title={dict.cv.experience} delay={85}>
+            <ol className="relative space-y-5 pl-6">
+              <span
+                aria-hidden="true"
+                className="cv-timeline absolute inset-y-1 left-[3px] w-px bg-line"
+              />
+              {experiences.map((exp) => (
+                <li key={exp.id} className="relative print-block">
+                  <span
+                    aria-hidden="true"
+                    className="absolute -left-6 top-1.5 size-2 rounded-full border border-accent bg-paper-raised"
+                  />
+                  <p className="font-mono text-micro uppercase tracking-[0.1em] text-ink-muted">
+                    {exp.period[active]}
+                  </p>
+                  <p className="mt-1 text-body-m font-semibold text-ink">{exp.role[active]}</p>
+                  <p className="text-body-s text-ink-muted">
+                    {exp.company[active]} · {exp.location[active]}
+                  </p>
+                  <p className="mt-1 text-body-s text-ink-soft">{exp.description[active]}</p>
+                  <ul className="mt-2 space-y-1">
+                    {exp.highlights.map((h, i) => (
+                      <li key={i} className="flex gap-2 text-body-s text-ink-soft">
+                        <CheckIcon
+                          width={12}
+                          height={12}
+                          className="mt-1 shrink-0 text-accent"
+                          aria-hidden="true"
+                        />
+                        {h[active]}
+                      </li>
+                    ))}
+                  </ul>
+                  <ul className="mt-2 flex flex-wrap gap-1.5">
+                    {exp.stack.map((item) => (
+                      <li key={item}>
+                        <Tag>{item}</Tag>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ol>
           </CvSection>
 
           <CvSection icon={<CodeIcon width={14} height={14} />} title={dict.cv.skills} delay={110}>
@@ -243,7 +308,7 @@ export default async function CvPage({ params }: CvPageProps) {
                     <p className="text-body-m font-semibold text-ink">{project.title[active]}</p>
                     <Link
                       href={`/${active}/projets/${project.id}`}
-                      className="no-print inline-flex items-center gap-1 font-mono text-micro uppercase tracking-[0.1em] text-ink-muted transition-colors hover:text-accent"
+                      className="no-print inline-flex min-h-6 items-center gap-1 font-mono text-micro uppercase tracking-[0.1em] text-ink-muted transition-colors hover:text-accent"
                     >
                       {project.year ?? dict.projects.viewProject}
                       <ArrowUpRightIcon

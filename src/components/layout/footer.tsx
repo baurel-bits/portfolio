@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
-import { GitHubIcon, MailIcon } from "@/components/ui/icons";
+import { GitHubIcon, LinkedInIcon, MailIcon } from "@/components/ui/icons";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { site } from "@/lib/site";
@@ -23,7 +23,7 @@ export function Footer({ locale, nav, footer }: FooterProps) {
   ];
 
   return (
-    <footer className="no-print border-t border-console-line bg-console text-console-text">
+    <footer className="no-print border-t border-console-line bg-console text-console-text [--focus-ring:var(--color-signal)]">
       <Container size="wide" className="py-16 lg:py-20">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
@@ -45,7 +45,7 @@ export function Footer({ locale, nav, footer }: FooterProps) {
                 <li key={link.hash}>
                   <Link
                     href={`/${locale}${link.hash}`}
-                    className="text-body-s text-console-text transition-colors hover:text-signal"
+                    className="inline-flex min-h-11 items-center text-body-s text-console-text transition-colors hover:text-signal"
                   >
                     {link.label}
                   </Link>
@@ -62,7 +62,7 @@ export function Footer({ locale, nav, footer }: FooterProps) {
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="inline-flex items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
+                  className="inline-flex min-h-11 items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
                 >
                   <MailIcon />
                   {site.email}
@@ -72,20 +72,33 @@ export function Footer({ locale, nav, footer }: FooterProps) {
                 <a
                   href={site.github}
                   target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
                 >
                   <GitHubIcon />
                   {site.githubHandle}
                 </a>
               </li>
+              {site.linkedin ? (
+                <li>
+                  <a
+                    href={site.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
+                  >
+                    <LinkedInIcon />
+                    LinkedIn
+                  </a>
+                </li>
+              ) : null}
               {site.githubAlt ? (
                 <li>
                   <a
                     href={site.githubAlt}
                     target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center gap-2 text-body-s text-console-text transition-colors hover:text-signal"
                   >
                     <GitHubIcon />
                     {site.githubAltHandle}
@@ -102,7 +115,7 @@ export function Footer({ locale, nav, footer }: FooterProps) {
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <span>{footer.built}</span>
-            <a href="#top" className="transition-colors hover:text-signal">
+            <a href="#top" className="inline-flex min-h-6 items-center transition-colors hover:text-signal">
               {footer.backToTop}
             </a>
           </div>

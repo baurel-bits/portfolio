@@ -5,10 +5,12 @@ import type { ComponentProps, ReactNode } from "react";
 
 export type SectionTone = "paper" | "sunken" | "console";
 
+// Sur fond `console`, l'anneau de focus passe au signal (15:1) : l'accent
+// n'y atteint pas les 3:1 exigés pour un indicateur de focus.
 const tones: Record<SectionTone, string> = {
   paper: "bg-paper text-ink",
   sunken: "bg-paper-sunken text-ink",
-  console: "bg-console text-console-text",
+  console: "bg-console text-console-text [--focus-ring:var(--color-signal)]",
 };
 
 type SectionProps = ComponentProps<"section"> & {
@@ -41,6 +43,10 @@ type SectionHeaderProps = {
   title: string;
   description?: string;
   tone?: SectionTone;
+  /** `h1` quand cet en-tête est le titre principal de la page (index). */
+  titleLevel?: "h1" | "h2";
+  /** Ne pas animer l'en-tête : contenu au-dessus de la ligne de flottaison. */
+  immediate?: boolean;
 };
 
 export function SectionHeader({
@@ -48,11 +54,18 @@ export function SectionHeader({
   title,
   description,
   tone = "paper",
+  titleLevel = "h2",
+  immediate = false,
 }: SectionHeaderProps) {
   const isConsole = tone === "console";
+  const Title = titleLevel;
 
   return (
-    <Reveal as="header" className="mb-12 grid gap-6 lg:grid-cols-12 lg:items-end">
+    <Reveal
+      as="header"
+      immediate={immediate}
+      className="mb-12 grid gap-6 lg:grid-cols-12 lg:items-end"
+    >
       <div className="lg:col-span-7">
         <p
           className={cn(
@@ -63,14 +76,14 @@ export function SectionHeader({
           {label}
         </p>
         <span aria-hidden="true" className="section-rule" />
-        <h2
+        <Title
           className={cn(
             "mt-4 font-display text-display-l font-bold",
             isConsole ? "text-console-text" : "text-ink",
           )}
         >
           {title}
-        </h2>
+        </Title>
       </div>
       {description ? (
         <p

@@ -19,8 +19,10 @@ type NavbarProps = {
   nav: Dictionary["nav"];
 };
 
+// `min-h-11` : la cible tactile atteint 44 px de haut ; le soulignement est
+// replacé sous la ligne de texte (`bottom-3.5`) pour rester à la même distance.
 const linkBase =
-  "relative text-body-s font-medium transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:bg-accent after:transition-transform after:duration-200";
+  "relative inline-flex min-h-11 items-center text-body-s font-medium transition-colors after:absolute after:bottom-3.5 after:left-0 after:h-px after:w-full after:origin-left after:bg-accent after:transition-transform after:duration-200";
 
 const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -180,7 +182,7 @@ export function Navbar({ locale, nav }: NavbarProps) {
             </div>
 
             <span className="hidden sm:inline-flex">
-              <DownloadCVButton label={nav.cvLong} size="sm" variant="primary" />
+              <DownloadCVButton label={nav.cv} size="sm" variant="primary" href={`/${locale}/cv`} />
             </span>
 
             <ThemeToggle toDark={nav.themeDark} toLight={nav.themeLight} />
@@ -240,7 +242,7 @@ export function Navbar({ locale, nav }: NavbarProps) {
 
           <div className="mt-auto flex flex-wrap items-center justify-between gap-4">
             <LanguageSwitcher locale={locale} label={nav.language} />
-            <DownloadCVButton label={nav.cvLong} size="sm" />
+            <DownloadCVButton label={nav.cv} size="sm" href={`/${locale}/cv`} />
           </div>
         </Container>
       </div>

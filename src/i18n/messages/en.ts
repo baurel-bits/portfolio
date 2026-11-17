@@ -3,9 +3,9 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 // Traductions anglaises : à relire avant publication (aucune validation par Baurel à ce jour).
 export const en: Dictionary = {
   meta: {
-    title: "Baurel — Full-stack developer, frontend & mobile",
+    title: "Baurel Bemmo — Full-stack developer, frontend & mobile",
     description:
-      "Portfolio of Baurel (TEKER Codes), a full-stack developer focused on frontend and mobile: React, Next.js, Angular, React Native, Java, Spring Boot and PostgreSQL.",
+      "Portfolio of Baurel Bemmo (TEKER Codes), a full-stack developer focused on frontend and mobile: React, Next.js, Angular, React Native, Java, Spring Boot and PostgreSQL.",
   },
   nav: {
     label: "Main navigation",
@@ -17,7 +17,7 @@ export const en: Dictionary = {
     goals: "Goals",
     contact: "Contact",
     cv: "CV",
-    cvLong: "Download CV",
+    cvLong: "View Resume",
     menu: "Open menu",
     close: "Close menu",
     language: "Change language",
@@ -25,11 +25,11 @@ export const en: Dictionary = {
     themeLight: "Switch to light mode",
   },
   hero: {
-    eyebrow: "Full-stack developer · Frontend & mobile",
-    titleFirst: "Baurel",
+    eyebrow: "Full-stack developer\u00a0· Frontend\u00a0&\u00a0mobile",
+    titleFirst: "Baurel Bemmo",
     titleSecond: "TEKER Codes",
     intro:
-      "I build clear interfaces and solid APIs: React and Next.js on the client, Java and Spring Boot on the server. Based in Yaoundé, open to an internship or a first role.",
+      "I build clear interfaces and solid APIs: React and Next.js on the client, Java and Spring Boot on the server. Based in Yaoundé, open to an internship or first full-time role (on-site or remote).",
     primary: "View projects",
     availability: "Open to opportunities",
     stackLabel: "Stack",
@@ -38,7 +38,7 @@ export const en: Dictionary = {
   about: {
     label: "01 — About",
     title: "Who I am",
-    lead: "Junior frontend-focused developer with hands-on Java backend practice.",
+    lead: "Full-stack frontend-focused developer with hands-on Java backend practice.",
     body: [
       "I work with React and Next.js to build readable, responsive and accessible interfaces. On the server side I develop REST APIs with Java and Spring Boot: entity modelling, services, controllers, data validation and PostgreSQL persistence.",
       "This portfolio does not list promises: it presents several documented projects with the stack actually used. The code is public on GitHub and I publish new projects as they are built.",
@@ -68,6 +68,9 @@ export const en: Dictionary = {
     coverPending: "Screenshot pending",
     coverNote: "Placeholder for the project screenshot.",
     viewProject: "View project",
+    viewAll: "View all projects",
+    indexTitle: "All projects",
+    backHome: "Back to home",
     backToProjects: "Back to projects",
     nextProject: "Next project",
     linksLabel: "Links",
@@ -119,7 +122,7 @@ export const en: Dictionary = {
     },
   },
   footer: {
-    tagline: "Portfolio of Baurel — full-stack developer focused on frontend and mobile.",
+    tagline: "Portfolio of Baurel Bemmo — full-stack developer focused on frontend and mobile.",
     navigation: "Navigation",
     connect: "Get in touch",
     rights: "All rights reserved.",
@@ -127,15 +130,16 @@ export const en: Dictionary = {
     backToTop: "Back to top",
   },
   cv: {
-    title: "Curriculum vitae",
+    title: "Curriculum vitae — Baurel Bemmo",
     print: "Print / Save as PDF",
-    download: "Download CV",
+    download: "Download CV file",
     back: "Back to website",
     note: "Printable version: in the print dialog, choose “Save as PDF”.",
-    photoAlt: "Photo of Baurel",
+    photoAlt: "Photo of Baurel Bemmo",
     profile: "Profile",
     profileBody:
       "Full-stack developer focused on frontend and mobile. I build web interfaces with React, Angular and Next.js, mobile apps with React Native and Expo, and the APIs behind them in Java / Spring Boot with PostgreSQL. I work with Docker, a Clean Architecture and microservices approach, and with testing and quality-assurance practices. In my final year at PKFokam Institute (KFOKAM48), holding a Sololearn web development certificate and an OpenClassrooms JavaScript certificate, with team experience on SuperApp (frontend) and Sekouh (QA).",
+    experience: "Experience & achievements",
     skills: "Skills",
     projects: "Projects",
     education: "Education",

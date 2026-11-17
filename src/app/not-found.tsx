@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { site } from "@/lib/site";
 import { fontVariables } from "@/lib/fonts";
 import "@/styles/globals.css";
+
+/** Sans titre, la 404 s'affichait avec le titre de la page d'accueil. */
+export const metadata: Metadata = {
+  title: `Page introuvable — ${site.owner}`,
+  robots: { index: false, follow: false },
+};
 
 /**
  * 404 globale (URL hors `/[locale]`). Rendue hors du layout localisé : le

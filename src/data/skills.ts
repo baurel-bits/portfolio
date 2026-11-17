@@ -1,7 +1,7 @@
 import type { SkillDomain } from "@/types";
 
 /**
- * Domaines repris du CV (`public/cv/CV-Baurel-Bemmo-Fullstack.docx`) :
+ * Domaines repris du CV (`public/cv/CV-Baurel-Bemmo-Fullstack.pdf`) :
  * aucun domaine ni technologie affiché ici qui n'y figure pas.
  */
 export const skillDomains: readonly SkillDomain[] = [
