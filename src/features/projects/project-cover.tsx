@@ -28,7 +28,6 @@ export function ProjectCover({
   preload = false,
 }: ProjectCoverProps) {
   const hasLink = project.links.length > 0;
-  const contain = project.cover?.fit === "contain";
 
   return (
     <div
@@ -38,23 +37,10 @@ export function ProjectCover({
         "relative w-full overflow-clip border-console-line bg-console",
         large ? "aspect-[16/10]" : "h-56 border-b sm:h-64 lg:h-72",
       )}
+      // Une bannière large s'affiche dans un cadre à son ratio : sans cela le
+      // haut et le bas du visuel seraient rognés.
+      style={large && project.cover?.aspect ? { aspectRatio: project.cover.aspect } : undefined}
     >
-      {project.cover && contain ? (
-        // Fond « ambiant » : le visuel entier laisse des bandes dans un cadre
-        // plus large que lui. On les remplit avec le même visuel flouté plutôt
-        // que de rogner le contenu.
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-          <Image
-            src={project.cover.src}
-            alt=""
-            width={project.cover.width}
-            height={project.cover.height}
-            sizes={large ? "(min-width: 1024px) 34vw, 100vw" : "(min-width: 1024px) 58vw, 100vw"}
-            className="h-full w-full scale-125 object-cover opacity-80 blur-3xl"
-          />
-        </div>
-      ) : null}
-
       <div className="cover-scroll relative h-full w-full">
         {project.cover ? (
           <Image
@@ -64,13 +50,7 @@ export function ProjectCover({
             height={project.cover.height}
             preload={preload}
             sizes={large ? "(min-width: 1024px) 34vw, 100vw" : "(min-width: 1024px) 58vw, 100vw"}
-            className={cn(
-              "cover-in h-full w-full",
-              // Collage ou maquette multi-écrans : affiché entier, sans zoom.
-              contain
-                ? "object-contain"
-                : "object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100",
-            )}
+            className="cover-in h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
         ) : (
           <div className="cover-placeholder flex h-full w-full flex-col items-center justify-center gap-2 px-4 text-center">

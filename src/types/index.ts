@@ -23,10 +23,10 @@ export type ProjectCover = {
   height: number;
   alt: LocalizedText;
   /**
-   * `contain` pour les visuels composés (collages, maquettes multi-écrans) qui
-   * ne doivent pas être rognés par le cadre de la carte. Défaut : `cover`.
+   * Ratio du cadre large de la page projet, pour les bannières composées
+   * (ex. « 26 / 10 »). Par défaut le cadre reste en 16/10 et le visuel est rogné.
    */
-  fit?: "cover" | "contain";
+  aspect?: string;
 };
 
 /**
