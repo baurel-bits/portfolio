@@ -29,6 +29,18 @@ const DEFAULT_DOCX = path.join(ROOT, "public/cv/CV-Baurel-Bemmo-Fullstack.docx")
 const DOCX = path.resolve(process.argv[2] ?? process.env.CV_DOCX ?? DEFAULT_DOCX);
 const PDF = DOCX.replace(/\.docx$/i, ".pdf");
 
+/**
+ * Repères du CV publié. Le script échoue si l'un d'eux disparaît, pour éviter de
+ * mettre en ligne un CV tronqué après une retouche du DOCX. À ajuster avec le CV.
+ */
+const EXPECTED = {
+  pages: 1,
+  a4: { width: 595, height: 842 },
+  techBlocks: 7,
+  required: ["porfoliodeteker.netlify.app/fr", "OpenClassrooms", "JavaScript"],
+  forbidden: ["TradeFlow", "junior"],
+};
+
 const CHROME_PATHS = [
   process.env.CHROME_PATH,
   "C:/Program Files/Google/Chrome/Application/chrome.exe",
@@ -110,6 +122,53 @@ function findChrome() {
   }
 
   return found;
+}
+
+/** Contrôles sur le rendu HTML : rien n'a été perdu ni coupé avant l'impression. */
+function verifyRender({ text, sections, hyphens }) {
+  const problems = [];
+
+  if (sections !== EXPECTED.pages) {
+    problems.push(`${EXPECTED.pages} page(s) attendue(s) dans le rendu, ${sections} trouvée(s)`);
+  }
+  if (hyphens !== "none") {
+    problems.push(`hyphenation active (${hyphens}) : le rendu peut couper des noms propres`);
+  }
+
+  const techBlocks = (text.match(/Technologies/g) ?? []).length;
+  if (techBlocks !== EXPECTED.techBlocks) {
+    problems.push(`${EXPECTED.techBlocks} blocs « Technologies » attendus, ${techBlocks} trouvés`);
+  }
+  for (const snippet of EXPECTED.required) {
+    if (!text.includes(snippet)) problems.push(`texte attendu absent : « ${snippet} »`);
+  }
+  const lower = text.toLowerCase();
+  for (const word of EXPECTED.forbidden) {
+    if (lower.includes(word.toLowerCase())) problems.push(`texte à retirer présent : « ${word} »`);
+  }
+
+  return problems;
+}
+
+/** Contrôles sur le PDF produit : une seule page, au format A4. */
+function verifyPdf(buffer) {
+  const problems = [];
+  const raw = buffer.toString("latin1");
+  const pages = (raw.match(/\/Type\s*\/Page[^s]/g) ?? []).length;
+  const box = raw.match(/\/MediaBox\s*\[\s*([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s*\]/);
+  const width = box ? Math.round(Number(box[3]) - Number(box[1])) : null;
+  const height = box ? Math.round(Number(box[4]) - Number(box[2])) : null;
+
+  if (pages !== EXPECTED.pages) {
+    problems.push(`${EXPECTED.pages} page attendue dans le PDF, ${pages || "aucune"} détectée(s)`);
+  }
+  if (width !== EXPECTED.a4.width || height !== EXPECTED.a4.height) {
+    problems.push(
+      `format A4 attendu (${EXPECTED.a4.width}×${EXPECTED.a4.height} pt), obtenu ${width}×${height} pt`,
+    );
+  }
+
+  return problems;
 }
 
 const freePort = () =>
@@ -250,22 +309,35 @@ async function main() {
     });
     await client.send("Page.navigate", { url: `http://127.0.0.1:${httpPort}/` });
 
-    let sections = 0;
+    let render = null;
     for (let attempt = 0; attempt < 100; attempt += 1) {
       await sleep(200);
       const { result } = await client.send("Runtime.evaluate", {
-        expression:
-          "JSON.stringify({ ready: !!window.__ready, error: window.__error || null, sections: document.querySelectorAll('section.docx').length })",
+        expression: `JSON.stringify((() => {
+          const section = document.querySelector('section.docx');
+          return {
+            ready: !!window.__ready,
+            error: window.__error || null,
+            sections: document.querySelectorAll('section.docx').length,
+            hyphens: section ? getComputedStyle(section).hyphens : null,
+            text: (document.getElementById('out')?.innerText || "").replace(/\\s+/g, ' ').trim(),
+          };
+        })())`,
         returnByValue: true,
       });
       const state = JSON.parse(result.value);
       if (state.error) throw new Error(`rendu du DOCX : ${state.error}`);
       if (state.ready) {
-        sections = state.sections;
+        render = state;
         break;
       }
     }
-    if (!sections) throw new Error("le DOCX n'a pas fini de se rendre.");
+    if (!render?.sections) throw new Error("le DOCX n'a pas fini de se rendre.");
+
+    const renderProblems = verifyRender(render);
+    if (renderProblems.length > 0) {
+      throw new Error(`contrôles du CV :\n - ${renderProblems.join("\n - ")}`);
+    }
 
     const { data } = await client.send("Page.printToPDF", {
       printBackground: true,
@@ -279,11 +351,21 @@ async function main() {
       scale: 1,
     });
 
-    fs.writeFileSync(PDF, Buffer.from(data, "base64"));
+    const pdf = Buffer.from(data, "base64");
+    fs.writeFileSync(PDF, pdf);
     client.close();
 
-    const size = Math.round(fs.statSync(PDF).size / 1024);
+    const pdfProblems = verifyPdf(pdf);
+    if (pdfProblems.length > 0) {
+      throw new Error(`contrôles du PDF :\n - ${pdfProblems.join("\n - ")}`);
+    }
+
+    const size = Math.round(pdf.length / 1024);
     console.log(`PDF : ${path.relative(ROOT, PDF)} (${size} Ko)`);
+    console.log(
+      `Contrôles OK : ${EXPECTED.pages} page ${EXPECTED.a4.width}×${EXPECTED.a4.height} pt, ` +
+        `${EXPECTED.techBlocks} blocs « Technologies », textes clés présents, sans césure`,
+    );
   } finally {
     await cleanup();
   }

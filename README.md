@@ -73,6 +73,11 @@ La commande lance un serveur local, ouvre le DOCX dans un Chrome headless décou
 automatiquement (`CHROME_PATH` pour surcharger le chemin), et écrit le PDF à côté
 du `.docx`. Chrome est requis sur la machine ; aucune dépendance Word/LibreOffice.
 
+Le script refuse de valider le PDF si le document ne tient plus sur une page A4, si
+un bloc « Technologies » ou un texte repère (URL du portfolio, OpenClassrooms,
+JavaScript) a disparu, si un mot à retirer réapparaît, ou si l'hyphenation coupe des
+noms propres. Les repères sont regroupés dans la constante `EXPECTED` du script.
+
 La page `/{locale}/cv` reste une version web construite à partir des données du site
 (`src/data/`), imprimable en PDF via le bouton d'impression.
 
