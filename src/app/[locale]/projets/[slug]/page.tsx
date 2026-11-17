@@ -13,10 +13,10 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { site, siteUrl } from "@/lib/site";
 
 // Seuls les projets de `src/data/projects.ts` existent : tout autre slug est un 404.
-// Refusé dès le routage (`dynamicParams = false`) : sans cela, la première
-// requête sur un slug inconnu streamait la coquille prérendue en 200 avant de
-// répondre 404, un soft 404 pour les robots.
-export const dynamicParams = false;
+// `dynamicParams` est interdit avec `cacheComponents`. Sans `ensureStatic`, un
+// slug inconnu servait d'abord la coquille prérendue en 200 (partialPrefetching)
+// avant de mettre le 404 en cache : un soft 404 à la première visite.
+export const ensureStatic = "navigation";
 
 type ProjectPageProps = {
   params: Promise<{ locale: string; slug: string }>;
