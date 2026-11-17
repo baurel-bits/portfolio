@@ -55,9 +55,12 @@ reste sans mesure d'audience.
 ## CV
 
 Le CV téléchargeable est le document lui-même, servi tel quel :
-`public/cv/CV-Baurel-Bemmo-Fullstack.docx`. Les boutons « Télécharger le CV » (navbar et
+`public/cv/CV-Baurel-Bemmo-Fullstack.pdf`. Les boutons « Télécharger le CV » (navbar et
 hero) pointent directement dessus, sans copie du contenu dans le code. Mettre le CV à
-jour = remplacer ce fichier, puis redéployer.
+jour = régénérer le PDF, remplacer ce fichier, puis redéployer.
+
+Le `.docx` du même nom reste dans `public/cv/` comme source éditable : il n'est plus
+servi au téléchargement.
 
 La page `/{locale}/cv` reste une version web construite à partir des données du site
 (`src/data/`), imprimable en PDF via le bouton d'impression.

@@ -1,7 +1,7 @@
 import type { EducationEntry } from "@/types";
 
 /**
- * Formation reprise du CV (`public/cv/CV-Baurel-Bemmo-Fullstack.docx`).
+ * Formation reprise du CV (`public/cv/CV-Baurel-Bemmo-Fullstack.pdf`).
  *
  * Une date inconnue s'écrit explicitement (« En cours », « Année à confirmer ») :
  * ne jamais laisser une année approximative.
