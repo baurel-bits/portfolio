@@ -19,8 +19,8 @@ export const experiences: readonly ExperienceEntry[] = [
       en: "2024",
     },
     role: {
-      fr: "Développeur Frontend & Intégration API — SuperApp",
-      en: "Frontend Developer & API Integration — SuperApp",
+      fr: "Développeur Frontend — SuperApp",
+      en: "Frontend Developer — SuperApp",
     },
     company: {
       fr: "Projet d'équipe (Promotion KFOKAM48)",
@@ -57,32 +57,32 @@ export const experiences: readonly ExperienceEntry[] = [
       en: "2024",
     },
     role: {
-      fr: "Développeur Backend & Assurance Qualité — SekouH",
-      en: "Backend & QA Developer — SekouH",
+      fr: "Assurance Qualité (QA) — SekouH",
+      en: "Quality Assurance (QA) — SekouH",
     },
     company: {
-      fr: "Système de gestion académique",
-      en: "Academic management system",
+      fr: "Projet d'équipe (Promotion KFOKAM48)",
+      en: "Team project (KFOKAM48 cohort)",
     },
     location: {
       fr: "Yaoundé, Cameroun",
       en: "Yaoundé, Cameroon",
     },
     description: {
-      fr: "Participation à la conception de l'API Spring Boot et exécution de la recette fonctionnelle.",
-      en: "Participated in Spring Boot API design and functional quality assurance testing.",
+      fr: "Recette fonctionnelle du système de gestion académique : scénarios de test, vérification des flux et remontée des anomalies.",
+      en: "Functional quality assurance of the academic management system: test scenarios, flow verification and defect reporting.",
     },
     highlights: [
-      {
-        fr: "Modélisation relationnelle et vérification des contraintes d'intégrité PostgreSQL",
-        en: "Relational data modeling and verification of PostgreSQL integrity constraints",
-      },
       {
         fr: "Définition et déroulement des scénarios de test d'assurance qualité (QA)",
         en: "Created and executed quality-assurance test scenarios for core workflows",
       },
+      {
+        fr: "Vérification des flux académiques (écoles, classes, élèves, notes) et remontée des anomalies",
+        en: "Verified academic workflows (schools, classes, students, grades) and reported defects",
+      },
     ],
-    stack: ["Java", "Spring Boot", "PostgreSQL", "QA"],
+    stack: ["QA", "PostgreSQL"],
   },
   {
     id: "ecole-freelance",

@@ -505,7 +505,7 @@ html:not(.js) .theme-toggle {
 @media print {
   @page {
     size: A4;
-    margin: 14mm 15mm 13mm;
+    margin: 10mm 13mm 9mm;
   }
 
   /* Une impression reste toujours sur fond clair, même en thème sombre. */
@@ -680,17 +680,17 @@ html:not(.js) .theme-toggle {
 
   .cv-doc ol,
   .cv-doc ul {
-    margin-top: 2.6mm;
+    margin-top: 2.0mm;
   }
 
   /* Les listes de projets et d'objectifs respirent à l'écran ; sur papier,
      l'interligne suffit à séparer les entrées. */
   .cv-doc .space-y-5 > li:not(:last-child) {
-    margin-bottom: 3.4mm;
+    margin-bottom: 2.2mm;
   }
 
   .cv-doc li {
-    break-inside: avoid;
+    break-inside: auto;
   }
 
   /* Frise chronologique : trait fin, pastille pleine (un point creux à 2 mm
@@ -724,7 +724,7 @@ html:not(.js) .theme-toggle {
   }
 
   .cv-domain > p:first-child {
-    font-size: 9pt;
+    font-size: 7pt;
   }
 
   .cv-domain > p:nth-child(2) {

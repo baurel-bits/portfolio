@@ -144,7 +144,7 @@ export const en: Dictionary = {
     photoAlt: "Photo of Baurel Bemmo",
     profile: "Profile",
     profileBody:
-      "Full-stack developer focused on frontend and mobile. I build web interfaces with React, Angular and Next.js, mobile apps with React Native and Expo, and the APIs behind them in Java / Spring Boot with PostgreSQL. I work with Docker, a Clean Architecture and microservices approach, and with testing and quality-assurance practices. In my final year at PKFokam Institute (KFOKAM48), holding a Sololearn web development certificate and an OpenClassrooms JavaScript certificate, with team experience on SuperApp (frontend) and Sekouh (QA).",
+      "Full-stack developer focused on frontend and mobile. I build web interfaces with React, Angular and Next.js, mobile apps with React Native and Expo, and the APIs behind them in Java / Spring Boot with PostgreSQL. I work with Docker, a Clean Architecture and microservices approach, and with testing and quality-assurance practices. In my final year at PKFokam Institute (KFOKAM48) since 2023, holding a science-track high school diploma (2023), a Sololearn web development certificate and an OpenClassrooms JavaScript certificate, with team experience on SuperApp (frontend) and Sekouh (QA).",
     experience: "Experience & achievements",
     skills: "Skills",
     projects: "Projects",

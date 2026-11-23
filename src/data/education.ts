@@ -27,6 +27,25 @@ export const educationEntries: readonly EducationEntry[] = [
     },
   },
   {
+    id: "bac",
+    period: {
+      fr: "2023",
+      en: "2023",
+    },
+    title: {
+      fr: "Baccalauréat, série C (scientifique)",
+      en: "High school diploma, science track (Series C)",
+    },
+    place: {
+      fr: "Enseignement secondaire",
+      en: "Secondary school",
+    },
+    description: {
+      fr: "Obtenu en 2023.",
+      en: "Earned in 2023.",
+    },
+  },
+  {
     id: "sololearn-web",
     period: {
       fr: "Certificat obtenu",

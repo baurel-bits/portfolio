@@ -143,7 +143,7 @@ export const fr = {
     photoAlt: "Photo de Baurel Bemmo",
     profile: "Profil",
     profileBody:
-      "Développeur full-stack orienté frontend et mobile. Je conçois des interfaces web avec React, Angular et Next.js, des applications mobiles avec React Native et Expo, et je développe les API qui les alimentent en Java / Spring Boot avec PostgreSQL. Je travaille avec Docker, une approche Clean Architecture et microservices, ainsi qu'avec des pratiques de tests et d'assurance qualité. En fin de cycle à l'Institut PKFokam (KFOKAM48), titulaire d'un certificat Sololearn en développement web et d'un certificat OpenClassrooms en JavaScript, avec une expérience du travail en équipe sur SuperApp (frontend) et Sekouh (QA).",
+      "Développeur full-stack orienté frontend et mobile. Je conçois des interfaces web avec React, Angular et Next.js, des applications mobiles avec React Native et Expo, et je développe les API qui les alimentent en Java / Spring Boot avec PostgreSQL. Je travaille avec Docker, une approche Clean Architecture et microservices, ainsi qu'avec des pratiques de tests et d'assurance qualité. En fin de cycle à l'Institut PKFokam (KFOKAM48) depuis 2023, titulaire d'un baccalauréat série C (2023), d'un certificat Sololearn en développement web et d'un certificat OpenClassrooms en JavaScript, avec une expérience du travail en équipe sur SuperApp (frontend) et Sekouh (QA).",
     experience: "Expériences & Réalisations",
     skills: "Compétences",
     projects: "Projets clés",

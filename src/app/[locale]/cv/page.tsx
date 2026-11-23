@@ -212,12 +212,12 @@ export default async function CvPage({ params }: CvPageProps) {
               <li className="cv-meta flex items-center gap-2">
                 <ArrowUpRightIcon width={14} height={14} className="shrink-0 text-accent" />
                 <a
-                  href={siteUrl}
+                  href={`${siteUrl}/${active}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block py-1 transition-colors hover:text-accent print:py-0"
                 >
-                  {siteUrl.replace(/^https?:\/\//, "")}
+                  {siteUrl.replace(/^https?:\/\//, "")}/{active}
                 </a>
               </li>
               {site.linkedin ? (
