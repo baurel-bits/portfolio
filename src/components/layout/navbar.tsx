@@ -42,6 +42,7 @@ export function Navbar({ locale, nav }: NavbarProps) {
     { id: "a-propos", label: nav.about },
     { id: "competences", label: nav.skills },
     { id: "projets", label: nav.projects },
+    { id: "experience", label: nav.experience },
     { id: "formation", label: nav.education },
     { id: "objectifs", label: nav.goals },
     { id: "contact", label: nav.contact },

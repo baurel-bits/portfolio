@@ -73,6 +73,24 @@ export function AboutSection({ locale, about }: AboutSectionProps) {
                 </a>
               </dd>
             </div>
+
+            {site.linkedin ? (
+              <div className="flex items-baseline justify-between gap-6 py-4">
+                <dt className="font-mono text-micro uppercase tracking-[0.12em] text-ink-muted">
+                  LinkedIn
+                </dt>
+                <dd className="text-right text-body-s">
+                  <a
+                    href={site.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block py-1 text-ink underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-accent"
+                  >
+                    {site.linkedinHandle}
+                  </a>
+                </dd>
+              </div>
+            ) : null}
           </dl>
         </aside>
       </div>

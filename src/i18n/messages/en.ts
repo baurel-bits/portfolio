@@ -14,6 +14,7 @@ export const en: Dictionary = {
     skills: "Skills",
     projects: "Projects",
     education: "Education",
+    experience: "Experience",
     goals: "Goals",
     contact: "Contact",
     cv: "CV",
@@ -78,17 +79,22 @@ export const en: Dictionary = {
     kindFullstack: "Full stack",
   },
   education: {
-    label: "04 — Education",
+    label: "05 — Education",
     title: "Education and certificates",
     description: "The programme I am following, and the certificates earned alongside it.",
   },
+  experience: {
+    label: "04 — Experience",
+    title: "Professional experience",
+    description: "Hands-on contributions to team projects and freelance work.",
+  },
   goals: {
-    label: "05 — Goals",
+    label: "06 — Goals",
     title: "Next steps",
     description: "Where I want to go, in the short and medium term.",
   },
   contact: {
-    label: "06 — Contact",
+    label: "07 — Contact",
     title: "Let's talk about your project",
     lead: "An internship, a first role, a freelance mission or a technical question? Write to me.",
     emailLabel: "Email",

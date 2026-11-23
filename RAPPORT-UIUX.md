@@ -212,7 +212,9 @@ Contrôles après modification : `tsc --noEmit` et `eslint --max-warnings=0` pro
 
 **États de focus vérifiés au vrai clavier** (vrais événements `Tab`, pas de `focus()` programmatique) : 47 éléments sur `/fr`, 78 sur `/fr/projets`, 31 sur une page projet, 40 sur le CV, 47 sur `/en`, 78 à 320 px, plus les 9 liens du menu mobile — **tous avec un indicateur visible**. Les seuls éléments sans anneau sont ceux du portail de développement Next (`NEXTJS-PORTAL`), absent en production. Menu mobile ouvert avec `Entrée` : focus déplacé dans le panneau, piège de focus circulaire, `Échap` referme et rend le focus au bouton.
 
-**Non appliqué, à trancher** : la 404 bilingue (le code la documente comme volontaire, la page étant rendue hors du layout localisé) ; les aperçus sociaux et les mesures sur build de production.
+**Corrigé depuis** : la 404 rendait un document HTML complet à l'intérieur du layout localisé (`<html>` imbriqué). `src/app/global-not-found.tsx` gère désormais les URL non correspondantes, et `src/app/not-found.tsx` ne rend plus que le contenu des `notFound()` localisés.
+
+**Non appliqué, à trancher** : les aperçus sociaux et les mesures sur build de production. La section Expérience ajoutée depuis allonge la page d'accueil ; les hauteurs du tableau ci-dessus sont donc antérieures à cet ajout.
 
 ---
 

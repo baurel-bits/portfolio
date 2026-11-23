@@ -55,8 +55,8 @@ export const site = {
   githubAltHandle: "Baurel237",
   gitlab: "https://gitlab.com/baurel",
   gitlabHandle: "baurel",
-  linkedin: "https://www.linkedin.com/in/baurel-bemmo",
-  linkedinHandle: "baurel-bemmo",
+  linkedin: "https://www.linkedin.com/in/baurel-bemmo-49a1b73a9",
+  linkedinHandle: "baurel-bemmo-49a1b73a9",
   copyrightYear: 2026,
   location: {
     fr: "Yaoundé, Cameroun",
@@ -76,8 +76,4 @@ export const site = {
     en: "French (fluent) · English (B1)",
   } satisfies LocalizedText,
   stackPreview: ["React", "Next.js", "Tailwind CSS", "Java", "Spring Boot", "PostgreSQL"],
-  cvUrl: {
-    fr: "https://porfoliodeteker.netlify.app/fr/cv",
-    en: "https://porfoliodeteker.netlify.app/en/cv",
-  } satisfies LocalizedText,
 } as const;

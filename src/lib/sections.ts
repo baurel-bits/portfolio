@@ -2,6 +2,7 @@ export const sectionIds = [
   "a-propos",
   "competences",
   "projets",
+  "experience",
   "formation",
   "objectifs",
   "contact",

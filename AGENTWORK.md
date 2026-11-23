@@ -26,7 +26,7 @@
 - **Origine officielle Netlify** : configuration de `https://porfoliodeteker.netlify.app` en fallback de production et support des variables d'environnement Netlify (`process.env.URL`, `process.env.DEPLOY_PRIME_URL`).
 - **Nom complet du candidat** : mise à jour de `owner: "Baurel Bemmo"`.
 - **Ajout des champs LinkedIn** : `linkedin` et `linkedinHandle` pour visibilité professionnelle.
-- **Ajout de `cvUrl`** : URLs canoniques du CV par locale.
+- **URL du CV** : déduite de `siteUrl` et de la locale dans les métadonnées, sans URL dupliquée dans les données.
 
 ### Étape 2 : Accès et ergonomie du CV (`download-cv-button.tsx`, `navbar.tsx`, `hero-section.tsx`) — ✅
 - **Consultation directe en ligne** : les boutons d'action pointent vers la page CV interactive (`/{locale}/cv`).
@@ -118,7 +118,25 @@
 - [ ] **Rendre les liens cliquables dans le `.docx`** : ouvrir dans Word → sélectionner chaque URL → Ctrl+K → coller le lien.
 - [ ] **Consolider les comptes GitHub** : 2 comptes affichés (principal + ancien) — envisager de n'en montrer qu'un.
 
+### Améliorations appliquées depuis
+- [x] Schema.org `sameAs` enrichi (GitHub, LinkedIn, GitLab) dans `layout.tsx`.
+- [x] Section Expérience ajoutée à la page d'accueil, avec ancre dans la nav et le footer.
+- [x] 404 sans `<html>` imbriqué : `global-not-found.tsx` pour les URL non correspondantes,
+  `not-found.tsx` pour les `notFound()` dans `[locale]`.
+- [x] Documentation de déploiement alignée sur Netlify (URL canonique, variables, previews).
+- [x] Build local fiabilisé : supprimer `.next` avant `npm run build` si le dossier vient de `next dev`.
+
 ### Améliorations futures suggérées
-- [ ] Ajouter Schema.org `sameAs` avec l'URL LinkedIn dans `layout.tsx`.
-- [ ] Ajouter une section Experience sur la page d'accueil (pas seulement sur le CV).
-- [ ] Résoudre le bug Turbopack pour le build local (crash sur `globals.css` — fonctionne sur Netlify).
+- [ ] Réduire le coût du changement de thème sur mobile bridé (TBT 2,2 s mesuré dans `RAPPORT-UIUX.md`).
+
+---
+
+## 7. Passe de correction et redéploiement (23 novembre 2026)
+
+- 404 sans `<html>` imbriqué (`global-not-found.tsx` + `not-found.tsx` + `experimental.globalNotFound`).
+- Cible de déploiement confirmée : Netlify ; `.env.example`, `.env.local`, `README.md` et
+  `README.deploy.md` alignés sur `https://porfoliodeteker.netlify.app`.
+- Previews Netlify signalées `noindex` via `CONTEXT=deploy-preview` dans `next.config.ts`.
+- Numérotation des sections harmonisée (01 à 07) et clés de la section Expérience stabilisées.
+- Champ `site.cvUrl` supprimé : l'URL du CV est dérivée de `siteUrl` et de la locale.
+- Vérifications : `npm run lint`, `npx tsc --noEmit`, `npm run build` et contrôles HTTP locaux.

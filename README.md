@@ -18,7 +18,7 @@ npm run dev                  # http://localhost:3000 → redirige vers /fr
 | ---------------------------------- | ------------------------------------- | ------------------------------------------------- |
 | `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` | Clé du formulaire de contact          | Le formulaire affiche l'email direct              |
 | `NEXT_PUBLIC_UMAMI_WEBSITE_ID`     | Identifiant du site pour l'analytics Umami | Aucune balise d'analytics n'est chargée      |
-| `NEXT_PUBLIC_SITE_URL`             | URL publique (canonical, Open Graph, sitemap) | Domaine Vercel détecté, sinon `http://localhost:3000` |
+| `NEXT_PUBLIC_SITE_URL`             | URL publique (canonical, Open Graph, sitemap) | Domaine Netlify détecté (`URL` / `DEPLOY_PRIME_URL`), sinon `https://porfoliodeteker.netlify.app` |
 
 Les variables `NEXT_PUBLIC_*` sont intégrées au build : après les avoir modifiées,
 il faut relancer `npm run dev` ou `npm run build`.
@@ -54,32 +54,30 @@ reste sans mesure d'audience.
 
 ## CV
 
-Le CV téléchargeable est le document lui-même, servi tel quel :
-`public/cv/CV-Baurel-Bemmo-Fullstack.pdf`. Les boutons « Télécharger le CV » (navbar et
-hero) pointent directement dessus, sans copie du contenu dans le code. Mettre le CV à
-jour = régénérer le PDF, remplacer ce fichier, puis redéployer.
+Les boutons d'action de la navbar et du hero pointent vers la page web `/{locale}/cv`,
+qui est la version de référence du CV. Le bouton de cette page télécharge le PDF
+`public/cv/CV-Baurel-Bemmo-Fullstack.pdf` (3 pages A4), servi tel quel.
 
-Le `.docx` du même nom reste dans `public/cv/` comme source éditable : il n'est plus
-servi au téléchargement.
+Ce PDF n'est pas rédigé séparément : il est **imprimé depuis `/{locale}/cv`**, donc la
+mise en page livrée est la règle `@media print` de `src/styles/globals.css`. Une seule
+source de contenu, `src/data/`, alimente la page web et le document.
 
-Pour régénérer le PDF depuis le `.docx` (rendu via `docx-preview` dans Chrome
-headless, A4, marges nulles) :
+Mettre le CV à jour : modifier `src/data/`, puis réimprimer et remplacer le fichier.
 
 ```bash
-npm run cv:pdf
+npm run build && npm start          # serveur de production local
+"<chemin Chrome>" --headless=new --disable-gpu --no-sandbox --hide-scrollbars \
+  --no-pdf-header-footer --virtual-time-budget=15000 \
+  --print-to-pdf="$PWD/public/cv/CV-Baurel-Bemmo-Fullstack.pdf" \
+  http://localhost:3000/fr/cv
 ```
 
-La commande lance un serveur local, ouvre le DOCX dans un Chrome headless découvert
-automatiquement (`CHROME_PATH` pour surcharger le chemin), et écrit le PDF à côté
-du `.docx`. Chrome est requis sur la machine ; aucune dépendance Word/LibreOffice.
+Imprimer depuis un serveur démarré **après** le dernier build : un serveur plus ancien
+sert l'ancien HTML et le PDF sort sans les styles d'impression.
 
-Le script refuse de valider le PDF si le document ne tient plus sur une page A4, si
-un bloc « Technologies » ou un texte repère (URL du portfolio, OpenClassrooms,
-JavaScript) a disparu, si un mot à retirer réapparaît, ou si l'hyphenation coupe des
-noms propres. Les repères sont regroupés dans la constante `EXPECTED` du script.
-
-La page `/{locale}/cv` reste une version web construite à partir des données du site
-(`src/data/`), imprimable en PDF via le bouton d'impression.
+Le `.docx` du même nom reste dans `public/cv/` comme source éditable historique : il
+n'est plus servi au téléchargement et n'est plus synchronisé avec le PDF. `npm run cv:pdf`
+(rendu du DOCX via `docx-preview` dans Chrome headless) décrit l'ancienne chaîne.
 
 ## Thème (clair / sombre)
 
@@ -97,9 +95,9 @@ préférence système (`prefers-color-scheme`) lors du premier visite.
 
 - Navigation au clavier : la quasi-totalité des interactions est reachable au clavier.
 - Images : `next/image` avec `sizes` adaptés et `loading="lazy"` sur les images hors
-  premiere viewport. Les fichiers de `public/projects` sont en WebP ; chaque couverture
+   première viewport. Les fichiers de `public/projects` sont en WebP ; chaque couverture
   garde un `og.jpg` pour les aperçus sociaux qui ignorent le WebP (LinkedIn, Bluesky).
-- Moteurs de recherche : `src/app/sitemap.ts` et `src/app/robots.txt` sont générés et
+- Moteurs de recherche : `src/app/sitemap.ts` et `src/app/robots.ts` sont générés et
   utilisent `NEXT_PUBLIC_SITE_URL`. Le sitemap indique `lastmod` à la date du build.
 - Langue : `/` redirige vers `/fr` ou `/en` selon l'en-tête `Accept-Language` du
   navigateur (voir `src/proxy.ts`), avec `Vary: Accept-Language` sur la réponse.
@@ -113,34 +111,30 @@ préférence système (`prefers-color-scheme`) lors du premier visite.
 
 ## Déploiement
 
-Le site est conçu pour être déployé sur Vercel. La procédure complète est dans
-[README.deploy.md](./README.deploy.md) (préparation, variables d'environnement,
-domaine, preview). **Aucun déploiement n'est actif** : le domaine
-`teker-codes.vercel.app` répond `DEPLOYMENT_NOT_FOUND`. La procédure de remise en
-ligne et les vérifications à faire ensuite sont décrites dans ce document.
+Le site est déployé sur Netlify à l'adresse `https://porfoliodeteker.netlify.app`.
+La procédure complète est dans [README.deploy.md](./README.deploy.md) (rattachement
+du dépôt, variables d'environnement, vérifications et dépannage).
 
 ### Résumé
 
-1. Connecter le dépôt GitHub à un projet Vercel.
+1. Connecter le dépôt GitHub `baurel-bits/portfolio` à un site Netlify (build
+   `npm run build`, publication `.next`).
 2. Définir les variables d'environnement (voir tableau plus bas).
-3. `git push` : la branche par défaut (`main`) déclenche le déploiement automatique.
-4. Ajouter le domaine personnalisé si besoin, et définir `NEXT_PUBLIC_SITE_URL` sur
-   l'URL finale.
+3. `git push` : la branche par défaut (`main`) déclenche le déploiement de production.
+4. Après une modification des variables, redéployer avec **Clear cache and deploy site**.
 
-### Variables Vercel
+### Variables Netlify
 
-| Variable d'environnement            | Valeur exemple                        | Notes                                           |
+| Variable d'environnement            | Valeur                                | Notes                                           |
 | ----------------------------------- | ------------------------------------- | ----------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL`              | `https://baurel.example`              | URL publique finale (production)                |
+| `NEXT_PUBLIC_SITE_URL`              | `https://porfoliodeteker.netlify.app` | URL publique finale (production)                |
 | `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`  | `...`                                 | Clé du formulaire de contact (voir plus haut)   |
 | `NEXT_PUBLIC_UMAMI_WEBSITE_ID`      | `...`                                 | Analytics Umami (facultatif)                    |
 
-- `NEXT_PUBLIC_SITE_URL` est facultatif en local et en preview : le site utilise alors
-  une URL par défaut basée sur l'environnement Vercel.
-- En preview, les pages sont signalées aux moteurs de recherche via l'en-tête
-  `X-Robots-Tag: noindex`.
+- Netlify fournit `URL`, `DEPLOY_PRIME_URL` et `CONTEXT` : ne pas les surcharger.
+- Les deploy previews reçoivent automatiquement `X-Robots-Tag: noindex`.
 - Les variables `NEXT_PUBLIC_*` sont injectées au build : après les avoir modifiées,
-  relancer le déploiement.
+  relancer le déploiement sans cache.
 
 ## Projets
 
@@ -157,9 +151,10 @@ Les projets sont définis dans `src/data/projects.ts`. Pour en ajouter un :
 
 Quelques captures d'écran de projets externes sont disponibles dans `public/projects/` :
 
-- `bibiotheque/` : 12 screenshots de l'application de bibliothèque (Spring Boot + Angular).
+- `bibiotheque/` : la couverture `home.webp` et 11 captures de l'application de
+  bibliothèque (Spring Boot + Angular).
 
-`home.png` sert de couverture au projet Bibliothèque. Les autres captures sont
+`home.webp` sert de couverture au projet Bibliothèque. Les autres captures sont
 listées dans le champ `screens` de ce projet et affichées en galerie sur sa page
 (`/fr/projets/bibiotheque`). Pour un nouveau projet, ajouter un tableau `screens`
 avec, pour chaque capture, `src`, `width`, `height`, `alt` et `caption` (FR et EN).

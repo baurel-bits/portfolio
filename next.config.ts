@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   },
   cacheComponents: true,
   partialPrefetching: true,
+  // Le layout racine est sous `[locale]` : la 404 des URL non correspondantes
+  // doit donc être un document complet indépendant de ce segment.
+  experimental: { globalNotFound: true },
   turbopack: {
     rules: {
       "*.css": {
@@ -27,8 +30,8 @@ const nextConfig: NextConfig = {
       { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
     ];
 
-    // Les déploiements de prévisualisation Vercel ne doivent pas être indexés.
-    if (process.env.VERCEL_ENV === "preview") {
+    // Les déploiements de prévisualisation ne doivent pas être indexés.
+    if (process.env.VERCEL_ENV === "preview" || process.env.CONTEXT === "deploy-preview") {
       headers.push({ key: "X-Robots-Tag", value: "noindex" });
     }
 

@@ -37,7 +37,7 @@ import { skillDomains } from "@/data/skills";
 import { CvSection } from "@/features/cv/cv-section";
 import { defaultLocale, isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { site } from "@/lib/site";
+import { site, siteUrl } from "@/lib/site";
 
 type CvPageProps = {
   params: Promise<{ locale: string }>;
@@ -124,7 +124,7 @@ export default async function CvPage({ params }: CvPageProps) {
 
         <p className="no-print mb-10 max-w-[60ch] text-body-s text-ink-muted">{dict.cv.note}</p>
 
-        <article className="mx-auto max-w-208 text-ink">
+        <article className="cv-doc mx-auto max-w-208 text-ink">
           <header className="print-block cv-header relative overflow-hidden border-b border-line pb-7">
             <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
               <div className="flex items-start gap-4">
@@ -149,7 +149,7 @@ export default async function CvPage({ params }: CvPageProps) {
               </p>
             </div>
 
-            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-body-s text-ink-soft">
+            <ul className="cv-contact mt-6 flex flex-wrap gap-x-6 gap-y-3 text-body-s text-ink-soft">
               <li className="cv-meta flex items-center gap-2">
                 <MapPinIcon width={14} height={14} className="shrink-0 text-accent" />
                 {site.location[active]}
@@ -209,6 +209,17 @@ export default async function CvPage({ params }: CvPageProps) {
                 <GlobeIcon width={14} height={14} className="shrink-0 text-accent" />
                 {site.languages[active]}
               </li>
+              <li className="cv-meta flex items-center gap-2">
+                <ArrowUpRightIcon width={14} height={14} className="shrink-0 text-accent" />
+                <a
+                  href={siteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block py-1 transition-colors hover:text-accent print:py-0"
+                >
+                  {siteUrl.replace(/^https?:\/\//, "")}
+                </a>
+              </li>
               {site.linkedin ? (
                 <li className="cv-meta flex items-center gap-2">
                   <LinkedInIcon width={14} height={14} className="shrink-0 text-accent" />
@@ -239,7 +250,7 @@ export default async function CvPage({ params }: CvPageProps) {
                 <li key={exp.id} className="relative print-block">
                   <span
                     aria-hidden="true"
-                    className="absolute -left-6 top-1.5 size-2 rounded-full border border-accent bg-paper-raised"
+                    className="cv-dot absolute -left-6 top-1.5 size-2 rounded-full border border-accent bg-paper-raised"
                   />
                   <p className="font-mono text-micro uppercase tracking-[0.1em] text-ink-muted">
                     {exp.period[active]}
@@ -265,7 +276,7 @@ export default async function CvPage({ params }: CvPageProps) {
                   <ul className="mt-2 flex flex-wrap gap-1.5">
                     {exp.stack.map((item) => (
                       <li key={item}>
-                        <Tag>{item}</Tag>
+                        <Tag className="cv-tag">{item}</Tag>
                       </li>
                     ))}
                   </ul>
@@ -275,7 +286,7 @@ export default async function CvPage({ params }: CvPageProps) {
           </CvSection>
 
           <CvSection icon={<CodeIcon width={14} height={14} />} title={dict.cv.skills} delay={110}>
-            <ul className="grid gap-4 sm:grid-cols-2">
+            <ul className="cv-domains grid gap-4 sm:grid-cols-2">
               {skillDomains.map((domain) => (
                 <li
                   key={domain.id}
@@ -291,7 +302,7 @@ export default async function CvPage({ params }: CvPageProps) {
                   <ul className="mt-3 flex flex-wrap gap-1.5">
                     {domain.items.map((item) => (
                       <li key={item}>
-                        <Tag>{item}</Tag>
+                        <Tag className="cv-tag">{item}</Tag>
                       </li>
                     ))}
                   </ul>
@@ -322,7 +333,7 @@ export default async function CvPage({ params }: CvPageProps) {
                   <ul className="mt-2 flex flex-wrap gap-1.5">
                     {project.stack.map((item) => (
                       <li key={item}>
-                        <Tag>{item}</Tag>
+                        <Tag className="cv-tag">{item}</Tag>
                       </li>
                     ))}
                   </ul>
@@ -345,7 +356,7 @@ export default async function CvPage({ params }: CvPageProps) {
                 <li key={entry.id} className="relative print-block">
                   <span
                     aria-hidden="true"
-                    className="absolute -left-6 top-1.5 size-2 rounded-full border border-accent bg-paper-raised"
+                    className="cv-dot absolute -left-6 top-1.5 size-2 rounded-full border border-accent bg-paper-raised"
                   />
                   <p className="font-mono text-micro uppercase tracking-[0.1em] text-ink-muted">
                     {entry.period[active]}
@@ -377,10 +388,13 @@ export default async function CvPage({ params }: CvPageProps) {
             </ul>
           </CvSection>
 
+          {/* Rappel des coordonnées en bas de page écran. En impression, il est
+              masqué : l'en-tête du document les porte déjà, et ce bloc seul
+              débordait sur une quatrième page. */}
           <Reveal
             as="section"
             delay={310}
-            className="print-block mt-9 border-t border-line pt-6 print:mt-6 print:pt-4"
+            className="print-block mt-9 border-t border-line pt-6 print:hidden"
           >
             <h2 className="font-mono text-micro uppercase tracking-[0.16em] text-accent">
               {dict.cv.contact}

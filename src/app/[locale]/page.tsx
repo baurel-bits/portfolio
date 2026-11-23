@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { EducationSection } from "@/components/sections/education-section";
+import { ExperienceSection } from "@/components/sections/experience-section";
 import { GoalsSection } from "@/components/sections/goals-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
@@ -27,6 +28,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <Suspense fallback={null}>
         <SkillsSection locale={active} skills={dict.skills} />
         <ProjectsSection locale={active} projectsCopy={dict.projects} />
+        <ExperienceSection locale={active} experienceCopy={dict.experience} />
         <EducationSection locale={active} education={dict.education} />
         <GoalsSection locale={active} goalsCopy={dict.goals} />
         <ContactSection locale={active} contact={dict.contact} />

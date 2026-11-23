@@ -80,8 +80,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     jobTitle: site.role[locale],
     email: site.email,
     telephone: site.phone,
-    url: site.github,
-    sameAs: [site.github],
+    url: siteUrl,
+    sameAs: [
+      site.github,
+      ...(site.linkedin ? [site.linkedin] : []),
+      ...(site.gitlab ? [site.gitlab] : []),
+    ],
     address: { "@type": "PostalAddress", addressLocality: site.location[locale] },
   };
 

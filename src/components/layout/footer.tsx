@@ -17,6 +17,7 @@ export function Footer({ locale, nav, footer }: FooterProps) {
     { hash: "#a-propos", label: nav.about },
     { hash: "#competences", label: nav.skills },
     { hash: "#projets", label: nav.projects },
+    { hash: "#experience", label: nav.experience },
     { hash: "#formation", label: nav.education },
     { hash: "#objectifs", label: nav.goals },
     { hash: "#contact", label: nav.contact },

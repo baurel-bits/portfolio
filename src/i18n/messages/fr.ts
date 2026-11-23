@@ -11,6 +11,7 @@ export const fr = {
     skills: "Compétences",
     projects: "Projets",
     education: "Formation",
+    experience: "Expérience",
     goals: "Objectifs",
     contact: "Contact",
     cv: "CV",
@@ -77,17 +78,22 @@ export const fr = {
     kindFullstack: "Full stack",
   },
   education: {
-    label: "04 — Formation",
+    label: "05 — Formation",
     title: "Formation et certifications",
     description: "Le cursus suivi, et les certificats obtenus en parallèle.",
   },
+  experience: {
+    label: "04 — Expérience",
+    title: "Expériences professionnelles",
+    description: "Contributions concrètes sur des projets d'équipe et en freelance.",
+  },
   goals: {
-    label: "05 — Objectifs",
+    label: "06 — Objectifs",
     title: "Prochaines étapes",
     description: "Où je veux aller, à court et moyen terme.",
   },
   contact: {
-    label: "06 — Contact",
+    label: "07 — Contact",
     title: "Parlons de votre projet",
     lead: "Une offre de stage, un premier poste, une mission ou simplement une question technique ? Écrivez-moi.",
     emailLabel: "Email",
