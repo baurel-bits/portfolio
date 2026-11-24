@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { DownloadCVButton } from "@/components/ui/download-cv-button";
@@ -110,10 +111,22 @@ export default async function CvPage({ params }: CvPageProps) {
 
         <article className="cv-doc mx-auto max-w-208 text-ink">
           <header className="print-block cv-header border-b border-line pb-7">
-            <h1 className="font-display text-display-m font-bold uppercase tracking-[-0.02em]">
-              {site.owner}
-            </h1>
-            <p className="mt-2 text-body-l text-ink-soft">{site.role[active]}</p>
+            <div className="flex items-start justify-between gap-5">
+              <div className="min-w-0">
+                <h1 className="font-display text-display-m font-bold uppercase tracking-[-0.02em]">
+                  {site.owner}
+                </h1>
+                <p className="mt-2 text-body-l text-ink-soft">{site.role[active]}</p>
+              </div>
+              <Image
+                src="/cv/baurel-bemmo.jpg"
+                alt={`${site.owner} — ${site.role[active]}`}
+                width={372}
+                height={372}
+                priority
+                className="cv-photo size-20 shrink-0 rounded-sm border border-line object-cover sm:size-24"
+              />
+            </div>
 
             <ul className="cv-contact mt-6 flex flex-wrap gap-x-6 gap-y-3 text-body-s text-ink-soft">
               <li className="cv-meta flex items-center gap-2">
@@ -213,7 +226,6 @@ export default async function CvPage({ params }: CvPageProps) {
                   <p className="text-body-s text-ink-muted">
                     {exp.company[active]} · {exp.location[active]}
                   </p>
-                  <p className="mt-1 text-body-s text-ink-soft print:hidden">{exp.description[active]}</p>
                   <ul className="mt-2 space-y-1">
                     {exp.highlights.map((h, i) => (
                       <li key={i} className="relative pl-3 text-body-s text-ink-soft">

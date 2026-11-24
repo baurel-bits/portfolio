@@ -633,9 +633,10 @@ html:not(.js) .theme-toggle {
   }
 
   .cv-header img {
-    width: 21mm;
-    height: 21mm;
+    width: 22mm;
+    height: 22mm;
     margin-top: 0;
+    border-radius: 0;
     box-shadow: none;
   }
 
