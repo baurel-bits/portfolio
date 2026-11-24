@@ -116,6 +116,10 @@ export const projects: readonly Project[] = [
       fr: "Système complet de gestion de bibliothèque : catalogue, cycle de vie des emprunts et retours, rôles utilisateurs et sécurité JWT (Spring Boot + Angular).",
       en: "Full library management system: book catalogue, loan and return lifecycle, user roles and JWT security (Spring Boot + Angular).",
     },
+    cvSummary: {
+      fr: "Gestion de bibliothèque : catalogue, emprunts et retours, rôles utilisateurs et sécurité par JWT.",
+      en: "Library management: catalogue, loans and returns, user roles and JWT security.",
+    },
     kind: "fullstack",
     stack: ["Spring Boot", "Angular", "MySQL", "JWT"],
     details: [
@@ -316,6 +320,10 @@ export const projects: readonly Project[] = [
       fr: "Application mobile de suivi des dépenses et des budgets (prototype en développement) : tableau de bord, alertes de seuil, notifications et export des données.",
       en: "Mobile expense and budget tracking app (prototype in progress): dashboard, threshold alerts, notifications and data export.",
     },
+    cvSummary: {
+      fr: "Application mobile de suivi des dépenses et des budgets : tableau de bord, alertes de seuil, notifications et export des données.",
+      en: "Mobile expense and budget tracking app: dashboard, threshold alerts, notifications and data export.",
+    },
     kind: "fullstack",
     stack: ["React Native", "Expo", "Spring Boot", "PostgreSQL"],
     details: [
@@ -357,6 +365,10 @@ export const projects: readonly Project[] = [
     summary: {
       fr: "Application de gestion de stock avec API REST Java / Spring Boot : gestion des articles, mouvements d'entrées/sorties et validation des flux.",
       en: "Inventory management app with Java / Spring Boot REST API: items, inbound/outbound stock movements and flow validation.",
+    },
+    cvSummary: {
+      fr: "Gestion de stock avec API REST : articles, mouvements d'entrées et de sorties, validation des flux.",
+      en: "Inventory management with a REST API: items, inbound/outbound movements and flow validation.",
     },
     kind: "fullstack",
     stack: ["Java", "Spring Boot", "API REST", "PostgreSQL"],

@@ -1,7 +1,7 @@
 import type { EducationEntry } from "@/types";
 
 /**
- * Formation reprise du CV (`public/cv/CV-Baurel-Bemmo-Fullstack.pdf`).
+ * Formation reprise du CV (`src/features/cv/CV_Baurel_Bemmo_Final.pdf`).
  *
  * Une date inconnue s'écrit explicitement (« En cours », « Année à confirmer ») :
  * ne jamais laisser une année approximative.
@@ -14,35 +14,16 @@ export const educationEntries: readonly EducationEntry[] = [
       en: "2023 — present",
     },
     title: {
-      fr: "Institut PKFokam (KFOKAM48)",
-      en: "PKFokam Institute (KFOKAM48)",
+      fr: "Institut PKFokam (KFOKAM48) — Développement full-stack et mobile",
+      en: "PKFokam Institute (KFOKAM48) — Full-stack and mobile development",
     },
     place: {
-      fr: "Développement full-stack et mobile · fin de cycle",
-      en: "Full-stack and mobile development · final year",
+      fr: "Fin de cycle",
+      en: "Final year",
     },
     description: {
-      fr: "Cursus orienté développement web et mobile, mené en parallèle des projets personnels et d'équipe présentés sur ce site.",
-      en: "Web and mobile development programme, run alongside the personal and team projects presented on this site.",
-    },
-  },
-  {
-    id: "bac",
-    period: {
-      fr: "2023",
-      en: "2023",
-    },
-    title: {
-      fr: "Baccalauréat, série C (scientifique)",
-      en: "High school diploma, science track (Series C)",
-    },
-    place: {
-      fr: "Enseignement secondaire",
-      en: "Secondary school",
-    },
-    description: {
-      fr: "Obtenu en 2023.",
-      en: "Earned in 2023.",
+      fr: "Cursus orienté développement web et mobile, avec projets personnels et d'équipe.",
+      en: "Web and mobile development programme, with personal and team projects.",
     },
   },
   {
@@ -81,6 +62,25 @@ export const educationEntries: readonly EducationEntry[] = [
     description: {
       fr: "Parcours certifiant consacré au langage : logique, manipulation du DOM et interactions.",
       en: "Certified path focused on the language: logic, DOM manipulation and interactions.",
+    },
+  },
+  {
+    id: "bac",
+    period: {
+      fr: "2023",
+      en: "2023",
+    },
+    title: {
+      fr: "Baccalauréat, série F (enseignement technique)",
+      en: "High school diploma, technical track (Series F)",
+    },
+    place: {
+      fr: "Enseignement technique",
+      en: "Technical secondary school",
+    },
+    description: {
+      fr: "Obtenu en 2023.",
+      en: "Earned in 2023.",
     },
   },
 ];

@@ -55,7 +55,7 @@ export const fr = {
     label: "02 — Compétences",
     title: "Ce que je sais faire",
     description:
-      "Six domaines, sans pourcentage inventé : uniquement les technologies que j'utilise dans mes projets.",
+      "Huit domaines, sans pourcentage inventé : uniquement les technologies que j'utilise dans mes projets.",
   },
   projects: {
     label: "03 — Projets",
@@ -141,14 +141,19 @@ export const fr = {
     back: "Retour au site",
     note: "Version imprimable : dans la boîte d'impression, choisissez « Enregistrer au format PDF\u00A0».",
     photoAlt: "Photo de Baurel Bemmo",
-    profile: "Profil",
+    profile: "Profil professionnel",
     profileBody:
-      "Développeur full-stack orienté frontend et mobile : interfaces React / Angular / Next.js, applications React Native / Expo et API Java / Spring Boot avec PostgreSQL. À l'aise avec Docker, la Clean Architecture et les pratiques de tests. En fin de cycle à l'Institut PKFokam (KFOKAM48) depuis 2023, baccalauréat série C (2023) et certificats Sololearn / OpenClassrooms, avec une expérience d'équipe sur SuperApp (frontend) et Sekouh (QA).",
+      "Développeur full-stack junior, en fin de cycle à l'Institut PKFokam (KFOKAM48), orienté frontend et mobile. Je conçois des interfaces avec React, Next.js et Angular, des applications mobiles avec React Native et Expo, et les API REST qui les alimentent en Java / Spring Boot avec PostgreSQL. Travail en équipe sur SuperApp (frontend) et SekouH (QA). Je recherche un stage de fin d'études ou un premier poste full-stack, au Cameroun ou à distance.",
     experience: "Expériences & Réalisations",
     skills: "Compétences",
     projects: "Projets clés",
-    education: "Formation & Diplômes",
+    education: "Formation",
     goals: "Objectifs professionnels",
     contact: "Contact",
+    techLabel: "Technologies",
+    footerLanguages: "Langues",
+    footerInterests: "Intérêts",
+    footerInterestsValue: "développement web et mobile",
+    footerReferences: "Références : sur demande",
   },
 };

@@ -1,10 +1,22 @@
 import type { SkillDomain } from "@/types";
 
 /**
- * Domaines repris du CV (`public/cv/CV-Baurel-Bemmo-Fullstack.pdf`) :
+ * Domaines repris du CV (`src/features/cv/CV_Baurel_Bemmo_Final.pdf`) :
  * aucun domaine ni technologie affiché ici qui n'y figure pas.
  */
 export const skillDomains: readonly SkillDomain[] = [
+  {
+    id: "langages",
+    title: {
+      fr: "Langages",
+      en: "Languages",
+    },
+    description: {
+      fr: "Les langages que j'utilise au quotidien, du front au SQL.",
+      en: "The languages I use day to day, from the front end to SQL.",
+    },
+    items: ["JavaScript", "TypeScript", "Java", "SQL", "HTML5", "CSS3"],
+  },
   {
     id: "frontend",
     title: {
@@ -15,16 +27,7 @@ export const skillDomains: readonly SkillDomain[] = [
       fr: "Interfaces web responsive, composants réutilisables et intégration soignée.",
       en: "Responsive web interfaces, reusable components and careful integration.",
     },
-    items: [
-      "React",
-      "Angular",
-      "Next.js",
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "Tailwind CSS",
-      "Bootstrap",
-    ],
+    items: ["React", "Next.js", "Angular", "Tailwind CSS", "Bootstrap"],
   },
   {
     id: "mobile",
@@ -48,7 +51,7 @@ export const skillDomains: readonly SkillDomain[] = [
       fr: "API REST structurées : entités, services, contrôleurs et validation.",
       en: "Structured REST APIs: entities, services, controllers and validation.",
     },
-    items: ["Java", "Spring Boot", "API REST"],
+    items: ["Spring Boot", "API REST", "JWT"],
   },
   {
     id: "data",
@@ -60,30 +63,42 @@ export const skillDomains: readonly SkillDomain[] = [
       fr: "Modélisation relationnelle et requêtes SQL selon le besoin du projet.",
       en: "Relational modelling and SQL queries matched to the project.",
     },
-    items: ["PostgreSQL", "MariaDB", "MySQL", "SQL"],
+    items: ["PostgreSQL", "MySQL", "MariaDB"],
   },
   {
     id: "tools",
     title: {
-      fr: "DevOps & versioning",
-      en: "DevOps & versioning",
+      fr: "DevOps & outils",
+      en: "DevOps & tools",
     },
     description: {
       fr: "Conteneurisation, gestion de version et travail en ligne de commande.",
       en: "Containerisation, version control and command-line workflow.",
     },
-    items: ["Docker", "Git", "GitHub", "GitLab", "Linux"],
+    items: ["Git", "GitHub", "GitLab", "Docker", "Linux"],
   },
   {
-    id: "architecture",
+    id: "quality",
     title: {
-      fr: "Architecture & qualité",
-      en: "Architecture & quality",
+      fr: "Qualité & méthodes",
+      en: "Quality & methods",
     },
     description: {
-      fr: "Structurer le code et le vérifier : découpage des responsabilités et tests.",
-      en: "Structuring and checking the code: separation of concerns and testing.",
+      fr: "Vérifier le produit et structurer le travail : tests fonctionnels et Agile.",
+      en: "Checking the product and structuring the work: functional testing and Agile.",
     },
-    items: ["Clean Architecture", "Microservices", "Tests", "Assurance qualité (QA)"],
+    items: ["Tests fonctionnels (QA)", "Agile"],
+  },
+  {
+    id: "learning",
+    title: {
+      fr: "En apprentissage",
+      en: "Currently learning",
+    },
+    description: {
+      fr: "Les sujets que j'approfondis en ce moment, sans les présenter comme acquis.",
+      en: "Topics I am deepening right now, without presenting them as mastered.",
+    },
+    items: ["Clean Architecture", "Microservices", "Tests"],
   },
 ];

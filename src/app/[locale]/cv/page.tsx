@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { DownloadCVButton } from "@/components/ui/download-cv-button";
 import { PrintButton } from "@/components/ui/print-button";
 import { Reveal } from "@/components/ui/reveal";
-import { Tag } from "@/components/ui/tag";
 import {
   ArrowRightIcon,
   ArrowUpRightIcon,
   BriefcaseIcon,
   CheckIcon,
   CodeIcon,
-  DatabaseIcon,
-  GlobeIcon,
   GraduationCapIcon,
   LayersIcon,
   GitHubIcon,
@@ -23,14 +18,11 @@ import {
   MapPinIcon,
   PhoneIcon,
   WhatsAppIcon,
-  ServerIcon,
-  SmartphoneIcon,
   SparkleIcon,
-  TargetIcon,
-  TerminalIcon,
 } from "@/components/ui/icons";
 import { educationEntries } from "@/data/education";
 import { experiences } from "@/data/experience";
+import { projects } from "@/data/projects";
 import { skillDomains } from "@/data/skills";
 import { CvSection } from "@/features/cv/cv-section";
 import { defaultLocale, isLocale, type Locale } from "@/i18n/config";
@@ -45,15 +37,8 @@ function resolveLocale(value: string): Locale {
   return isLocale(value) ? value : defaultLocale;
 }
 
-/** Icône de chaque domaine de compétence, alignée sur les données de `src/data`. */
-const domainIcons: Record<string, ReactNode> = {
-  frontend: <CodeIcon width={13} height={13} />,
-  mobile: <SmartphoneIcon width={13} height={13} />,
-  backend: <ServerIcon width={13} height={13} />,
-  data: <DatabaseIcon width={13} height={13} />,
-  tools: <TerminalIcon width={13} height={13} />,
-  architecture: <LayersIcon width={13} height={13} />,
-};
+/** Projets mis en avant dans le CV. */
+const CV_PROJECT_IDS = ["bibiotheque", "gestistock", "depensepro"] as const;
 
 export async function generateMetadata({ params }: CvPageProps): Promise<Metadata> {
   const { locale } = await params;
@@ -96,6 +81,9 @@ export default async function CvPage({ params }: CvPageProps) {
 
   const mailto = `mailto:${site.email}`;
   const tel = `tel:${site.phoneHref}`;
+  const cvProjects = CV_PROJECT_IDS.map((id) =>
+    projects.find((project) => project.id === id),
+  ).filter((project): project is (typeof projects)[number] => project !== undefined);
 
   return (
     <div data-theme="light" className="bg-white">
@@ -113,8 +101,6 @@ export default async function CvPage({ params }: CvPageProps) {
             {dict.cv.back}
           </Link>
           <div className="flex flex-wrap items-center gap-2">
-            {/* Taille `sm` (36 px) trop petite au doigt : on garde la taille `md`, alignée sur
-                le bouton d'impression voisin et sur la cible tactile de 44 px. */}
             <DownloadCVButton label={dict.cv.download} variant="outline" />
             <PrintButton label={dict.cv.print} />
           </div>
@@ -123,29 +109,11 @@ export default async function CvPage({ params }: CvPageProps) {
         <p className="no-print mb-10 max-w-[60ch] text-body-s text-ink-muted">{dict.cv.note}</p>
 
         <article className="cv-doc mx-auto max-w-208 text-ink">
-          <header className="print-block cv-header relative overflow-hidden border-b border-line pb-7">
-            <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
-              <div className="flex items-start gap-4">
-                <Image
-                  src="/cv/teker.jpeg"
-                  alt={dict.cv.photoAlt}
-                  width={96}
-                  height={96}
-                  className="size-24 shrink-0 rounded-full mt-1 object-cover object-[center_20%] ring-2 ring-line-strong"
-                  priority
-                />
-                <div>
-                  <p className="font-mono text-micro uppercase tracking-[0.16em] text-ink-muted">
-                    {site.wordmark}
-                  </p>
-                  <h1 className="mt-3 font-display text-display-l font-bold">{site.owner}</h1>
-                  <p className="mt-2 text-body-l text-ink-soft">{site.role[active]}</p>
-                </div>
-              </div>
-              <p className="cv-stamp font-mono text-micro uppercase tracking-[0.14em] text-ink-muted">
-                {dict.cv.title}
-              </p>
-            </div>
+          <header className="print-block cv-header border-b border-line pb-7">
+            <h1 className="font-display text-display-m font-bold uppercase tracking-[-0.02em]">
+              {site.owner}
+            </h1>
+            <p className="mt-2 text-body-l text-ink-soft">{site.role[active]}</p>
 
             <ul className="cv-contact mt-6 flex flex-wrap gap-x-6 gap-y-3 text-body-s text-ink-soft">
               <li className="cv-meta flex items-center gap-2">
@@ -158,13 +126,13 @@ export default async function CvPage({ params }: CvPageProps) {
               </li>
               <li className="cv-meta flex items-center gap-2">
                 <MailIcon width={14} height={14} className="shrink-0 text-accent" />
-                <a href={mailto}                      className="inline-block py-1 transition-colors hover:text-accent print:py-0">
+                <a href={mailto} className="inline-block py-1 transition-colors hover:text-accent print:py-0">
                   {site.email}
                 </a>
               </li>
               <li className="cv-meta flex items-center gap-2">
                 <PhoneIcon width={14} height={14} className="shrink-0 text-accent" />
-                <a href={tel}                      className="inline-block py-1 transition-colors hover:text-accent print:py-0">
+                <a href={tel} className="inline-block py-1 transition-colors hover:text-accent print:py-0">
                   {site.phone}
                 </a>
               </li>
@@ -204,33 +172,27 @@ export default async function CvPage({ params }: CvPageProps) {
                 ) : null}
               </li>
               <li className="cv-meta flex items-center gap-2">
-                <GlobeIcon width={14} height={14} className="shrink-0 text-accent" />
-                {site.languages[active]}
-              </li>
-              <li className="cv-meta flex items-center gap-2">
-                <ArrowUpRightIcon width={14} height={14} className="shrink-0 text-accent" />
+                <LinkedInIcon width={14} height={14} className="shrink-0 text-accent" />
                 <a
-                  href={`${siteUrl}/${active}`}
+                  href={site.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block py-1 transition-colors hover:text-accent print:py-0"
                 >
-                  {siteUrl.replace(/^https?:\/\//, "")}/{active}
+                  LinkedIn
                 </a>
               </li>
-              {site.linkedin ? (
-                <li className="cv-meta flex items-center gap-2">
-                  <LinkedInIcon width={14} height={14} className="shrink-0 text-accent" />
-                  <a
-                    href={site.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block py-1 transition-colors hover:text-accent print:py-0"
-                  >
-                    LinkedIn
-                  </a>
-                </li>
-              ) : null}
+              <li className="cv-meta flex items-center gap-2">
+                <ArrowUpRightIcon width={14} height={14} className="shrink-0 text-accent" />
+                <a
+                  href={`${siteUrl}/${active}/cv`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block py-1 transition-colors hover:text-accent print:py-0"
+                >
+                  {siteUrl.replace(/^https?:\/\//, "")}/{active}/cv
+                </a>
+              </li>
             </ul>
           </header>
 
@@ -239,71 +201,33 @@ export default async function CvPage({ params }: CvPageProps) {
           </CvSection>
 
           <CvSection icon={<BriefcaseIcon width={14} height={14} />} title={dict.cv.experience} delay={85}>
-            <ol className="relative space-y-5 pl-6">
-              <span
-                aria-hidden="true"
-                className="cv-timeline absolute inset-y-1 left-[3px] w-px bg-line"
-              />
-              {experiences.slice(0, 2).map((exp) => (
-                <li key={exp.id} className="relative print-block">
-                  <span
-                    aria-hidden="true"
-                    className="cv-dot absolute -left-6 top-1.5 size-2 rounded-full border border-accent bg-paper-raised"
-                  />
-                  <p className="font-mono text-micro uppercase tracking-[0.1em] text-ink-muted">
-                    {exp.period[active]}
-                  </p>
-                  <p className="mt-1 text-body-m font-semibold text-ink">{exp.role[active]}</p>
+            <ul className="space-y-5">
+              {experiences.map((exp) => (
+                <li key={exp.id} className="cv-entry print-block">
+                  <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-4">
+                    <p className="text-body-m font-semibold text-ink">{exp.role[active]}</p>
+                    <p className="whitespace-nowrap font-mono text-micro uppercase tracking-[0.1em] text-ink-muted">
+                      {exp.period[active]}
+                    </p>
+                  </div>
                   <p className="text-body-s text-ink-muted">
                     {exp.company[active]} · {exp.location[active]}
                   </p>
                   <p className="mt-1 text-body-s text-ink-soft print:hidden">{exp.description[active]}</p>
                   <ul className="mt-2 space-y-1">
                     {exp.highlights.map((h, i) => (
-                      <li key={i} className="flex gap-2 text-body-s text-ink-soft">
-                        <CheckIcon
-                          width={12}
-                          height={12}
-                          className="mt-1 shrink-0 text-accent"
-                          aria-hidden="true"
-                        />
+                      <li key={i} className="relative pl-3 text-body-s text-ink-soft">
+                        <span aria-hidden="true" className="absolute left-0 top-0">
+                          •
+                        </span>
                         {h[active]}
                       </li>
                     ))}
                   </ul>
-                  <ul className="mt-2 flex flex-wrap gap-1.5">
-                    {exp.stack.map((item) => (
-                      <li key={item}>
-                        <Tag className="cv-tag">{item}</Tag>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ol>
-          </CvSection>
-
-          <CvSection icon={<CodeIcon width={14} height={14} />} title={dict.cv.skills} delay={110}>
-            <ul className="cv-domains grid gap-4 sm:grid-cols-2 print:grid-cols-2">
-              {skillDomains.map((domain) => (
-                <li
-                  key={domain.id}
-                  className="cv-domain group/domain rounded-sm border border-line bg-paper-raised p-4 transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-line-strong motion-reduce:hover:translate-y-0"
-                >
-                  <p className="flex items-center gap-2 text-body-m font-semibold text-ink">
-                    <span className="text-accent transition-transform duration-200 group-hover/domain:scale-110 motion-reduce:transition-none">
-                      {domainIcons[domain.id]}
-                    </span>
-                    {domain.title[active]}
+                  <p className="mt-1.5 text-body-s text-ink-muted">
+                    <span className="font-semibold text-ink">{dict.cv.techLabel} :</span>{" "}
+                    {exp.stack.join(", ")}
                   </p>
-                  <p className="mt-1 text-body-s text-ink-muted print:hidden">{domain.description[active]}</p>
-                  <ul className="mt-3 flex flex-wrap gap-1.5">
-                    {domain.items.map((item) => (
-                      <li key={item}>
-                        <Tag className="cv-tag">{item}</Tag>
-                      </li>
-                    ))}
-                  </ul>
                 </li>
               ))}
             </ul>
@@ -312,33 +236,66 @@ export default async function CvPage({ params }: CvPageProps) {
           <CvSection
             icon={<GraduationCapIcon width={14} height={14} />}
             title={dict.cv.education}
-            delay={210}
+            delay={130}
           >
-            <ol className="relative space-y-5 pl-6">
-              <span
-                aria-hidden="true"
-                className="cv-timeline absolute inset-y-1 left-[3px] w-px bg-line"
-              />
-              {educationEntries.filter((entry) => entry.id === "pkfokam" || entry.id === "bac").map((entry) => (
-                <li key={entry.id} className="relative print-block">
-                  <span
-                    aria-hidden="true"
-                    className="cv-dot absolute -left-6 top-1.5 size-2 rounded-full border border-accent bg-paper-raised"
-                  />
-                  <p className="font-mono text-micro uppercase tracking-[0.1em] text-ink-muted">
-                    {entry.period[active]}
-                  </p>
-                  <p className="mt-1 text-body-m font-semibold text-ink">{entry.title[active]}</p>
+            <ul className="space-y-5">
+              {educationEntries.map((entry) => (
+                <li key={entry.id} className="cv-entry print-block">
+                  <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-4">
+                    <p className="text-body-m font-semibold text-ink">{entry.title[active]}</p>
+                    <p className="whitespace-nowrap font-mono text-micro uppercase tracking-[0.1em] text-ink-muted">
+                      {entry.period[active]}
+                    </p>
+                  </div>
                   <p className="text-body-s text-ink-muted print:hidden">{entry.place[active]}</p>
                   <p className="mt-1 text-body-s text-ink-soft print:hidden">{entry.description[active]}</p>
                 </li>
               ))}
-            </ol>
+            </ul>
           </CvSection>
 
+          <CvSection icon={<LayersIcon width={14} height={14} />} title={dict.cv.projects} delay={165}>
+            <ul className="space-y-5">
+              {cvProjects.map((project) => (
+                <li key={project.id} className="cv-entry print-block">
+                  <p className="text-body-m font-semibold text-ink">{project.title[active]}</p>
+                  <p className="mt-1 text-body-s text-ink-soft">
+                    {(project.cvSummary ?? project.summary)[active]}
+                  </p>
+                  <p className="mt-1.5 text-body-s text-ink-muted">
+                    <span className="font-semibold text-ink">{dict.cv.techLabel} :</span>{" "}
+                    {project.stack.join(", ")}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </CvSection>
+
+          <CvSection icon={<CodeIcon width={14} height={14} />} title={dict.cv.skills} delay={200}>
+            <ul className="grid gap-x-8 gap-y-1.5 sm:grid-cols-2 print:grid-cols-2">
+              {skillDomains.map((domain) => (
+                <li key={domain.id} className="text-body-s text-ink-soft">
+                  <span className="font-semibold text-ink">{domain.title[active]} :</span>{" "}
+                  {domain.items.join(", ")}
+                </li>
+              ))}
+            </ul>
+          </CvSection>
+
+          <footer className="cv-footer mt-7 flex flex-wrap gap-x-6 gap-y-1.5 border-t border-line pt-3 text-body-s text-ink-soft">
+            <p>
+              <span className="font-semibold text-ink">{dict.cv.footerLanguages} :</span>{" "}
+              {site.languages[active]}
+            </p>
+            <p>
+              <span className="font-semibold text-ink">{dict.cv.footerInterests} :</span>{" "}
+              {dict.cv.footerInterestsValue}
+            </p>
+            <p>{dict.cv.footerReferences}</p>
+          </footer>
+
           {/* Rappel des coordonnées en bas de page écran. En impression, il est
-              masqué : l'en-tête du document les porte déjà, et ce bloc seul
-              débordait sur une quatrième page. */}
+              masqué : l'en-tête du document les porte déjà. */}
           <Reveal
             as="section"
             delay={310}

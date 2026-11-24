@@ -45,6 +45,8 @@ export type Project = {
   id: string;
   title: LocalizedText;
   summary: LocalizedText;
+  /** Résumé court réservé au CV imprimé (une ligne). */
+  cvSummary?: LocalizedText;
   /** Année à confirmer : omise, elle n'est pas affichée. */
   year?: string;
   kind: ProjectKind;

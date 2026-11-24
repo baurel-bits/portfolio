@@ -23,24 +23,32 @@ export const experiences: readonly ExperienceEntry[] = [
       en: "Frontend Developer — SuperApp",
     },
     company: {
-      fr: "Projet d'équipe (Promotion KFOKAM48)",
-      en: "Team project (KFOKAM48 cohort)",
+      fr: "Plateforme clients / prestataires — projet d'équipe agile (promotion KFOKAM48)",
+      en: "Client / provider platform — agile team project (KFOKAM48 cohort)",
     },
     location: {
       fr: "Yaoundé, Cameroun",
       en: "Yaoundé, Cameroon",
     },
     description: {
-      fr: "Développement collaboratif de l'interface d'une plateforme de mise en relation de services en méthodologie agile.",
-      en: "Collaborative frontend development for a service marketplace platform using agile methodology.",
+      fr: "Plateforme clients / prestataires — projet d'équipe agile (promotion KFOKAM48).",
+      en: "Client / provider platform — agile team project (KFOKAM48 cohort).",
     },
     highlights: [
       {
-        fr: "Création de composants d'interface réutilisables et responsive en Next.js / TypeScript",
-        en: "Built responsive, reusable UI components using Next.js and TypeScript",
+        fr: "Composants d'interface réutilisables et responsive en Next.js / TypeScript",
+        en: "Reusable, responsive UI components built with Next.js / TypeScript",
+      },
+      {
+        fr: "Intégration dans l'interface des données fournies par l'API REST",
+        en: "Integrated REST API data into the user interface",
+      },
+      {
+        fr: "Travail collaboratif sous GitLab : branches de fonctionnalités et revues de code",
+        en: "Collaborative GitLab workflow: feature branches and code reviews",
       },
     ],
-    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GitLab"],
+    stack: ["Next.js", "TypeScript", "React", "Tailwind CSS", "GitLab"],
   },
   {
     id: "sekouh-qa",
@@ -49,12 +57,12 @@ export const experiences: readonly ExperienceEntry[] = [
       en: "2026",
     },
     role: {
-      fr: "Assurance Qualité (QA) — SekouH",
-      en: "Quality Assurance (QA) — SekouH",
+      fr: "Testeur QA (assurance qualité) — SekouH",
+      en: "QA Tester (quality assurance) — SekouH",
     },
     company: {
-      fr: "Projet d'équipe (Promotion KFOKAM48)",
-      en: "Team project (KFOKAM48 cohort)",
+      fr: "Système de gestion académique",
+      en: "Academic management system",
     },
     location: {
       fr: "Yaoundé, Cameroun",
@@ -66,20 +74,20 @@ export const experiences: readonly ExperienceEntry[] = [
     },
     highlights: [
       {
-        fr: "Définition et déroulement des scénarios de test d'assurance qualité (QA)",
-        en: "Created and executed quality-assurance test scenarios for core workflows",
+        fr: "Définition et exécution des scénarios de test d'assurance qualité (recette fonctionnelle)",
+        en: "Defined and executed quality-assurance test scenarios (functional acceptance)",
       },
     ],
-    stack: ["QA", "PostgreSQL"],
+    stack: ["QA", "Tests fonctionnels", "Java", "Spring Boot", "PostgreSQL"],
   },
   {
     id: "ecole-freelance",
     period: {
-      fr: "2024",
-      en: "2024",
+      fr: "2026",
+      en: "2026",
     },
     role: {
-      fr: "Développeur Web — Site Vitrine du Groupe Scolaire",
+      fr: "Développeur Web — Site vitrine du Groupe Scolaire",
       en: "Web Developer — School Showcase Website",
     },
     company: {
@@ -96,14 +104,10 @@ export const experiences: readonly ExperienceEntry[] = [
     },
     highlights: [
       {
-        fr: "Architecture d'information, ergonomie responsive et navigation multi-appareils",
-        en: "Information architecture, responsive layout and seamless multi-device navigation",
-      },
-      {
-        fr: "Déploiement continu, paramétrage de domaine et mise en ligne sur Netlify",
-        en: "Continuous deployment pipeline, domain configuration and production release on Netlify",
+        fr: "Conception, développement et mise en ligne d'un site vitrine responsive (déploiement continu et domaine sur Netlify)",
+        en: "Designed, built and launched a responsive showcase website (continuous deployment and custom domain on Netlify)",
       },
     ],
-    stack: ["Next.js", "Tailwind CSS", "React", "Netlify"],
+    stack: ["Next.js", "React", "Tailwind CSS", "Netlify"],
   },
 ];

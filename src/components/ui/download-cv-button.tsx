@@ -4,7 +4,7 @@ import { DownloadIcon } from "@/components/ui/icons";
 /**
  * Le CV téléchargeable est un fichier statique servi tel quel depuis
  * `public/cv/`. Il est imprimé depuis la page `/{locale}/cv` (mise en page
- * `@media print` de `globals.css`, 3 pages A4) : mettre le CV à jour, c'est
+ * `@media print` de `globals.css`, une page A4) : mettre le CV à jour, c'est
  * modifier `src/data/`, réimprimer la page, puis remplacer ce fichier.
  */
 const CV_FILE = "/cv/CV-Baurel-Bemmo-Fullstack.pdf";

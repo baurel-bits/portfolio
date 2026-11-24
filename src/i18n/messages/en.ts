@@ -56,7 +56,7 @@ export const en: Dictionary = {
     label: "02 — Skills",
     title: "What I can do",
     description:
-      "Six areas, no invented percentages: only the technologies I use in my projects.",
+      "Eight areas, no invented percentages: only the technologies I use in my projects.",
   },
   projects: {
     label: "03 — Projects",
@@ -142,14 +142,19 @@ export const en: Dictionary = {
     back: "Back to website",
     note: "Printable version: in the print dialog, choose “Save as PDF”.",
     photoAlt: "Photo of Baurel Bemmo",
-    profile: "Profile",
+    profile: "Professional profile",
     profileBody:
-      "Full-stack developer focused on frontend and mobile. I build web interfaces with React, Angular and Next.js, mobile apps with React Native and Expo, and the APIs behind them in Java / Spring Boot with PostgreSQL. I work with Docker, a Clean Architecture and microservices approach, and with testing and quality-assurance practices. In my final year at PKFokam Institute (KFOKAM48) since 2023, holding a science-track high school diploma (2023), a Sololearn web development certificate and an OpenClassrooms JavaScript certificate, with team experience on SuperApp (frontend) and Sekouh (QA).",
+      "Junior full-stack developer in my final year at PKFokam Institute (KFOKAM48), focused on frontend and mobile. I build interfaces with React, Next.js and Angular, mobile apps with React Native and Expo, and the REST APIs behind them in Java / Spring Boot with PostgreSQL. Team experience on SuperApp (frontend) and SekouH (QA). I am looking for a final-year internship or a first full-stack role, in Cameroon or remote.",
     experience: "Experience & achievements",
     skills: "Skills",
     projects: "Projects",
     education: "Education",
     goals: "Goals",
     contact: "Contact",
+    techLabel: "Technologies",
+    footerLanguages: "Languages",
+    footerInterests: "Interests",
+    footerInterestsValue: "web and mobile development",
+    footerReferences: "References: available on request",
   },
 };
