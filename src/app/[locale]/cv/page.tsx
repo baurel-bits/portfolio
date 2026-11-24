@@ -31,8 +31,6 @@ import {
 } from "@/components/ui/icons";
 import { educationEntries } from "@/data/education";
 import { experiences } from "@/data/experience";
-import { goals } from "@/data/goals";
-import { projects } from "@/data/projects";
 import { skillDomains } from "@/data/skills";
 import { CvSection } from "@/features/cv/cv-section";
 import { defaultLocale, isLocale, type Locale } from "@/i18n/config";
@@ -246,7 +244,7 @@ export default async function CvPage({ params }: CvPageProps) {
                 aria-hidden="true"
                 className="cv-timeline absolute inset-y-1 left-[3px] w-px bg-line"
               />
-              {experiences.map((exp) => (
+              {experiences.slice(0, 2).map((exp) => (
                 <li key={exp.id} className="relative print-block">
                   <span
                     aria-hidden="true"
@@ -259,7 +257,7 @@ export default async function CvPage({ params }: CvPageProps) {
                   <p className="text-body-s text-ink-muted">
                     {exp.company[active]} · {exp.location[active]}
                   </p>
-                  <p className="mt-1 text-body-s text-ink-soft">{exp.description[active]}</p>
+                  <p className="mt-1 text-body-s text-ink-soft print:hidden">{exp.description[active]}</p>
                   <ul className="mt-2 space-y-1">
                     {exp.highlights.map((h, i) => (
                       <li key={i} className="flex gap-2 text-body-s text-ink-soft">
@@ -286,7 +284,7 @@ export default async function CvPage({ params }: CvPageProps) {
           </CvSection>
 
           <CvSection icon={<CodeIcon width={14} height={14} />} title={dict.cv.skills} delay={110}>
-            <ul className="cv-domains grid gap-4 sm:grid-cols-2">
+            <ul className="cv-domains grid gap-4 sm:grid-cols-2 print:grid-cols-2">
               {skillDomains.map((domain) => (
                 <li
                   key={domain.id}
@@ -298,40 +296,9 @@ export default async function CvPage({ params }: CvPageProps) {
                     </span>
                     {domain.title[active]}
                   </p>
-                  <p className="mt-1 text-body-s text-ink-muted">{domain.description[active]}</p>
+                  <p className="mt-1 text-body-s text-ink-muted print:hidden">{domain.description[active]}</p>
                   <ul className="mt-3 flex flex-wrap gap-1.5">
                     {domain.items.map((item) => (
-                      <li key={item}>
-                        <Tag className="cv-tag">{item}</Tag>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          </CvSection>
-
-          <CvSection icon={<BriefcaseIcon width={14} height={14} />} title={dict.cv.projects} delay={160}>
-            <ul className="space-y-5">
-              {projects.map((project) => (
-                <li key={project.id} className="cv-entry group/entry print-block">
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                    <p className="text-body-m font-semibold text-ink">{project.title[active]}</p>
-                    <Link
-                      href={`/${active}/projets/${project.id}`}
-                      className="no-print inline-flex min-h-6 items-center gap-1 font-mono text-micro uppercase tracking-[0.1em] text-ink-muted transition-colors hover:text-accent"
-                    >
-                      {project.year ?? dict.projects.viewProject}
-                      <ArrowUpRightIcon
-                        width={11}
-                        height={11}
-                        className="transition-transform duration-200 group-hover/entry:-translate-y-0.5 group-hover/entry:translate-x-0.5 motion-reduce:transition-none"
-                      />
-                    </Link>
-                  </div>
-                  <p className="mt-1 text-body-s text-ink-soft">{project.summary[active]}</p>
-                  <ul className="mt-2 flex flex-wrap gap-1.5">
-                    {project.stack.map((item) => (
                       <li key={item}>
                         <Tag className="cv-tag">{item}</Tag>
                       </li>
@@ -352,7 +319,7 @@ export default async function CvPage({ params }: CvPageProps) {
                 aria-hidden="true"
                 className="cv-timeline absolute inset-y-1 left-[3px] w-px bg-line"
               />
-              {educationEntries.map((entry) => (
+              {educationEntries.filter((entry) => entry.id === "pkfokam" || entry.id === "bac").map((entry) => (
                 <li key={entry.id} className="relative print-block">
                   <span
                     aria-hidden="true"
@@ -362,30 +329,11 @@ export default async function CvPage({ params }: CvPageProps) {
                     {entry.period[active]}
                   </p>
                   <p className="mt-1 text-body-m font-semibold text-ink">{entry.title[active]}</p>
-                  <p className="text-body-s text-ink-muted">{entry.place[active]}</p>
-                  <p className="mt-1 text-body-s text-ink-soft">{entry.description[active]}</p>
+                  <p className="text-body-s text-ink-muted print:hidden">{entry.place[active]}</p>
+                  <p className="mt-1 text-body-s text-ink-soft print:hidden">{entry.description[active]}</p>
                 </li>
               ))}
             </ol>
-          </CvSection>
-
-          <CvSection icon={<TargetIcon width={14} height={14} />} title={dict.cv.goals} delay={260}>
-            <ul className="space-y-3">
-              {goals.map((goal) => (
-                <li key={goal.id} className="flex gap-3 text-body-s text-ink-soft">
-                  <ArrowRightIcon
-                    width={13}
-                    height={13}
-                    className="mt-1 shrink-0 text-accent"
-                    aria-hidden="true"
-                  />
-                  <span>
-                    <span className="font-semibold text-ink">{goal.title[active]} — </span>
-                    {goal.description[active]}
-                  </span>
-                </li>
-              ))}
-            </ul>
           </CvSection>
 
           {/* Rappel des coordonnées en bas de page écran. En impression, il est

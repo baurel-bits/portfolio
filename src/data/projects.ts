@@ -24,6 +24,7 @@ export const projects: readonly Project[] = [
       en: "Client and service provider matchmaking platform: Next.js frontend architecture, strict TypeScript typing and REST API integration.",
     },
     kind: "fullstack",
+    year: "2026",
     stack: ["React", "Next.js", "TypeScript", "API REST", "PostgreSQL"],
     details: [
       {
@@ -404,6 +405,7 @@ export const projects: readonly Project[] = [
       en: "Academic management system: schools, classes, students, teaching units and grade reports.",
     },
     kind: "fullstack",
+    year: "2026",
     stack: ["Java", "Spring Boot", "PostgreSQL"],
     details: [
       {

@@ -15,8 +15,8 @@ export const experiences: readonly ExperienceEntry[] = [
   {
     id: "superapp-team",
     period: {
-      fr: "2024",
-      en: "2024",
+      fr: "2026",
+      en: "2026",
     },
     role: {
       fr: "Développeur Frontend — SuperApp",
@@ -39,22 +39,14 @@ export const experiences: readonly ExperienceEntry[] = [
         fr: "Création de composants d'interface réutilisables et responsive en Next.js / TypeScript",
         en: "Built responsive, reusable UI components using Next.js and TypeScript",
       },
-      {
-        fr: "Intégration et validation des flux de données avec l'API REST backend",
-        en: "Integrated and validated data flows with backend REST API endpoints",
-      },
-      {
-        fr: "Travail collaboratif sous GitLab : branches de fonctionnalités et revues de code",
-        en: "Collaborative Git workflow via GitLab: feature branches and peer code reviews",
-      },
     ],
     stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GitLab"],
   },
   {
     id: "sekouh-qa",
     period: {
-      fr: "2024",
-      en: "2024",
+      fr: "2026",
+      en: "2026",
     },
     role: {
       fr: "Assurance Qualité (QA) — SekouH",
@@ -76,10 +68,6 @@ export const experiences: readonly ExperienceEntry[] = [
       {
         fr: "Définition et déroulement des scénarios de test d'assurance qualité (QA)",
         en: "Created and executed quality-assurance test scenarios for core workflows",
-      },
-      {
-        fr: "Vérification des flux académiques (écoles, classes, élèves, notes) et remontée des anomalies",
-        en: "Verified academic workflows (schools, classes, students, grades) and reported defects",
       },
     ],
     stack: ["QA", "PostgreSQL"],

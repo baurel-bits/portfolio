@@ -505,7 +505,7 @@ html:not(.js) .theme-toggle {
 @media print {
   @page {
     size: A4;
-    margin: 10mm 13mm 9mm;
+    margin: 8mm 11mm 7mm;
   }
 
   /* Une impression reste toujours sur fond clair, même en thème sombre. */
@@ -541,8 +541,8 @@ html:not(.js) .theme-toggle {
     padding: 0;
     background: #fff !important;
     color: #000 !important;
-    font-size: 9.2pt;
-    line-height: 1.48;
+    font-size: 8pt;
+    line-height: 1.34;
   }
 
   .print-block {
@@ -680,13 +680,13 @@ html:not(.js) .theme-toggle {
 
   .cv-doc ol,
   .cv-doc ul {
-    margin-top: 2.0mm;
+    margin-top: 1.5mm;
   }
 
   /* Les listes de projets et d'objectifs respirent à l'écran ; sur papier,
      l'interligne suffit à séparer les entrées. */
   .cv-doc .space-y-5 > li:not(:last-child) {
-    margin-bottom: 2.2mm;
+    margin-bottom: 1.6mm;
   }
 
   .cv-doc li {
@@ -712,19 +712,19 @@ html:not(.js) .theme-toggle {
 
   /* Grille de compétences : deux colonnes, cartes allégées. */
   .cv-domains {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 3mm !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 1.5mm !important;
   }
 
   .cv-domain {
     break-inside: avoid;
-    padding: 2.8mm !important;
+    padding: 1mm !important;
     background: transparent;
     transform: none !important;
   }
 
   .cv-domain > p:first-child {
-    font-size: 7pt;
+    font-size: 6.5pt;
   }
 
   .cv-domain > p:nth-child(2) {
@@ -734,8 +734,8 @@ html:not(.js) .theme-toggle {
   /* Étiquettes de technologies : discrètes, elles doivent se lire en colonne. */
   .cv-tag {
     min-height: 0;
-    padding: 0.6mm 1.4mm;
-    font-size: 6.8pt;
+    padding: 0.2mm 0.7mm;
+    font-size: 5.5pt;
     letter-spacing: 0.06em;
     color: var(--color-ink-soft);
     background: transparent;
