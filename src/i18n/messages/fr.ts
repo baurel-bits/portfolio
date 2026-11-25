@@ -143,7 +143,7 @@ export const fr = {
     photoAlt: "Photo de Baurel Bemmo",
     profile: "Profil professionnel",
     profileBody:
-      "Développeur full-stack junior, en fin de cycle à l'Institut PKFokam (KFOKAM48), orienté frontend et mobile. Je conçois des interfaces avec React, Next.js et Angular, des applications mobiles avec React Native et Expo, et les API REST qui les alimentent en Java / Spring Boot avec PostgreSQL. Travail en équipe sur SuperApp (frontend) et SekouH (QA). Je recherche un stage de fin d'études ou un premier poste full-stack, au Cameroun ou à distance.",
+      "Développeur full-stack, en fin de cycle à l'Institut PKFokam (KFOKAM48), orienté frontend et mobile. Je conçois des interfaces avec React, Next.js et Angular, des applications mobiles avec React Native et Expo, et les API REST qui les alimentent en Java / Spring Boot avec PostgreSQL. Travail en équipe sur SuperApp (frontend) et SekouH (QA). Je recherche un stage de fin d'études ou un premier poste full-stack, au Cameroun ou à distance.",
     experience: "Expériences & Réalisations",
     skills: "Compétences",
     projects: "Projets clés",

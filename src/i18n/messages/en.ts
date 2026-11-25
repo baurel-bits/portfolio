@@ -144,7 +144,7 @@ export const en: Dictionary = {
     photoAlt: "Photo of Baurel Bemmo",
     profile: "Professional profile",
     profileBody:
-      "Junior full-stack developer in my final year at PKFokam Institute (KFOKAM48), focused on frontend and mobile. I build interfaces with React, Next.js and Angular, mobile apps with React Native and Expo, and the REST APIs behind them in Java / Spring Boot with PostgreSQL. Team experience on SuperApp (frontend) and SekouH (QA). I am looking for a final-year internship or a first full-stack role, in Cameroon or remote.",
+      "Full-stack developer in my final year at PKFokam Institute (KFOKAM48), focused on frontend and mobile. I build interfaces with React, Next.js and Angular, mobile apps with React Native and Expo, and the REST APIs behind them in Java / Spring Boot with PostgreSQL. Team experience on SuperApp (frontend) and SekouH (QA). I am looking for a final-year internship or a first full-stack role, in Cameroon or remote.",
     experience: "Experience & achievements",
     skills: "Skills",
     projects: "Projects",

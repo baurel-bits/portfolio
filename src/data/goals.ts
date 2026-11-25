@@ -10,7 +10,7 @@ export const goals: readonly Goal[] = [
     id: "role",
     title: {
       fr: "Stage de fin d'études ou premier poste full-stack",
-      en: "Final-year internship or junior full-stack role",
+      en: "Final-year internship or full-stack role",
     },
     description: {
       fr: "Apporter une valeur immédiate sur l'intégration React / Next.js et la conception d'API Spring Boot, avec rigueur et autonomie, au Cameroun ou à distance.",

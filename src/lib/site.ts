@@ -63,8 +63,8 @@ export const site = {
     en: "Yaoundé, Cameroon",
   } satisfies LocalizedText,
   role: {
-    fr: "Développeur full-stack junior",
-    en: "Junior full-stack developer",
+    fr: "Développeur full-stack",
+    en: "Full-stack developer",
   } satisfies LocalizedText,
   /** Repris tel quel du CV : ce sont des faits, pas des intentions. */
   availability: {
