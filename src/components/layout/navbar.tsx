@@ -183,7 +183,7 @@ export function Navbar({ locale, nav }: NavbarProps) {
             </div>
 
             <span className="hidden sm:inline-flex">
-              <DownloadCVButton label={nav.cv} size="sm" variant="primary" href={`/${locale}/cv`} />
+              <DownloadCVButton label={nav.cv} size="sm" variant="primary" />
             </span>
 
             <ThemeToggle toDark={nav.themeDark} toLight={nav.themeLight} />
@@ -243,7 +243,7 @@ export function Navbar({ locale, nav }: NavbarProps) {
 
           <div className="mt-auto flex flex-wrap items-center justify-between gap-4">
             <LanguageSwitcher locale={locale} label={nav.language} />
-            <DownloadCVButton label={nav.cv} size="sm" href={`/${locale}/cv`} />
+            <DownloadCVButton label={nav.cv} size="sm" />
           </div>
         </Container>
       </div>

@@ -5,7 +5,7 @@ import { DownloadIcon } from "@/components/ui/icons";
  * Le CV téléchargeable est le PDF fourni, servi tel quel depuis `public/cv/`
  * (photo et mise en page d'origine comprises). Pour le mettre à jour, il suffit
  * de remplacer ce fichier par le nouveau PDF. La page `/{locale}/cv` reste la
- * version web, sans photo.
+ * version web, avec la photo du CV.
  */
 const CV_FILE = "/cv/CV-Baurel-Bemmo-Fullstack.pdf";
 const CV_DOWNLOAD_NAME = "CV-Baurel-Bemmo-Fullstack.pdf";
